@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Le Message — الرسالة</title>
+  <meta name="description" content="Le Message : découvrir l'Islam, le Coran et son message, en plusieurs langues.">
+  <meta property="og:title" content="Le Message — الرسالة">
+  <meta property="og:description" content="Découvrir l'Islam, le Coran et son message. Discover Islam and the message of the Quran.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 5l13 18 22-4-4 22 18 9-18 9 4 22-22-4-13 18-13-18-22 4 4-22L1 50l18-9-4-22 22 4z' fill='%23c9a54c'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Écran d'accueil : un clic est nécessaire pour que le navigateur autorise la musique -->
+  <div id="welcome" class="welcome" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
+    <div class="welcome-inner">
+      <p class="arabic welcome-ar">الرسالة</p>
+      <h1 id="welcome-title" data-i18n="siteName">Le Message</h1>
+      <p class="welcome-sub" data-i18n="welcomeSub"></p>
+      <div class="lang-pick" role="group" aria-label="Language">
+        <button data-setlang="en">English</button>
+        <button data-setlang="fr">Français</button>
+        <button data-setlang="es">Español</button>
+        <button data-setlang="de">Deutsch</button>
+      </div>
+      <button id="enter-music" class="btn btn-gold" data-i18n="enterMusic"></button>
+      <button id="enter-silent" class="link-btn" data-i18n="enterSilent"></button>
+    </div>
+  </div>
+
+  <header class="topbar">
+    <a href="#top" class="brand"><span class="arabic">الرسالة</span> <span data-i18n="siteName">Le Message</span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu">☰</button>
+    <nav id="nav" class="nav">
+      <a href="#flyers" data-i18n="navFlyers"></a>
+      <a href="#quran" data-i18n="navQuran"></a>
+      <a href="#message" data-i18n="navMessage"></a>
+      <a href="#themes" data-i18n="navThemes"></a>
+      <a href="#media" data-i18n="navMedia"></a>
+      <a href="#links" data-i18n="navLinks"></a>
+      <a href="#contact" data-i18n="navContact"></a>
+    </nav>
+    <div class="tools">
+      <select id="lang-select" aria-label="Language">
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
+        <option value="es">ES</option>
+        <option value="de">DE</option>
+      </select>
+      <button id="music-toggle" class="icon-btn" aria-pressed="false" title="Music">♪</button>
+    </div>
+  </header>
+  <!-- Lecteur YouTube de la musique du film (doit rester visible : règle YouTube) -->
+  <div id="music-player" class="music-player" hidden>
+    <div class="music-bar">
+      <span data-i18n="musicTitle"></span>
+      <button id="music-close" class="music-close" aria-label="×">×</button>
+    </div>
+    <div id="yt-player"></div>
+  </div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="arabic hero-ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+        <p class="hero-basmala" data-i18n="basmala"></p>
+        <h1 class="hero-title" data-i18n="siteName">Le Message</h1>
+        <p class="hero-lead" data-i18n="heroLead"></p>
+        <div class="hero-actions">
+          <a href="#flyers" class="btn btn-gold" data-i18n="heroCta2"></a>
+          <a href="#quran" class="btn btn-ghost" data-i18n="navQuran"></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="flyers" class="section">
+      <div class="container">
+        <h2 data-i18n="flyersTitle"></h2>
+        <p class="lead" data-i18n="flyersIntro"></p>
+        <div class="filter" id="flyers-filter" role="group"></div>
+        <div id="flyers-grid" class="grid grid-flyers"></div>
+        <p class="note" data-i18n="flyersTip"></p>
+      </div>
+    </section>
+
+    <section id="quran" class="section section-alt">
+      <div class="container">
+        <h2 data-i18n="quranTitle"></h2>
+        <p class="lead" data-i18n="quranIntro"></p>
+        <div class="filter" id="quran-filter" role="group"></div>
+        <div id="quran-grid" class="grid grid-links"></div>
+      </div>
+    </section>
+
+    <section id="message" class="section">
+      <div class="container">
+        <h2 data-i18n="msgTitle"></h2>
+        <p class="lead" data-i18n="msgIntro"></p>
+        <blockquote class="verse">
+          <p class="arabic">وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِّلْعَالَمِينَ</p>
+          <p data-i18n="msgVerse"></p>
+          <cite data-i18n="msgVerseRef"></cite>
+        </blockquote>
+        <div class="pillars">
+          <div class="card">
+            <h3 data-i18n="pillarsIslamTitle"></h3>
+            <ol data-i18n-list="pillarsIslam"></ol>
+          </div>
+          <div class="card">
+            <h3 data-i18n="pillarsFaithTitle"></h3>
+            <ol data-i18n-list="pillarsFaith"></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="themes" class="section section-alt">
+      <div class="container">
+        <h2 data-i18n="themesTitle"></h2>
+        <p class="lead" data-i18n="themesIntro"></p>
+        <div id="themes-grid" class="grid"></div>
+      </div>
+    </section>
+
+    <section id="media" class="section">
+      <div class="container">
+        <h2 data-i18n="mediaTitle"></h2>
+        <p class="lead" data-i18n="mediaIntro"></p>
+        <div class="filter" id="media-filter" role="group"></div>
+        <div id="media-grid" class="grid grid-links"></div>
+      </div>
+    </section>
+
+    <section id="links" class="section section-alt">
+      <div class="container">
+        <h2 data-i18n="linksTitle"></h2>
+        <p class="lead" data-i18n="linksIntro"></p>
+        <div id="links-grid" class="grid grid-links"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container narrow">
+        <h2 data-i18n="contactTitle"></h2>
+        <p class="lead" data-i18n="contactIntro"></p>
+        <form id="contact-form" class="form">
+          <label><span data-i18n="fName"></span><input name="name" autocomplete="name"></label>
+          <label><span data-i18n="fEmail"></span><input name="email" type="email" autocomplete="email"></label>
+          <label><span data-i18n="fType"></span>
+            <select name="type">
+              <option value="question" data-i18n="fTypeQ"></option>
+              <option value="suggestion" data-i18n="fTypeS"></option>
+              <option value="flyer" data-i18n="fTypeF"></option>
+            </select>
+          </label>
+          <label><span data-i18n="fMessage"></span><textarea name="message" rows="6" required></textarea></label>
+          <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-gold" type="submit" data-i18n="fSend"></button>
+          <p id="form-status" class="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="arabic">ادْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ</p>
+    <p data-i18n="footerVerse"></p>
+    <p class="small" data-i18n="footerNote"></p>
+    <button class="btn btn-ghost share-site" data-i18n="shareSite"></button>
+  </footer>
+
+  <!-- Bouton « Retour à l'accueil » (apparaît quand on descend dans la page) -->
+  <a href="#top" id="back-top" class="back-top" hidden>↑ <span data-i18n="backTop"></span></a>
+
+  <!-- Lecteur de flyer : page 1 (recto) puis page 2 (verso) -->
+  <div id="viewer" class="viewer" role="dialog" aria-modal="true" aria-labelledby="viewer-title" hidden>
+    <div class="viewer-top">
+      <div class="viewer-info">
+        <strong id="viewer-title"></strong>
+        <span id="viewer-page" class="viewer-page"></span>
+      </div>
+      <div class="viewer-actions">
+        <a id="viewer-pdf" class="btn btn-gold btn-small" target="_blank" download data-i18n="downloadPdf"></a>
+        <button id="viewer-close" class="viewer-close" type="button">✕ <span data-i18n="close"></span></button>
+      </div>
+    </div>
+    <div id="viewer-stage" class="viewer-stage">
+      <img id="viewer-img" alt="">
+    </div>
+    <div class="viewer-nav">
+      <button id="viewer-prev" type="button" class="btn btn-ghost">‹ <span data-i18n="prevPage"></span></button>
+      <span class="viewer-hint" data-i18n="zoomHint"></span>
+      <button id="viewer-next" type="button" class="btn btn-gold"><span data-i18n="nextPage"></span> ›</button>
+    </div>
+  </div>
+
+  <!-- Menu de partage (si le navigateur n'a pas le partage natif) -->
+  <div id="share-sheet" class="share-sheet" hidden>
+    <div class="share-box" role="dialog" aria-modal="true" aria-labelledby="share-title">
+      <h3 id="share-title" data-i18n="shareTitle"></h3>
+      <p id="share-what" class="small"></p>
+      <div class="share-targets">
+        <a data-net="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+        <a data-net="facebook" target="_blank" rel="noopener">Facebook</a>
+        <a data-net="x" target="_blank" rel="noopener">X</a>
+        <a data-net="telegram" target="_blank" rel="noopener">Telegram</a>
+        <a data-net="email">Email</a>
+        <button id="share-copy" data-i18n="copyLink"></button>
+      </div>
+      <button id="share-close" class="link-btn" data-i18n="close"></button>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
