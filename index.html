@@ -68,12 +68,12 @@
     <a href="#top" class="brand"><span class="arabic">الرسالة</span> <span data-i18n="siteName">The Message</span></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu">☰</button>
     <nav id="nav" class="nav">
-      <a href="#flyers" data-i18n="navFlyers"></a>
-      <a href="#quran" data-i18n="navQuran"></a>
-      <a href="#film" data-i18n="navFilm"></a>
       <a href="#message" data-i18n="navMessage"></a>
+      <a href="#film" data-i18n="navFilm"></a>
       <a href="#themes" data-i18n="navThemes"></a>
       <a href="paroles-du-prophete/" data-page-paroles data-i18n="navProphet"></a>
+      <a href="#quran" data-i18n="navQuran"></a>
+      <a href="#flyers" data-i18n="navFlyers"></a>
       <a href="#media" data-i18n="navMedia"></a>
       <a href="#links" data-i18n="navLinks"></a>
       <a href="#contact" data-i18n="navContact"></a>
@@ -113,50 +113,9 @@
         <h1 class="hero-title" data-i18n="siteName">The Message</h1>
         <p class="hero-lead" data-i18n="heroLead"></p>
         <div class="hero-actions">
-          <a href="#flyers" class="btn btn-gold" data-i18n="heroCta2"></a>
+          <a href="#message" class="btn btn-gold" data-i18n="heroCta1"></a>
           <a href="#quran" class="btn btn-ghost" data-i18n="navQuran"></a>
           <a href="#film" class="btn btn-ghost">🎬 <span data-i18n="navFilm"></span></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="flyers" class="section">
-      <div class="container">
-        <h2 data-i18n="flyersTitle"></h2>
-        <p class="lead" data-i18n="flyersIntro"></p>
-        <div class="filter" id="flyers-filter" role="group"></div>
-        <div id="flyers-grid" class="grid grid-flyers"></div>
-        <p class="note" data-i18n="flyersTip"></p>
-      </div>
-    </section>
-
-    <section id="quran" class="section section-alt">
-      <div class="container">
-        <h2 data-i18n="quranTitle"></h2>
-        <p class="lead" data-i18n="quranIntro"></p>
-        <div class="filter" id="quran-filter" role="group"></div>
-        <div id="quran-grid" class="grid grid-links"></div>
-      </div>
-    </section>
-
-    <section id="film" class="section section-film">
-      <div class="container film-grille">
-        <div class="film-video" id="film-video">
-          <button id="film-play" class="film-vignette" type="button">
-            <img id="film-image" alt="" loading="lazy" width="480" height="360">
-            <span class="film-lecture" aria-hidden="true">▶</span>
-            <span class="film-etiquette" data-i18n="filmTrailer"></span>
-          </button>
-        </div>
-        <div class="film-texte">
-          <h2 data-i18n="filmTitle"></h2>
-          <p data-i18n="filmText"></p>
-          <div class="card-actions" id="film-actions">
-            <a id="film-watch" class="btn btn-gold btn-small" target="_blank" rel="noopener"><span data-i18n="filmWatch"></span> ↗</a>
-            <a id="film-search-en" class="share-btn film-lien" target="_blank" rel="noopener"><span data-i18n="filmSearchEn"></span> ↗</a>
-            <a id="film-search-local" class="share-btn film-lien" target="_blank" rel="noopener" hidden><span data-i18n="filmSearchLocal"></span> ↗</a>
-          </div>
-          <p class="small film-note" data-i18n="filmNote"></p>
         </div>
       </div>
     </section>
@@ -184,6 +143,28 @@
       </div>
     </section>
 
+    <section id="film" class="section section-film">
+      <div class="container film-grille">
+        <div class="film-video" id="film-video">
+          <button id="film-play" class="film-vignette" type="button">
+            <img id="film-image" alt="" loading="lazy" width="480" height="360">
+            <span class="film-lecture" aria-hidden="true">▶</span>
+            <span class="film-etiquette" data-i18n="filmTrailer"></span>
+          </button>
+        </div>
+        <div class="film-texte">
+          <h2 data-i18n="filmTitle"></h2>
+          <p data-i18n="filmText"></p>
+          <div class="card-actions" id="film-actions">
+            <a id="film-watch" class="btn btn-gold btn-small" target="_blank" rel="noopener"><span data-i18n="filmWatch"></span> ↗</a>
+            <a id="film-search-en" class="share-btn film-lien" target="_blank" rel="noopener"><span data-i18n="filmSearchEn"></span> ↗</a>
+            <a id="film-search-local" class="share-btn film-lien" target="_blank" rel="noopener" hidden><span data-i18n="filmSearchLocal"></span> ↗</a>
+          </div>
+          <p class="small film-note" data-i18n="filmNote"></p>
+        </div>
+      </div>
+    </section>
+
     <section id="themes" class="section section-alt">
       <div class="container">
         <h2 data-i18n="themesTitle"></h2>
@@ -195,6 +176,25 @@
           <span><h3 data-i18n="pTitle"></h3><p data-i18n="pCardText"></p></span>
           <span class="carte-paroles-fl" aria-hidden="true">→</span>
         </a>
+      </div>
+    </section>
+
+    <section id="quran" class="section">
+      <div class="container">
+        <h2 data-i18n="quranTitle"></h2>
+        <p class="lead" data-i18n="quranIntro"></p>
+        <div class="filter" id="quran-filter" role="group"></div>
+        <div id="quran-grid" class="grid grid-links"></div>
+      </div>
+    </section>
+
+    <section id="flyers" class="section section-alt">
+      <div class="container">
+        <h2 data-i18n="flyersTitle"></h2>
+        <p class="lead" data-i18n="flyersIntro"></p>
+        <div class="filter" id="flyers-filter" role="group"></div>
+        <div id="flyers-grid" class="grid grid-flyers"></div>
+        <p class="note" data-i18n="flyersTip"></p>
       </div>
     </section>
 
