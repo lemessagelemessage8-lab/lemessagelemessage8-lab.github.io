@@ -77,8 +77,8 @@ hadiths sur Marie en espagnol/allemand/italien/portugais/néerlandais/japonais).
 ## Section « Le film » (12/10/2026)
 Film complet GRATUIT sur YouTube, dans le lecteur de la page (se charge au clic) : anglais (chaîne « Hollywood Action ») et
 hindi (« Dimension On Demand ») ; Ahmed ne veut pas de lien payant. Bande-annonce officielle (Front Row Filmed Entertainment) et
-recherche YouTube par langue en complément. Si YouTube retire une vidéo, changer son identifiant dans  de
-. Textes : .
+recherche YouTube par langue en complément. Si YouTube retire une vidéo, changer son identifiant dans `filmFull` de
+`js/config.js`. Textes : `js/i18n-film.js`.
 
 ## Numéro de version des fichiers
 Avant chaque publication qui change `css/` ou `js/` : `python tools/version.py AAAAMMJJx` (ex. `20261012c`). Le test vérifie
