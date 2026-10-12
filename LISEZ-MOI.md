@@ -43,3 +43,10 @@ dans les deux sélecteurs de langue de `index.html`. Pour l'arabe, ajouter aussi
 Chaque thème, flyer, Coran et radio a un bouton « Partager » (partage natif sur téléphone ;
 WhatsApp, Facebook, X, Telegram, e-mail ou copie du lien sur ordinateur). Le lien partagé
 ouvre le site directement sur l'élément, dans la bonne langue.
+
+## Adresse, visibilité et tests (12/10/2026)
+- Adresse du site : https://message.clicvia.com/ (fichier `CNAME` ; l'ancienne adresse github.io redirige).
+- Pour Google : `robots.txt`, `sitemap.xml`, titres et descriptions par langue (`pageTitle`, `metaDesc` dans `js/i18n.js`),
+  questions-réponses (FAQ) et image d'aperçu de partage `assets/og-image-v1.jpg` dans `index.html`.
+- Bouton rond « Partager » dans l'en-tête ; statistiques GoatCounter (sans cookies), rangées sous `/le-message`.
+- Tests : `node tools/test_site.mjs` (relancés par GitHub à chaque envoi, `.github/workflows/tests.yml`).

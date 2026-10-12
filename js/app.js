@@ -1,6 +1,9 @@
 (function () {
   "use strict";
   var CFG = window.SITE_CONFIG, T = window.I18N, D = window.SITE_DATA;
+  // Statistiques : les visites de ce site sont rangées sous /le-message dans le compteur commun
+  window.goatcounter = window.goatcounter || {};
+  window.goatcounter.path = function (p) { return "/le-message" + p; };
   var lang = pickLang();
   var filters = { quran: "all", media: "all", flyers: "all" };
 
@@ -28,7 +31,9 @@
     document.documentElement.lang = l;
     document.getElementById("lang-select").value = l;
     document.querySelectorAll("[data-setlang]").forEach(function (b) { b.classList.toggle("active", b.dataset.setlang === l); });
-    document.title = t("siteName") + " — الرسالة";
+    document.title = t("pageTitle");
+    var md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute("content", t("metaDesc"));
+    var sh = document.getElementById("share-head"); sh.title = t("share"); sh.setAttribute("aria-label", t("share"));
     document.querySelectorAll("[data-i18n]").forEach(function (n) { n.textContent = t(n.dataset.i18n); });
     document.querySelectorAll("[data-i18n-list]").forEach(function (n) {
       n.innerHTML = t(n.dataset.i18nList).map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("");
@@ -166,6 +171,8 @@
     return b;
   }
   function share(title, url, externalUrl) {
+    // clic compté dans les statistiques (GoatCounter) ; le partage marche aussi sans
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "partage/le-message" + (url.split("#")[1] ? "/" + url.split("#")[1] : ""), title: "Partage", event: true }); } catch (e) {}
     var text = t("shareText") + " " + title + (externalUrl ? " — " + externalUrl : "");
     if (navigator.share) {
       navigator.share({ title: t("siteName") + " — " + title, text: text, url: url }).catch(function () {});
@@ -265,6 +272,7 @@
   // ───────── Divers ─────────
   document.getElementById("lang-select").onchange = function (e) { setLang(e.target.value); };
   document.querySelector(".share-site").onclick = function () { share(t("siteName"), pageUrl("")); };
+  document.getElementById("share-head").onclick = function () { share(t("siteName"), pageUrl("")); };
   document.getElementById("share-close").onclick = function () { document.getElementById("share-sheet").hidden = true; };
   document.getElementById("share-sheet").onclick = function (e) { if (e.target === this) this.hidden = true; };
   var nav = document.getElementById("nav"), mt = document.querySelector(".menu-toggle");
