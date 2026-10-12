@@ -54,6 +54,7 @@ for (const s of ["flyers", "quran", "media", "links"]) for (const i of D[s]) {
   for (const l of Object.keys(T)) ok(i.desc && i.desc[l], `description absente en ${l} : ${i.name || i.id}`);
   if (i.url) ok(/^https:\/\//.test(i.url), "lien non sécurisé : " + i.url);
 }
+ok(D.links.some(i => i.url === "https://mosquees.clicvia.com/"), "lien vers le site Mosquées absent des liens utiles");
 ok(/^[^@\s]+@[^@\s]+\.[a-z]+$/.test(window.SITE_CONFIG.contactEmail) && !/exemple/.test(window.SITE_CONFIG.contactEmail), "adresse de contact non réglée");
 
 console.log(echecs ? `\n${echecs} échec(s)` : "Tous les tests passent.");

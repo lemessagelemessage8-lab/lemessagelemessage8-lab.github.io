@@ -68,6 +68,9 @@ window.SITE_DATA = {
   ],
 
   links: [
+    { name: "Mosquées de Tunisie et du monde", url: "https://mosquees.clicvia.com/", lang: "multi", kind: "site",
+      desc: { fr: "Notre site frère : les mosquées sur une carte, la plus proche de vous, et l'histoire des grandes mosquées de Tunisie avec leurs photos (8 langues).", en: "Our sister site: mosques on a map, the nearest one to you, and the history of Tunisia's great mosques with photos (8 languages).", es: "Nuestro sitio hermano: las mezquitas en un mapa, la más cercana a ti, y la historia de las grandes mezquitas de Túnez con fotos (8 idiomas).", de: "Unsere Schwester-Website: Moscheen auf einer Karte, die nächstgelegene in Ihrer Nähe, und die Geschichte der großen Moscheen Tunesiens mit Fotos (8 Sprachen)." },
+      localUrl: { en: "https://mosquees.clicvia.com/?lang=en", es: "https://mosquees.clicvia.com/?lang=es", de: "https://mosquees.clicvia.com/?lang=de" } },
     { name: "IslamReligion.com", url: "https://www.islamreligion.com", lang: "multi", kind: "site",
       desc: { en: "Articles and videos explaining Islam to non-Muslims, in many languages.", fr: "Articles et vidéos qui expliquent l'Islam aux non-musulmans, en plusieurs langues.", es: "Artículos y vídeos que explican el Islam a los no musulmanes, en varios idiomas.", de: "Artikel und Videos, die Nichtmuslimen den Islam erklären, in vielen Sprachen." },
       localUrl: { fr: "https://www.islamreligion.com/fr/", es: "https://www.islamreligion.com/es/", de: "https://www.islamreligion.com/de/" } },
