@@ -224,3 +224,12 @@ a { color: var(--green-2); }
   .viewer-hint { order: 3; width: 100%; text-align: center; }
   .viewer-stage.zoomed img { width: 300%; }
 }
+
+/* Langues ajoutées le 12/10/2026 : polices du système pour les écritures non latines, sélecteur de langue plus large */
+:lang(zh-Hans), :lang(ja), :lang(ko), :lang(hi) { --titres: system-ui, "Noto Sans", sans-serif; }
+:lang(zh-Hans) h1, :lang(zh-Hans) h2, :lang(zh-Hans) h3, :lang(ja) h1, :lang(ja) h2, :lang(ja) h3,
+:lang(ko) h1, :lang(ko) h2, :lang(ko) h3, :lang(hi) h1, :lang(hi) h2, :lang(hi) h3 { font-family: system-ui, "Noto Sans", sans-serif; font-weight: 700; letter-spacing: 0; }
+:lang(hi) body, :lang(hi) { line-height: 1.75; }
+.brand span[data-i18n], .welcome h1, .hero-title { font-family: "Cormorant Garamond", Georgia, serif !important; }
+#lang-select { max-width: 9.5em; }
+.lang-pick { max-width: 640px; margin-left: auto; margin-right: auto; }

@@ -28,7 +28,7 @@
   function setLang(l) {
     lang = l;
     try { localStorage.setItem("lang", l); } catch (e) {}
-    document.documentElement.lang = l;
+    document.documentElement.lang = l === "zh" ? "zh-Hans" : l;
     document.getElementById("lang-select").value = l;
     document.querySelectorAll("[data-setlang]").forEach(function (b) { b.classList.toggle("active", b.dataset.setlang === l); });
     document.title = t("pageTitle");
@@ -150,7 +150,7 @@
       var c = el("article", { class: "card", id: id });
       c.innerHTML =
         '<div class="tags"><span class="tag kind">' + esc(t("kinds")[it.kind] || it.kind) + '</span><span class="tag">' + esc(t("langNames")[it.lang] || it.lang) + "</span></div>" +
-        "<h3>" + esc(it.name) + "</h3><p>" + esc(loc(it.desc)) + "</p>";
+        "<h3>" + esc(it.name) + "</h3><p>" + esc(it.descKey ? t(it.descKey) : loc(it.desc)) + "</p>";
       var label = (it.kind === "radio" || it.kind === "audio" || it.kind === "tv") ? t("listen") : t("open");
       var a = el("a", { class: "btn btn-gold btn-small", href: url, target: "_blank", rel: "noopener" }, esc(label) + " ↗");
       c.appendChild(actions([a, shareButton(it.name, id, url)]));

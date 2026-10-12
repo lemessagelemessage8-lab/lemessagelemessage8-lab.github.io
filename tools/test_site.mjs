@@ -16,7 +16,9 @@ const ADRESSE = "https://message.clicvia.com/";
 // --- visibilité (règle commune § 8) ---
 ok(/<header class="topbar">[\s\S]*id="share-head"[\s\S]*<\/header>/.test(html), "bouton « Partager » absent de l'en-tête");
 ok(html.includes(`<link rel="canonical" href="${ADRESSE}">`), "adresse canonique absente");
-for (const l of ["fr", "en", "es", "de", "x-default"]) ok(html.includes(`hreflang="${l}"`), "hreflang " + l + " absent");
+const LANGUES = ["en", "fr", "es", "de", "it", "pt", "nl", "zh", "ja", "ko", "hi"];
+for (const l of LANGUES) ok(html.includes(`href="${ADRESSE}?lang=${l}"`) && html.includes(`data-setlang="${l}"`) && html.includes(`<option value="${l}"`), "langue " + l + " absente de l'en-tête ou des boutons");
+ok(html.includes('hreflang="x-default"'), "hreflang x-default absent");
 ok(html.includes("goatcounter.com/count"), "compteur de visites GoatCounter absent");
 ok(html.includes(`og:image" content="${ADRESSE}assets/og-image-v2.jpg"`), "image d'aperçu de partage absente");
 ok(fs.existsSync(path.join(racine, "assets/og-image-v2.jpg")), "fichier assets/og-image-v2.jpg absent");
@@ -30,15 +32,17 @@ for (const r of ["GPTBot", "ClaudeBot", "CCBot", "Bytespider"]) ok(robots.includ
 ok(!/User-agent: Googlebot[\s\S]{0,200}?Disallow: \/\s/.test(robots.split("# Robots d'IA")[0]), "robots.txt interdit Googlebot");
 const plan = lire("sitemap.xml");
 ok(plan.includes(`<loc>${ADRESSE}</loc>`), "sitemap.xml : accueil absent");
-for (const l of ["fr", "en", "es", "de"]) ok(plan.includes(`<loc>${ADRESSE}?lang=${l}</loc>`), "sitemap.xml : langue " + l + " absente");
+for (const l of LANGUES) ok(plan.includes(`<loc>${ADRESSE}?lang=${l}</loc>`), "sitemap.xml : langue " + l + " absente");
 
 // --- textes : chaque langue a toutes les clés ---
 globalThis.window = {};
 require(path.join(racine, "js/config.js"));
-require(path.join(racine, "js/i18n.js"));
-require(path.join(racine, "js/data.js"));
+for (const f of ["i18n", "i18n-plus", "i18n-asie", "data", "data-plus"]) require(path.join(racine, "js/" + f + ".js"));
 const T = window.I18N, D = window.SITE_DATA;
 const cles = Object.keys(T.fr);
+ok(LANGUES.every(l => T[l]) && Object.keys(T).length === LANGUES.length, "les langues du site ne sont pas celles attendues : " + Object.keys(T));
+for (const l of Object.keys(T)) for (const c of [...LANGUES, "ar", "multi"]) ok(T[l].langNames[c], `nom de la langue ${c} absent en ${l}`);
+for (const l of Object.keys(T)) for (const k of Object.keys(T.fr.kinds)) ok(T[l].kinds[k], `type ${k} absent en ${l}`);
 for (const l of Object.keys(T)) ok(T[l].siteName === "The Message" && T[l].pageTitle.startsWith("The Message"), "le nom du site doit être « The Message » en " + l);
 ok(html.includes('<span class="arabic">الرسالة</span>'), "nom arabe الرسالة absent de l'en-tête");
 for (const l of Object.keys(T)) {
@@ -53,7 +57,9 @@ for (const f of D.flyers) {
   ok(fs.existsSync(path.join(racine, f.front.replace(/\.jpg$/, "-mini.jpg"))), "vignette absente : " + f.front);
 }
 for (const s of ["flyers", "quran", "media", "links"]) for (const i of D[s]) {
-  for (const l of Object.keys(T)) ok(i.desc && i.desc[l], `description absente en ${l} : ${i.name || i.id}`);
+  for (const l of Object.keys(T)) ok(i.descKey ? T[l][i.descKey] : (i.desc && i.desc[l]), `description absente en ${l} : ${i.name || i.id}`);
+  if (i.title) for (const l of Object.keys(T)) ok(i.title[l], `titre absent en ${l} : ${i.id}`);
+  for (const u of Object.values(i.localUrl || {})) ok(/^https:\/\//.test(u), "lien non sécurisé : " + u);
   if (i.url) ok(/^https:\/\//.test(i.url), "lien non sécurisé : " + i.url);
 }
 ok(D.links.some(i => i.url === "https://mosquees.clicvia.com/"), "lien vers le site Mosquées absent des liens utiles");

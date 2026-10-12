@@ -50,3 +50,11 @@ ouvre le site directement sur l'élément, dans la bonne langue.
   questions-réponses (FAQ) et image d'aperçu de partage `assets/og-image-v1.jpg` dans `index.html`.
 - Bouton rond « Partager » dans l'en-tête ; statistiques GoatCounter (sans cookies), rangées sous `/le-message`.
 - Tests : `node tools/test_site.mjs` (relancés par GitHub à chaque envoi, `.github/workflows/tests.yml`).
+
+## 11 langues (12/10/2026)
+Le site s'appelle « The Message » dans toutes les langues (nom arabe الرسالة à côté). Il s'adresse aux non-musulmans : pas de version arabe.
+Langues : anglais, français, espagnol, allemand (`js/i18n.js`), italien, portugais, néerlandais (`js/i18n-plus.js`),
+chinois, japonais, coréen, hindi (`js/i18n-asie.js`). Descriptions des cartes pour ces 7 langues : `js/data-plus.js`.
+Ajouter une langue : un bloc de textes, une colonne dans `js/data-plus.js`, puis le bouton, l'option et le lien `hreflang`
+dans `index.html`, une ligne dans `sitemap.xml` et le code dans `LANGUES` de `tools/test_site.mjs`.
+Les traductions ont été écrites par Claude : à faire relire par une personne dont c'est la langue.
