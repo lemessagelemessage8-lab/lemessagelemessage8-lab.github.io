@@ -284,3 +284,15 @@ a { color: var(--green-2); }
 .film-lien[hidden] { display: none; }
 .film-note { color: rgba(247,241,227,.65) !important; margin-top: 14px; }
 @media (max-width: 860px) { .film-grille { grid-template-columns: 1fr; gap: 22px; } }
+
+/* Écran d'accueil : sur une fenêtre peu haute (petit téléphone, fenêtre réduite), il défile au lieu d'être coupé */
+.welcome { overflow-y: auto; }
+.welcome-inner { margin: auto; padding: 12px 0; }
+@media (max-height: 640px) {
+  .welcome { place-items: start center; }
+  .welcome-ar { font-size: clamp(2.4rem, 9vh, 3.6rem); line-height: 1.2; }
+  .welcome h1 { font-size: clamp(1.8rem, 7vh, 2.6rem); }
+  .welcome-sub { margin-bottom: .8rem; }
+  .lang-pick { gap: 6px; margin-bottom: .9rem; }
+  .lang-pick button { padding: .25em .8em; }
+}

@@ -89,6 +89,11 @@ ok(html.includes('id="film"') && html.includes('href="#film"') && html.includes(
 ok(/^[\w-]{11}$/.test(C.filmTrailerId) && /^https:\/\/www\.justwatch\.com\//.test(C.filmWatchUrl) && C.filmSearch.en, "réglages du film incomplets dans js/config.js");
 ok(!/youtube\.com\/watch|youtu\.be\//.test(html + lire("js/config.js")), "lien direct vers une vidéo YouTube : n'utiliser qu'une publication officielle (voir config.js)");
 
+// --- une seule version (?v=) sur tous les fichiers CSS et JS, pour que les visiteurs reçoivent bien les mises à jour ---
+const versions = new Set();
+for (const src of [html, page]) for (const m of src.matchAll(/(?:href|src)="(?:\.\.\/)?(?:css|js)\/[\w.-]+\.(?:css|js)(\?v=\w+)?"/g)) versions.add(m[1] || "sans version");
+ok(versions.size === 1 && !versions.has("sans version"), "versions des fichiers CSS/JS : " + [...versions].join(", ") + " (lancer python tools/version.py)");
+
 // --- données : fichiers des flyers présents, descriptions dans les 4 langues, liens en https ---
 for (const f of D.flyers) {
   for (const k of ["pdf", "front", "back"]) ok(fs.existsSync(path.join(racine, f[k])), "fichier absent : " + f[k]);

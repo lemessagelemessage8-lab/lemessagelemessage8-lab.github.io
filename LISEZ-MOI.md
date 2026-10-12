@@ -79,3 +79,7 @@ Bande-annonce OFFICIELLE en anglais (Front Row Filmed Entertainment, restauratio
 plateformes légales (JustWatch) ; recherche du film entier sur YouTube en anglais et dans la langue du visiteur quand un
 doublage existe. Aucun lien direct vers une copie entière : celles trouvées sur YouTube viennent de chaînes non vérifiées.
 Réglages : `filmTrailerId`, `filmWatchUrl`, `filmSearch` dans `js/config.js` ; textes : `js/i18n-film.js`.
+
+## Numéro de version des fichiers
+Avant chaque publication qui change `css/` ou `js/` : `python tools/version.py AAAAMMJJx` (ex. `20261012c`). Le test vérifie
+que toutes les pages utilisent la même version ; sans cela, un visiteur peut garder d'anciens fichiers après une mise à jour.
