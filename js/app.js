@@ -62,7 +62,12 @@
     document.querySelectorAll("[data-page-paroles]").forEach(function (a) { a.href = "paroles-du-prophete/?lang=" + lang; });
     // le film : liens de recherche dans la langue du visiteur quand un doublage existe
     var q = function (x) { return "https://www.youtube.com/results?search_query=" + encodeURIComponent(x); };
-    document.getElementById("film-watch").href = CFG.filmWatchUrl;
+    var yt = function (id) { return "https://www.youtube.com/" + "watch?v=" + id; };
+    document.getElementById("film-full").href = yt(CFG.filmFull.en);
+    document.getElementById("film-trailer").href = yt(CFG.filmTrailerId);
+    var fl = document.getElementById("film-full-local");
+    fl.hidden = !(CFG.filmFull[lang] && lang !== "en" && t("filmFullLocal"));
+    if (!fl.hidden) fl.href = yt(CFG.filmFull[lang]);
     document.getElementById("film-search-en").href = q(CFG.filmSearch.en);
     var loc2 = document.getElementById("film-search-local");
     loc2.hidden = !(t("filmSearchLocal") && CFG.filmSearch[lang] && lang !== "en");
@@ -266,13 +271,14 @@
   };
   document.getElementById("music-close").onclick = stopMusic;
 
-  // ───────── Le film : la bande-annonce officielle se charge seulement au clic (YouTube sans cookies) ─────────
-  document.getElementById("film-image").src = "https://i.ytimg.com/vi/" + CFG.filmTrailerId + "/hqdefault.jpg";
+  // ───────── Le film complet se charge seulement au clic (YouTube sans cookies) ─────────
+  document.getElementById("film-image").src = "https://i.ytimg.com/vi/" + CFG.filmTrailerId + "/hqdefault.jpg";   // affiche du film
   document.getElementById("film-play").onclick = function () {
     stopMusic();   // pas deux sons en même temps
-    document.getElementById("film-video").innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + CFG.filmTrailerId +
+    var film = CFG.filmFull[lang] || CFG.filmFull.en;     // film complet : dans la langue du visiteur si elle existe, sinon en anglais
+    document.getElementById("film-video").innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + film +
       '?autoplay=1&rel=0" title="The Message (1976)" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
-    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "film/bande-annonce", title: "Bande-annonce du film", event: true }); } catch (e) {}
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "film/complet", title: "Film complet", event: true }); } catch (e) {}
   };
 
   // ───────── Accueil ─────────

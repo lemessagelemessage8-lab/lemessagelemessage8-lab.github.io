@@ -18,22 +18,23 @@
       "무스타파 아카드 감독의 이 영화는 이슬람의 탄생과 예언자 무함마드 ﷺ 가 전한 메시지를 그립니다. 존경의 뜻으로, 영화에는 예언자의 모습도 목소리도 나오지 않습니다. 영어판에는 앤서니 퀸과 이레네 파파스가 출연하며, 2018년에 4K로 복원되었습니다. 이 사이트의 이름도 이 영화에서 따왔습니다.",
       "मुस्तफ़ा अक़्क़ाद की यह फ़िल्म इस्लाम के आरंभ और पैग़ंबर मुहम्मद ﷺ के लाए हुए संदेश की कहानी कहती है। सम्मान के कारण फ़िल्म में पैग़ंबर को न कभी दिखाया गया है और न उनकी आवाज़ सुनाई गई है। अंग्रेज़ी संस्करण में एंथनी क्विन और आइरीन पापास हैं; फ़िल्म को 2018 में 4K में दोबारा तैयार किया गया, और इस साइट का नाम इसी फ़िल्म से लिया गया है।"
     ],
-    filmTrailer: ["Watch the official trailer (English)", "Voir la bande-annonce officielle (en anglais)", "Ver el tráiler oficial (en inglés)", "Offiziellen Trailer ansehen (Englisch)", "Guarda il trailer ufficiale (in inglese)", "Ver o trailer oficial (em inglês)", "Bekijk de officiële trailer (Engels)", "观看官方预告片（英语）", "公式予告編を見る（英語）", "공식 예고편 보기 (영어)", "आधिकारिक ट्रेलर देखें (अंग्रेज़ी)"],
-    filmWatch: ["Where to watch the full film (legal platforms)", "Où voir le film en entier (plateformes légales)", "Dónde ver la película completa (plataformas legales)", "Wo man den ganzen Film sehen kann (legale Plattformen)", "Dove vedere il film completo (piattaforme legali)", "Onde assistir ao filme completo (plataformas legais)", "Waar je de hele film kunt zien (legale platforms)", "在哪里观看完整影片（正版平台）", "全編を見られる場所（正規の配信サービス）", "전체 영화를 볼 수 있는 곳 (합법 플랫폼)", "पूरी फ़िल्म कहाँ देखें (वैध प्लेटफ़ॉर्म)"],
+    filmFull: ["Watch the full film, free (in English)", "Voir le film complet, gratuit (en anglais)", "Ver la película completa, gratis (en inglés)", "Den ganzen Film kostenlos ansehen (auf Englisch)", "Guarda il film completo, gratis (in inglese)", "Assistir ao filme completo, grátis (em inglês)", "Bekijk de hele film gratis (in het Engels)", "免费观看完整影片（英语）", "全編を無料で見る（英語）", "전체 영화 무료로 보기 (영어)", "पूरी फ़िल्म मुफ़्त देखें (अंग्रेज़ी में)"],
+    filmFullLocal: ["", "", "", "", "", "", "", "", "", "", "पूरी फ़िल्म हिंदी में मुफ़्त देखें"],
+    filmTrailer: ["Official trailer", "Bande-annonce officielle", "Tráiler oficial", "Offizieller Trailer", "Trailer ufficiale", "Trailer oficial", "Officiële trailer", "官方预告片", "公式予告編", "공식 예고편", "आधिकारिक ट्रेलर"],
     filmSearchEn: ["Search for the full film in English on YouTube", "Chercher le film complet en anglais sur YouTube", "Buscar la película completa en inglés en YouTube", "Den ganzen Film auf Englisch bei YouTube suchen", "Cerca il film completo in inglese su YouTube", "Procurar o filme completo em inglês no YouTube", "Zoek de hele film in het Engels op YouTube", "在 YouTube 上搜索英语完整版", "YouTubeで英語版の全編を探す", "YouTube에서 영어판 전체 영화 찾기", "YouTube पर अंग्रेज़ी में पूरी फ़िल्म खोजें"],
     filmSearchLocal: ["", "Chercher la version française sur YouTube", "Buscar la versión en español en YouTube", "Die deutsche Fassung bei YouTube suchen", "Cerca la versione italiana su YouTube", "Procurar a versão em português no YouTube", "", "", "", "", "YouTube पर हिंदी संस्करण खोजें"],
     filmNote: [
-      "Official trailer published by Front Row Filmed Entertainment (4K restoration, 2018).",
-      "Bande-annonce officielle publiée par Front Row Filmed Entertainment (restauration 4K, 2018).",
-      "Tráiler oficial publicado por Front Row Filmed Entertainment (restauración 4K, 2018).",
-      "Offizieller Trailer, veröffentlicht von Front Row Filmed Entertainment (4K-Restaurierung, 2018).",
-      "Trailer ufficiale pubblicato da Front Row Filmed Entertainment (restauro 4K, 2018).",
-      "Trailer oficial publicado pela Front Row Filmed Entertainment (restauração 4K, 2018).",
-      "Officiële trailer, gepubliceerd door Front Row Filmed Entertainment (4K-restauratie, 2018).",
-      "官方预告片由 Front Row Filmed Entertainment 发布（4K 修复版，2018 年）。",
-      "公式予告編：Front Row Filmed Entertainment 公開（4K修復版、2018年）。",
-      "공식 예고편: Front Row Filmed Entertainment 게시 (4K 복원판, 2018년).",
-      "आधिकारिक ट्रेलर Front Row Filmed Entertainment द्वारा प्रकाशित (4K संस्करण, 2018)।"
+      "The film is free to watch on YouTube (2 h 53). If the video no longer works, use the search button.",
+      "Le film est gratuit sur YouTube (2 h 53). Si la vidéo ne marche plus, utilisez le bouton de recherche.",
+      "La película es gratuita en YouTube (2 h 53). Si el vídeo deja de funcionar, usa el botón de búsqueda.",
+      "Der Film ist kostenlos auf YouTube zu sehen (2 Std. 53 Min.). Falls das Video nicht mehr funktioniert, nutzen Sie die Suchschaltfläche.",
+      "Il film è gratuito su YouTube (2 h 53). Se il video non funziona più, usa il pulsante di ricerca.",
+      "O filme é gratuito no YouTube (2 h 53). Se o vídeo deixar de funcionar, use o botão de busca.",
+      "De film is gratis te zien op YouTube (2 u 53). Werkt de video niet meer, gebruik dan de zoekknop.",
+      "影片可在 YouTube 上免费观看（2 小时 53 分钟）。如果视频无法播放，请使用搜索按钮。",
+      "映画はYouTubeで無料で見られます（2時間53分）。動画が再生できない場合は、検索ボタンをご利用ください。",
+      "영화는 YouTube에서 무료로 볼 수 있습니다(2시간 53분). 영상이 재생되지 않으면 검색 버튼을 이용해 주세요.",
+      "फ़िल्म YouTube पर मुफ़्त देखी जा सकती है (2 घंटे 53 मिनट)। अगर वीडियो न चले, तो खोज बटन का उपयोग करें।"
     ]
   };
   L.forEach(function (l, i) { Object.keys(X).forEach(function (k) { T[l][k] = X[k][i]; }); });

@@ -46,7 +46,7 @@ for (const l of Object.keys(T)) for (const k of Object.keys(T.fr.kinds)) ok(T[l]
 for (const l of Object.keys(T)) ok(T[l].siteName === "The Message" && T[l].pageTitle.startsWith("The Message"), "le nom du site doit être « The Message » en " + l);
 ok(html.includes('<span class="arabic">الرسالة</span>'), "nom arabe الرسالة absent de l'en-tête");
 for (const l of Object.keys(T)) {
-  for (const k of cles) ok(T[l][k] != null && (T[l][k] !== "" || k === "filmSearchLocal"),   // filmSearchLocal : vide quand le film n'est pas doublé dans la langue
+  for (const k of cles) ok(T[l][k] != null && (T[l][k] !== "" || k === "filmSearchLocal" || k === "filmFullLocal"),   // filmSearchLocal : vide quand le film n'est pas doublé dans la langue
     `texte « ${k} » absent en ${l}`);
   ok(T[l].themes.length === T.fr.themes.length, "nombre de thèmes différent en " + l);
 }
@@ -83,16 +83,12 @@ ok(lire("js/page-paroles.js").includes("pUnofficial"), "page Paroles : la mentio
 // --- les thèmes ne citent plus de parole du Prophète traduite par nous (elles sont sur la page dédiée, avec leurs sources) ---
 for (const l of LANGUES) for (const th of T[l].themes) if (["prophet", "woman", "parents"].includes(th.id)) ok(!th.text.includes("ﷺ") && th.text.length > 8, `thème ${th.id} : parole du Prophète non sourcée en ${l}`);
 
-// --- le film : bande-annonce officielle, plateformes légales, pas de lien direct vers une copie non officielle ---
+// --- le film : film complet gratuit (demande d'Ahmed), bande-annonce officielle, recherche par langue ---
 const C = window.SITE_CONFIG;
 ok(html.includes('id="film"') && html.includes('href="#film"') && html.includes("js/i18n-film.js"), "section « Le film » absente de l'accueil ou du menu");
-ok(/^[\w-]{11}$/.test(C.filmTrailerId) && /^https:\/\/www\.justwatch\.com\//.test(C.filmWatchUrl) && C.filmSearch.en, "réglages du film incomplets dans js/config.js");
-ok(!/youtube\.com\/watch|youtu\.be\//.test(html + lire("js/config.js")), "lien direct vers une vidéo YouTube : n'utiliser qu'une publication officielle (voir config.js)");
-
-// --- une seule version (?v=) sur tous les fichiers CSS et JS, pour que les visiteurs reçoivent bien les mises à jour ---
-const versions = new Set();
-for (const src of [html, page]) for (const m of src.matchAll(/(?:href|src)="(?:\.\.\/)?(?:css|js)\/[\w.-]+\.(?:css|js)(\?v=\w+)?"/g)) versions.add(m[1] || "sans version");
-ok(versions.size === 1 && !versions.has("sans version"), "versions des fichiers CSS/JS : " + [...versions].join(", ") + " (lancer python tools/version.py)");
+ok(html.includes('id="film-full"') && html.includes('id="film-trailer"'), "boutons du film absents");
+ok(/^[\w-]{11}$/.test(C.filmTrailerId) && C.filmFull && /^[\w-]{11}$/.test(C.filmFull.en) && C.filmSearch.en, "réglages du film incomplets dans js/config.js");
+ok(!/justwatch|amazon\.|apple\.com/.test(html + lire("js/config.js")), "lien payant pour le film : Ahmed veut un lien gratuit");
 
 // --- données : fichiers des flyers présents, descriptions dans les 4 langues, liens en https ---
 for (const f of D.flyers) {

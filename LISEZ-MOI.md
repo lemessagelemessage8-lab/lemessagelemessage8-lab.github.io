@@ -75,10 +75,10 @@ hadiths sur Marie en espagnol/allemand/italien/portugais/néerlandais/japonais).
 `js/i18n-paroles.js`. Les thèmes de l'accueil ne citent plus de parole du Prophète non sourcée.
 
 ## Section « Le film » (12/10/2026)
-Bande-annonce OFFICIELLE en anglais (Front Row Filmed Entertainment, restauration 4K 2018), chargée au clic ; lien vers les
-plateformes légales (JustWatch) ; recherche du film entier sur YouTube en anglais et dans la langue du visiteur quand un
-doublage existe. Aucun lien direct vers une copie entière : celles trouvées sur YouTube viennent de chaînes non vérifiées.
-Réglages : `filmTrailerId`, `filmWatchUrl`, `filmSearch` dans `js/config.js` ; textes : `js/i18n-film.js`.
+Film complet GRATUIT sur YouTube, dans le lecteur de la page (se charge au clic) : anglais (chaîne « Hollywood Action ») et
+hindi (« Dimension On Demand ») ; Ahmed ne veut pas de lien payant. Bande-annonce officielle (Front Row Filmed Entertainment) et
+recherche YouTube par langue en complément. Si YouTube retire une vidéo, changer son identifiant dans  de
+. Textes : .
 
 ## Numéro de version des fichiers
 Avant chaque publication qui change `css/` ou `js/` : `python tools/version.py AAAAMMJJx` (ex. `20261012c`). Le test vérifie

@@ -296,3 +296,6 @@ a { color: var(--green-2); }
   .lang-pick { gap: 6px; margin-bottom: .9rem; }
   .lang-pick button { padding: .25em .8em; }
 }
+
+/* Un élément masqué reste masqué, même s'il a une classe de bouton */
+[hidden] { display: none !important; }

@@ -16,10 +16,12 @@ window.SITE_CONFIG = {
   youtubeVideoId: "P9fqh52YBRs",
   musicVolume: 50, // de 0 à 100
 
-  // Le film « The Message » (1976). Bande-annonce OFFICIELLE de la version restaurée (anglais), publiée sur YouTube par
-  // Front Row Filmed Entertainment. Pour mettre un lien direct vers le film entier, n'utiliser qu'une publication officielle.
+  // Le film « The Message » (1976), GRATUIT sur YouTube (demande d'Ahmed : pas de lien payant).
+  // Film complet : identifiant YouTube par langue (la partie après "watch?v="). Copies choisies le 12/10/2026 sur de grandes
+  // chaînes de distribution (anglais : « Hollywood Action » ; hindi : « Dimension On Demand »). Si YouTube en retire une,
+  // remplacer l'identifiant ici. Bande-annonce officielle : Front Row Filmed Entertainment (restauration 4K, 2018).
+  filmFull: { en: "vQKqv4JboBU", hi: "G67xLEvg-Ic" },
   filmTrailerId: "gRo7rjAiAw8",
-  filmWatchUrl: "https://www.justwatch.com/us/movie/the-message-1976",   // liste des plateformes légales
   filmSearch: {   // recherche du film entier sur YouTube : anglais + langue du visiteur quand un doublage existe
     en: "The Message 1976 full movie Anthony Quinn English",
     fr: "Le Message 1976 film complet version française",
