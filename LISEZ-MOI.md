@@ -73,3 +73,9 @@ le site, signalée par un bandeau orange « traduction non officielle » avec le
 hadiths sur Marie en espagnol/allemand/italien/portugais/néerlandais/japonais). Données : `tools/paroles.py` → `js/paroles.js`
 (`python tools/paroles.py --telecharger` pour reprendre les versions officielles quand elles sortent). Textes de présentation :
 `js/i18n-paroles.js`. Les thèmes de l'accueil ne citent plus de parole du Prophète non sourcée.
+
+## Section « Le film » (12/10/2026)
+Bande-annonce OFFICIELLE en anglais (Front Row Filmed Entertainment, restauration 4K 2018), chargée au clic ; lien vers les
+plateformes légales (JustWatch) ; recherche du film entier sur YouTube en anglais et dans la langue du visiteur quand un
+doublage existe. Aucun lien direct vers une copie entière : celles trouvées sur YouTube viennent de chaînes non vérifiées.
+Réglages : `filmTrailerId`, `filmWatchUrl`, `filmSearch` dans `js/config.js` ; textes : `js/i18n-film.js`.

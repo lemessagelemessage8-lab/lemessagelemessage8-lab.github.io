@@ -37,7 +37,7 @@ for (const l of LANGUES) ok(plan.includes(`<loc>${ADRESSE}?lang=${l}</loc>`), "s
 // --- textes : chaque langue a toutes les clés ---
 globalThis.window = {};
 require(path.join(racine, "js/config.js"));
-for (const f of ["i18n", "i18n-plus", "i18n-asie", "i18n-paroles", "versets", "paroles", "data", "data-plus"]) require(path.join(racine, "js/" + f + ".js"));
+for (const f of ["i18n", "i18n-plus", "i18n-asie", "i18n-paroles", "i18n-film", "versets", "paroles", "data", "data-plus"]) require(path.join(racine, "js/" + f + ".js"));
 const T = window.I18N, D = window.SITE_DATA;
 const cles = Object.keys(T.fr);
 ok(LANGUES.every(l => T[l]) && Object.keys(T).length === LANGUES.length, "les langues du site ne sont pas celles attendues : " + Object.keys(T));
@@ -46,7 +46,8 @@ for (const l of Object.keys(T)) for (const k of Object.keys(T.fr.kinds)) ok(T[l]
 for (const l of Object.keys(T)) ok(T[l].siteName === "The Message" && T[l].pageTitle.startsWith("The Message"), "le nom du site doit être « The Message » en " + l);
 ok(html.includes('<span class="arabic">الرسالة</span>'), "nom arabe الرسالة absent de l'en-tête");
 for (const l of Object.keys(T)) {
-  for (const k of cles) ok(T[l][k] != null && T[l][k] !== "", `texte « ${k} » absent en ${l}`);
+  for (const k of cles) ok(T[l][k] != null && (T[l][k] !== "" || k === "filmSearchLocal"),   // filmSearchLocal : vide quand le film n'est pas doublé dans la langue
+    `texte « ${k} » absent en ${l}`);
   ok(T[l].themes.length === T.fr.themes.length, "nombre de thèmes différent en " + l);
 }
 for (const n of html.matchAll(/data-i18n(?:-list)?="(\w+)"/g)) ok(n[1] in T.fr, "clé de texte inconnue dans index.html : " + n[1]);
@@ -81,6 +82,12 @@ ok(lire("js/page-paroles.js").includes("pUnofficial"), "page Paroles : la mentio
 
 // --- les thèmes ne citent plus de parole du Prophète traduite par nous (elles sont sur la page dédiée, avec leurs sources) ---
 for (const l of LANGUES) for (const th of T[l].themes) if (["prophet", "woman", "parents"].includes(th.id)) ok(!th.text.includes("ﷺ") && th.text.length > 8, `thème ${th.id} : parole du Prophète non sourcée en ${l}`);
+
+// --- le film : bande-annonce officielle, plateformes légales, pas de lien direct vers une copie non officielle ---
+const C = window.SITE_CONFIG;
+ok(html.includes('id="film"') && html.includes('href="#film"') && html.includes("js/i18n-film.js"), "section « Le film » absente de l'accueil ou du menu");
+ok(/^[\w-]{11}$/.test(C.filmTrailerId) && /^https:\/\/www\.justwatch\.com\//.test(C.filmWatchUrl) && C.filmSearch.en, "réglages du film incomplets dans js/config.js");
+ok(!/youtube\.com\/watch|youtu\.be\//.test(html + lire("js/config.js")), "lien direct vers une vidéo YouTube : n'utiliser qu'une publication officielle (voir config.js)");
 
 // --- données : fichiers des flyers présents, descriptions dans les 4 langues, liens en https ---
 for (const f of D.flyers) {

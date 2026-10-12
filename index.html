@@ -70,6 +70,7 @@
     <nav id="nav" class="nav">
       <a href="#flyers" data-i18n="navFlyers"></a>
       <a href="#quran" data-i18n="navQuran"></a>
+      <a href="#film" data-i18n="navFilm"></a>
       <a href="#message" data-i18n="navMessage"></a>
       <a href="#themes" data-i18n="navThemes"></a>
       <a href="paroles-du-prophete/" data-page-paroles data-i18n="navProphet"></a>
@@ -134,6 +135,28 @@
         <p class="lead" data-i18n="quranIntro"></p>
         <div class="filter" id="quran-filter" role="group"></div>
         <div id="quran-grid" class="grid grid-links"></div>
+      </div>
+    </section>
+
+    <section id="film" class="section section-film">
+      <div class="container film-grille">
+        <div class="film-video" id="film-video">
+          <button id="film-play" class="film-vignette" type="button">
+            <img id="film-image" alt="" loading="lazy" width="480" height="360">
+            <span class="film-lecture" aria-hidden="true">▶</span>
+            <span class="film-etiquette" data-i18n="filmTrailer"></span>
+          </button>
+        </div>
+        <div class="film-texte">
+          <h2 data-i18n="filmTitle"></h2>
+          <p data-i18n="filmText"></p>
+          <div class="card-actions" id="film-actions">
+            <a id="film-watch" class="btn btn-gold btn-small" target="_blank" rel="noopener"><span data-i18n="filmWatch"></span> ↗</a>
+            <a id="film-search-en" class="share-btn film-lien" target="_blank" rel="noopener"><span data-i18n="filmSearchEn"></span> ↗</a>
+            <a id="film-search-local" class="share-btn film-lien" target="_blank" rel="noopener" hidden><span data-i18n="filmSearchLocal"></span> ↗</a>
+          </div>
+          <p class="small film-note" data-i18n="filmNote"></p>
+        </div>
       </div>
     </section>
 
@@ -268,6 +291,7 @@
   <script src="js/i18n-plus.js"></script>
   <script src="js/i18n-asie.js"></script>
   <script src="js/i18n-paroles.js"></script>
+  <script src="js/i18n-film.js"></script>
   <script src="js/versets.js"></script>
   <script src="js/data.js"></script>
   <script src="js/data-plus.js"></script>

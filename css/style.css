@@ -265,3 +265,22 @@ a { color: var(--green-2); }
 .chahada-son { font-style: italic; color: var(--muted); margin: 0 0 .6em; }
 .chahada-sens { font-size: 1.15rem; font-weight: 600; color: var(--green-2); }
 @media (max-width: 920px) { .nav-page { display: flex; position: static; flex-direction: row; padding: 0; background: none; } .nav-page a span { display: none; } }
+
+/* Section « Le film » */
+.section-film { background: var(--pattern), linear-gradient(160deg, var(--green) 0%, #1a5240 100%); color: var(--sand); }
+.film-grille { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+.film-video { aspect-ratio: 16 / 9; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--gold); background: #000; box-shadow: 0 10px 34px rgba(0,0,0,.35); }
+.film-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+.film-vignette { all: unset; cursor: pointer; display: block; position: relative; width: 100%; height: 100%; }
+.film-vignette img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .85; }
+.film-vignette:hover img, .film-vignette:focus-visible img { opacity: 1; }
+.film-lecture { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -60%); width: 76px; height: 76px; border-radius: 50%; background: var(--gold); color: var(--green); font-size: 2rem; display: grid; place-items: center; padding-left: 6px; box-shadow: 0 6px 22px rgba(0,0,0,.4); }
+.film-etiquette { position: absolute; left: 0; right: 0; bottom: 0; padding: 10px 14px; background: linear-gradient(transparent, rgba(0,0,0,.8)); color: #fff; font-weight: 600; text-align: center; }
+.film-texte h2 { color: var(--sand); text-align: start; font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+.film-texte h2::after { margin-left: 0; margin-right: 0; }
+.film-texte p { color: rgba(247,241,227,.92); }
+.film-lien { border-color: var(--gold); color: var(--gold-2); }
+.film-lien:hover { background: var(--gold); color: var(--green); }
+.film-lien[hidden] { display: none; }
+.film-note { color: rgba(247,241,227,.65) !important; margin-top: 14px; }
+@media (max-width: 860px) { .film-grille { grid-template-columns: 1fr; gap: 22px; } }
