@@ -11,7 +11,7 @@ window.I18N = {
     metaDesc: "Discover Islam simply: who God is, the Quran, the Prophet Muhammad; free printable flyers, the Quran in your language and radio stations, in English, French, Spanish and German.",
     backTop: "Home", readFlyer: "Read", prevPage: "Page 1", nextPage: "Page 2", pageOf: "Page {n} of 2", zoomHint: "Click the page to zoom",
     musicTitle: "♪ The Message — Maurice Jarre",
-    navMessage: "The Message", navThemes: "Themes", navQuran: "Quran", navFlyers: "Flyers",
+    navMessage: "Islam", navThemes: "Themes", navQuran: "Quran", navFlyers: "Flyers",
     navMedia: "Radio & Media", navLinks: "Useful links", navContact: "Questions",
     basmala: "In the name of God, the Most Gracious, the Most Merciful",
     heroLead: "Islam is a message of peace, of mercy and of the oneness of God, addressed to all of humanity. Here you can discover it calmly, with sources, in your language.",
@@ -78,15 +78,15 @@ window.I18N = {
 
   // ───────────────────────────── FRANÇAIS ─────────────────────────────
   fr: {
-    siteName: "Le Message",
+    siteName: "The Message",
     welcomeSub: "Découvrez l'Islam, le Coran et son message de miséricorde, dans votre langue.",
     enterMusic: "Entrer avec la musique ♪",
     enterSilent: "Entrer sans le son",
-    pageTitle: "Le Message — découvrir l'Islam et le Coran | رسالة الإسلام",
+    pageTitle: "The Message — découvrir l'Islam et le Coran | رسالة الإسلام",
     metaDesc: "Découvrir l'Islam simplement : qui est Dieu, le Coran, le Prophète Muhammad ; flyers gratuits à imprimer, Coran traduit et radios, en français, anglais, espagnol et allemand.",
     backTop: "Accueil", readFlyer: "Lire", prevPage: "Page 1", nextPage: "Page 2", pageOf: "Page {n} sur 2", zoomHint: "Cliquez sur la page pour zoomer",
-    musicTitle: "♪ Le Message — Maurice Jarre",
-    navMessage: "Le Message", navThemes: "Thèmes", navQuran: "Coran", navFlyers: "Flyers",
+    musicTitle: "♪ The Message — Maurice Jarre",
+    navMessage: "L'Islam", navThemes: "Thèmes", navQuran: "Coran", navFlyers: "Flyers",
     navMedia: "Radios & médias", navLinks: "Liens utiles", navContact: "Questions",
     basmala: "Au nom de Dieu, le Tout Miséricordieux, le Très Miséricordieux",
     heroLead: "L'Islam est un message de paix, de miséricorde et d'unicité de Dieu, adressé à toute l'humanité. Découvrez-le ici, sereinement, avec les sources, dans votre langue.",
@@ -153,15 +153,15 @@ window.I18N = {
 
   // ───────────────────────────── ESPAÑOL ─────────────────────────────
   es: {
-    siteName: "El Mensaje",
+    siteName: "The Message",
     welcomeSub: "Descubre el Islam, el Corán y su mensaje de misericordia, en tu idioma.",
     enterMusic: "Entrar con música ♪",
     enterSilent: "Entrar sin sonido",
-    pageTitle: "El Mensaje — descubrir el Islam y el Corán | رسالة الإسلام",
+    pageTitle: "The Message — descubrir el Islam y el Corán | رسالة الإسلام",
     metaDesc: "Descubre el Islam de forma sencilla: quién es Dios, el Corán, el Profeta Muhammad; folletos gratuitos para imprimir, el Corán traducido y radios, en español, francés, inglés y alemán.",
     backTop: "Inicio", readFlyer: "Leer", prevPage: "Página 1", nextPage: "Página 2", pageOf: "Página {n} de 2", zoomHint: "Haz clic en la página para ampliar",
-    musicTitle: "♪ El Mensaje — Maurice Jarre",
-    navMessage: "El Mensaje", navThemes: "Temas", navQuran: "Corán", navFlyers: "Folletos",
+    musicTitle: "♪ The Message — Maurice Jarre",
+    navMessage: "El Islam", navThemes: "Temas", navQuran: "Corán", navFlyers: "Folletos",
     navMedia: "Radios y medios", navLinks: "Enlaces útiles", navContact: "Preguntas",
     basmala: "En el nombre de Dios, el Clemente, el Misericordioso",
     heroLead: "El Islam es un mensaje de paz, de misericordia y de la unicidad de Dios, dirigido a toda la humanidad. Descúbrelo aquí, con calma, con las fuentes, en tu idioma.",
@@ -228,15 +228,15 @@ window.I18N = {
 
   // ───────────────────────────── DEUTSCH ─────────────────────────────
   de: {
-    siteName: "Die Botschaft",
+    siteName: "The Message",
     welcomeSub: "Entdecken Sie den Islam, den Koran und seine Botschaft der Barmherzigkeit – in Ihrer Sprache.",
     enterMusic: "Mit Musik eintreten ♪",
     enterSilent: "Ohne Ton eintreten",
-    pageTitle: "Die Botschaft – den Islam und den Koran entdecken | رسالة الإسلام",
+    pageTitle: "The Message – den Islam und den Koran entdecken | رسالة الإسلام",
     metaDesc: "Den Islam einfach entdecken: Wer ist Gott, was ist der Koran, wer ist der Prophet Muhammad; kostenlose Flyer zum Ausdrucken, Koranübersetzungen und Radiosender, auf Deutsch, Englisch, Französisch und Spanisch.",
     backTop: "Startseite", readFlyer: "Lesen", prevPage: "Seite 1", nextPage: "Seite 2", pageOf: "Seite {n} von 2", zoomHint: "Zum Vergrößern auf die Seite klicken",
-    musicTitle: "♪ Die Botschaft – Maurice Jarre",
-    navMessage: "Die Botschaft", navThemes: "Themen", navQuran: "Koran", navFlyers: "Flyer",
+    musicTitle: "♪ The Message – Maurice Jarre",
+    navMessage: "Der Islam", navThemes: "Themen", navQuran: "Koran", navFlyers: "Flyer",
     navMedia: "Radio & Medien", navLinks: "Nützliche Links", navContact: "Fragen",
     basmala: "Im Namen Gottes, des Allerbarmers, des Barmherzigen",
     heroLead: "Der Islam ist eine Botschaft des Friedens, der Barmherzigkeit und der Einzigkeit Gottes, gerichtet an die ganze Menschheit. Entdecken Sie sie hier in Ruhe, mit Quellen, in Ihrer Sprache.",

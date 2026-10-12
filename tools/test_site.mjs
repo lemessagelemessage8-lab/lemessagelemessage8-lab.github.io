@@ -18,8 +18,8 @@ ok(/<header class="topbar">[\s\S]*id="share-head"[\s\S]*<\/header>/.test(html), 
 ok(html.includes(`<link rel="canonical" href="${ADRESSE}">`), "adresse canonique absente");
 for (const l of ["fr", "en", "es", "de", "x-default"]) ok(html.includes(`hreflang="${l}"`), "hreflang " + l + " absent");
 ok(html.includes("goatcounter.com/count"), "compteur de visites GoatCounter absent");
-ok(html.includes(`og:image" content="${ADRESSE}assets/og-image-v1.jpg"`), "image d'aperçu de partage absente");
-ok(fs.existsSync(path.join(racine, "assets/og-image-v1.jpg")), "fichier assets/og-image-v1.jpg absent");
+ok(html.includes(`og:image" content="${ADRESSE}assets/og-image-v2.jpg"`), "image d'aperçu de partage absente");
+ok(fs.existsSync(path.join(racine, "assets/og-image-v2.jpg")), "fichier assets/og-image-v2.jpg absent");
 const blocs = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
 ok(blocs.some(b => b["@type"] === "FAQPage" && b.mainEntity.length >= 3), "questions-réponses pour Google (FAQPage) absentes");
 ok(lire("CNAME").trim() === "message.clicvia.com", "fichier CNAME incorrect");
@@ -39,6 +39,8 @@ require(path.join(racine, "js/i18n.js"));
 require(path.join(racine, "js/data.js"));
 const T = window.I18N, D = window.SITE_DATA;
 const cles = Object.keys(T.fr);
+for (const l of Object.keys(T)) ok(T[l].siteName === "The Message" && T[l].pageTitle.startsWith("The Message"), "le nom du site doit être « The Message » en " + l);
+ok(html.includes('<span class="arabic">الرسالة</span>'), "nom arabe الرسالة absent de l'en-tête");
 for (const l of Object.keys(T)) {
   for (const k of cles) ok(T[l][k] != null && T[l][k] !== "", `texte « ${k} » absent en ${l}`);
   ok(T[l].themes.length === T.fr.themes.length, "nombre de thèmes différent en " + l);
