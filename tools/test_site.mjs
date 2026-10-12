@@ -37,7 +37,7 @@ for (const l of LANGUES) ok(plan.includes(`<loc>${ADRESSE}?lang=${l}</loc>`), "s
 // --- textes : chaque langue a toutes les clés ---
 globalThis.window = {};
 require(path.join(racine, "js/config.js"));
-for (const f of ["i18n", "i18n-plus", "i18n-asie", "versets", "data", "data-plus"]) require(path.join(racine, "js/" + f + ".js"));
+for (const f of ["i18n", "i18n-plus", "i18n-asie", "i18n-paroles", "versets", "paroles", "data", "data-plus"]) require(path.join(racine, "js/" + f + ".js"));
 const T = window.I18N, D = window.SITE_DATA;
 const cles = Object.keys(T.fr);
 ok(LANGUES.every(l => T[l]) && Object.keys(T).length === LANGUES.length, "les langues du site ne sont pas celles attendues : " + Object.keys(T));
@@ -61,6 +61,26 @@ for (const l of LANGUES) {
 }
 ok(html.includes("js/versets.js") && html.includes("data-verse-note"), "versets officiels non branchés dans index.html");
 ok(/V\[l\]|window\.VERSETS/.test(lire("js/app.js")), "app.js n'applique pas les versets officiels");
+
+// --- page « Paroles du Prophète » : sources officielles, traductions maison clairement signalées ---
+const page = lire("paroles-du-prophete/index.html"), P = window.PAROLES;
+ok(/<header class="topbar">[\s\S]*id="share-head"[\s\S]*<\/header>/.test(page), "page Paroles : bouton « Partager » absent de l'en-tête");
+ok(page.includes(`<link rel="canonical" href="${ADRESSE}paroles-du-prophete/">`) && page.includes("goatcounter.com/count"), "page Paroles : adresse canonique ou compteur absent");
+ok(html.includes('href="paroles-du-prophete/"') && plan.includes(`<loc>${ADRESSE}paroles-du-prophete/</loc>`), "page Paroles absente du menu de l'accueil ou du plan du site");
+for (const l of LANGUES) {
+  ok(page.includes(`paroles-du-prophete/?lang=${l}"`) && page.includes(`<option value="${l}"`), "page Paroles : langue " + l + " absente");
+  ok(plan.includes(`<loc>${ADRESSE}paroles-du-prophete/?lang=${l}</loc>`), "sitemap.xml : page Paroles absente en " + l);
+  for (const r of [...P.plan.versets.marie, ...P.plan.versets.islam]) ok(P.langues[l].versets[r] && P.langues[l].versets[r].length > 20, `page Paroles : verset ${r} absent en ${l}`);
+  for (const id of [...P.plan.hadiths.marie, ...P.plan.hadiths.islam]) {
+    const h = P.langues[l].hadiths[id];
+    ok(h && h.texte && h.source && /^https:\/\/hadeethenc\.com\//.test(h.url) && typeof h.officiel === "boolean", `page Paroles : hadith ${id} incomplet en ${l}`);
+    if (h && h.officiel) ok(h.url.includes("/" + l + "/"), `hadith ${id} : lien officiel dans une autre langue en ${l}`);
+  }
+}
+ok(lire("js/page-paroles.js").includes("pUnofficial"), "page Paroles : la mention « traduction non officielle » n'est plus affichée");
+
+// --- les thèmes ne citent plus de parole du Prophète traduite par nous (elles sont sur la page dédiée, avec leurs sources) ---
+for (const l of LANGUES) for (const th of T[l].themes) if (["prophet", "woman", "parents"].includes(th.id)) ok(!th.text.includes("ﷺ") && th.text.length > 8, `thème ${th.id} : parole du Prophète non sourcée en ${l}`);
 
 // --- données : fichiers des flyers présents, descriptions dans les 4 langues, liens en https ---
 for (const f of D.flyers) {

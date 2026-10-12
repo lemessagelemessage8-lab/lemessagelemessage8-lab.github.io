@@ -65,3 +65,11 @@ langue (Encyclopédie du Noble Coran, QuranEnc.com) : `tools/versets.py` (liste 
 `js/versets.js` à partir de `tools/versets.json`. Le nom de la traduction et son lien sont affichés sous les versets, et le Coran
 officiel de chaque langue est en tête de la section Coran. Ajouter ou changer un verset : modifier `tools/versets.py`, puis
 `python tools/versets.py --telecharger`.
+
+## Page « Paroles du Prophète » (12/10/2026)
+`paroles-du-prophete/` : Marie (Maryam) et ceux qui embrassent l'Islam. Versets : traduction officielle (QuranEnc.com).
+Hadiths : traduction officielle de HadeethEnc.com quand elle existe dans la langue (bandeau vert) ; sinon traduction faite pour
+le site, signalée par un bandeau orange « traduction non officielle » avec le lien vers la source (tout le coréen, et les deux
+hadiths sur Marie en espagnol/allemand/italien/portugais/néerlandais/japonais). Données : `tools/paroles.py` → `js/paroles.js`
+(`python tools/paroles.py --telecharger` pour reprendre les versions officielles quand elles sortent). Textes de présentation :
+`js/i18n-paroles.js`. Les thèmes de l'accueil ne citent plus de parole du Prophète non sourcée.

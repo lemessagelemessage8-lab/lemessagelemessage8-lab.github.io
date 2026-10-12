@@ -116,4 +116,5 @@ def main():
         for ref, x in sortie[l]["versets"].items(): print("  ", ref, x)
 
 
-main()
+if __name__ == "__main__":
+    main()

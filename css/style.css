@@ -237,3 +237,31 @@ a { color: var(--green-2); }
 /* Mention de la traduction officielle sous les versets */
 .verse-note a { color: var(--green-2); font-weight: 600; }
 .verse-note-haut { margin: -1.6rem auto 2.2rem; }
+
+/* Page « Paroles du Prophète » et sa carte sur l'accueil */
+.carte-paroles { display: flex; align-items: center; gap: 18px; margin-top: 28px; text-decoration: none; color: inherit; border: 2px solid var(--gold); background: var(--green); }
+.carte-paroles h3 { color: var(--gold-2); margin: 0 0 .2em; }
+.carte-paroles p { margin: 0; color: var(--sand); }
+.carte-paroles-ic { font-size: 2.4rem; color: var(--gold); }
+.carte-paroles-fl { margin-left: auto; font-size: 1.6rem; color: var(--gold-2); }
+.carte-paroles:hover { transform: translateY(-2px); }
+.hero-page { padding: clamp(40px, 7vw, 72px) 16px; }
+.page-title { font-size: clamp(2.2rem, 6vw, 3.6rem) !important; }
+.nav-page { margin-left: auto; }
+.narrow-large { max-width: 860px; }
+.sous-titre { text-align: center; margin: 2.2rem 0 1rem; font-size: 1.6rem; }
+.verse-page { margin-bottom: 1rem; text-align: start; }
+.verse-page p { font-size: 1.1rem; line-height: 1.7; }
+.hadith { margin-bottom: 18px; }
+.hadith-ar { font-size: 1.45rem; line-height: 2; color: var(--green-2); margin: 0 0 .6em; text-align: right; }
+.hadith-texte { font-size: 1.08rem; line-height: 1.75; margin: 0 0 .6em; }
+.hadith-source { font-weight: 600; color: var(--green); margin: 0 0 .5em; font-size: .95rem; }
+.hadith-note { margin: 0; font-size: .88rem; padding: .5em .8em; border-radius: 8px; }
+.hadith-note.officiel { background: #e7f2ea; color: #1d5a3c; }
+.hadith-note.non-officiel { background: #fdf1d6; color: #7a5200; border: 1px solid #e9c46a; }
+.hadith-note a { color: inherit; font-weight: 600; }
+.chahada { margin-top: 2.2rem; text-align: center; border: 2px solid var(--gold); }
+.chahada-ar { font-size: 1.9rem; line-height: 2; color: var(--green); margin: .4em 0 0; }
+.chahada-son { font-style: italic; color: var(--muted); margin: 0 0 .6em; }
+.chahada-sens { font-size: 1.15rem; font-weight: 600; color: var(--green-2); }
+@media (max-width: 920px) { .nav-page { display: flex; position: static; flex-direction: row; padding: 0; background: none; } .nav-page a span { display: none; } }

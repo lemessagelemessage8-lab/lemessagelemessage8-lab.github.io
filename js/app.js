@@ -59,6 +59,7 @@
       var v = V[lang];
       n.innerHTML = v ? esc(t("verseNote")) + ' <a href="' + v.url + '" target="_blank" rel="noopener">' + esc(v.source) + " — QuranEnc.com ↗</a>" : "";
     });
+    document.querySelectorAll("[data-page-paroles]").forEach(function (a) { a.href = "paroles-du-prophete/?lang=" + lang; });
     renderThemes(); renderFlyers(); renderLinks("quran"); renderLinks("media"); renderLinks("links");
   }
 
