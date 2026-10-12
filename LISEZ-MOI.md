@@ -58,3 +58,10 @@ chinois, japonais, coréen, hindi (`js/i18n-asie.js`). Descriptions des cartes p
 Ajouter une langue : un bloc de textes, une colonne dans `js/data-plus.js`, puis le bouton, l'option et le lien `hreflang`
 dans `index.html`, une ligne dans `sitemap.xml` et le code dans `LANGUES` de `tools/test_site.mjs`.
 Les traductions ont été écrites par Claude : à faire relire par une personne dont c'est la langue.
+
+## Versets : traductions officielles (12/10/2026, demande d'Ahmed)
+Les versets ne sont JAMAIS traduits par nous. Ils sont copiés mot pour mot d'une traduction officielle du Coran pour chaque
+langue (Encyclopédie du Noble Coran, QuranEnc.com) : `tools/versets.py` (liste des traductions, passages retenus) fabrique
+`js/versets.js` à partir de `tools/versets.json`. Le nom de la traduction et son lien sont affichés sous les versets, et le Coran
+officiel de chaque langue est en tête de la section Coran. Ajouter ou changer un verset : modifier `tools/versets.py`, puis
+`python tools/versets.py --telecharger`.

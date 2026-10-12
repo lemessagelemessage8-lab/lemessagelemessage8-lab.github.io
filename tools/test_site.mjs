@@ -37,7 +37,7 @@ for (const l of LANGUES) ok(plan.includes(`<loc>${ADRESSE}?lang=${l}</loc>`), "s
 // --- textes : chaque langue a toutes les clés ---
 globalThis.window = {};
 require(path.join(racine, "js/config.js"));
-for (const f of ["i18n", "i18n-plus", "i18n-asie", "data", "data-plus"]) require(path.join(racine, "js/" + f + ".js"));
+for (const f of ["i18n", "i18n-plus", "i18n-asie", "versets", "data", "data-plus"]) require(path.join(racine, "js/" + f + ".js"));
 const T = window.I18N, D = window.SITE_DATA;
 const cles = Object.keys(T.fr);
 ok(LANGUES.every(l => T[l]) && Object.keys(T).length === LANGUES.length, "les langues du site ne sont pas celles attendues : " + Object.keys(T));
@@ -50,6 +50,17 @@ for (const l of Object.keys(T)) {
   ok(T[l].themes.length === T.fr.themes.length, "nombre de thèmes différent en " + l);
 }
 for (const n of html.matchAll(/data-i18n(?:-list)?="(\w+)"/g)) ok(n[1] in T.fr, "clé de texte inconnue dans index.html : " + n[1]);
+
+// --- versets : traduction officielle pour chaque langue, jamais une traduction maison (demande d'Ahmed) ---
+const V = window.VERSETS;
+for (const l of LANGUES) {
+  ok(V[l] && /^https:\/\/quranenc\.com\//.test(V[l].url) && V[l].source, "traduction officielle du Coran absente en " + l);
+  for (const r of ["21:107", "51:56", "112:1-4", "2:2", "68:4", "7:156", "49:13", "16:97", "17:23", "2:256", "16:125"]) ok(V[l] && V[l].versets[r] && V[l].versets[r].length > 8, `verset ${r} absent en ${l}`);
+  ok(T[l].verseNote, "mention de la source des versets absente en " + l);
+  ok(D.quran.some(i => i.officiel && i.lang === l && i.url === V[l].url), "Coran officiel absent de la section Coran en " + l);
+}
+ok(html.includes("js/versets.js") && html.includes("data-verse-note"), "versets officiels non branchés dans index.html");
+ok(/V\[l\]|window\.VERSETS/.test(lire("js/app.js")), "app.js n'applique pas les versets officiels");
 
 // --- données : fichiers des flyers présents, descriptions dans les 4 langues, liens en https ---
 for (const f of D.flyers) {

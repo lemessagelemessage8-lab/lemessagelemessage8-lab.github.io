@@ -331,5 +331,19 @@
     ko: "꾸란 의미 번역본. 온라인으로 읽거나 내려받을 수 있습니다.",
     hi: "क़ुरआन के अर्थों का अनुवाद, ऑनलाइन पढ़ने या डाउनलोड करने के लिए।"
   };
-  Object.keys(NOMS).forEach(function (l) { T[l].langNames = NOMS[l]; T[l].quranTransDesc = CORAN[l]; });
+  // Mention affichée sous les versets (demande d'Ahmed : les versets viennent d'une traduction officielle, pas de nous)
+  var NOTE = {
+    en: "The verses are quoted word for word from an official translation of the Quran:",
+    fr: "Les versets sont cités mot pour mot d'après une traduction officielle du Coran :",
+    es: "Los versículos se citan literalmente de una traducción oficial del Corán:",
+    de: "Die Verse sind wörtlich aus einer offiziellen Koranübersetzung zitiert:",
+    it: "I versetti sono citati parola per parola da una traduzione ufficiale del Corano:",
+    pt: "Os versículos são citados palavra por palavra de uma tradução oficial do Alcorão:",
+    nl: "De verzen zijn woordelijk geciteerd uit een officiële vertaling van de Koran:",
+    zh: "经文逐字引自《古兰经》的正式译本：",
+    ja: "聖句はクルアーンの公式翻訳からそのまま引用しています：",
+    ko: "구절은 꾸란 공식 번역본에서 그대로 인용했습니다:",
+    hi: "आयतें क़ुरआन के एक आधिकारिक अनुवाद से शब्दशः ली गई हैं:"
+  };
+  Object.keys(NOMS).forEach(function (l) { T[l].langNames = NOMS[l]; T[l].quranTransDesc = CORAN[l]; T[l].verseNote = NOTE[l]; });
 })();

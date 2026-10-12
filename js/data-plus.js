@@ -77,17 +77,15 @@
     });
   });
 
-  // ───────── Le Coran traduit dans chacune des nouvelles langues (liens vérifiés le 12/10/2026) ─────────
-  [
-    ["it", "Il Corano — traduzione italiana", "it/browse/italian_rwwad"],
-    ["pt", "O Alcorão — tradução portuguesa", "pt/browse/portuguese_nasr"],
-    ["nl", "De Koran — Nederlandse vertaling", "nl/browse/dutch_center"],
-    ["zh", "古兰经 — 中文译解", "en/browse/chinese_makin"],
-    ["ja", "クルアーン — 日本語訳", "en/browse/japanese_saeedsato"],
-    ["ko", "꾸란 — 한국어 번역", "en/browse/korean_rwwad"],
-    ["hi", "क़ुरआन — हिंदी अनुवाद", "en/browse/hindi_omari"]
-  ].forEach(function (q) {
-    D.quran.push({ name: q[1], url: "https://quranenc.com/" + q[2], lang: q[0], kind: "read", descKey: "quranTransDesc" });
+  // ───────── Le Coran officiel de chaque langue du site : la traduction d'où viennent les versets cités (js/versets.js) ─────────
+  var NOMS_CORAN = {
+    en: "The Quran — English translation", fr: "Le Coran — traduction française", es: "El Corán — traducción española",
+    de: "Der Koran — deutsche Übersetzung", it: "Il Corano — traduzione italiana", pt: "O Alcorão — tradução portuguesa",
+    nl: "De Koran — Nederlandse vertaling", zh: "古兰经 — 中文译解", ja: "クルアーン — 日本語訳", ko: "꾸란 — 한국어 번역", hi: "क़ुरआन — हिंदी अनुवाद"
+  };
+  var V = window.VERSETS || {};
+  Object.keys(NOMS_CORAN).reverse().forEach(function (l) {
+    if (V[l]) D.quran.unshift({ name: NOMS_CORAN[l], url: V[l].url, lang: l, kind: "read", descKey: "quranTransDesc", source: V[l].source, officiel: true });
   });
 
   // ───────── Adresse du même site dans la langue du visiteur, quand elle existe (vérifié le 12/10/2026) ─────────

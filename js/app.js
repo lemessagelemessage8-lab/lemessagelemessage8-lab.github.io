@@ -4,6 +4,23 @@
   // Statistiques : les visites de ce site sont rangées sous /le-message dans le compteur commun
   window.goatcounter = window.goatcounter || {};
   window.goatcounter.path = function (p) { return "/le-message" + p; };
+  // ───────── Versets : traduction officielle du Coran pour chaque langue (js/versets.js, fabriqué par tools/versets.py) ─────────
+  var V = window.VERSETS || {};
+  var REF_THEME = { "why-created": "51:56", god: "112:1-4", quran: "2:2", prophet: "68:4", mercy: "7:156", humanity: "49:13", woman: "16:97", parents: "17:23", freedom: "2:256" };
+  Object.keys(V).forEach(function (l) {
+    var x = T[l], v = V[l];
+    if (!x) return;
+    var mot = x.themes[0].ref.replace("51:56", "").trim();          // « Coran », « Quran », « 《古兰经》 »…
+    x.basmala = v.basmala;
+    x.msgVerse = v.versets["21:107"];
+    x.footerVerse = v.versets["16:125"] + " — " + mot + " 16:125";
+    x.themes.forEach(function (th) {
+      if (REF_THEME[th.id]) th.quote = v.versets[REF_THEME[th.id]];
+      // le thème « miséricorde » cite la formule d'ouverture des sourates : même texte que la traduction officielle
+      if (th.id === "mercy") th.text = th.text.replace(/(["«„‘“「]\s?)([^"»“’”」]+?)(\s?["»“’”」])/, function (m, a, b, c) { return a + v.basmala + c; });
+    });
+  });
+
   var lang = pickLang();
   var filters = { quran: "all", media: "all", flyers: "all" };
 
@@ -37,6 +54,10 @@
     document.querySelectorAll("[data-i18n]").forEach(function (n) { n.textContent = t(n.dataset.i18n); });
     document.querySelectorAll("[data-i18n-list]").forEach(function (n) {
       n.innerHTML = t(n.dataset.i18nList).map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("");
+    });
+    document.querySelectorAll("[data-verse-note]").forEach(function (n) {
+      var v = V[lang];
+      n.innerHTML = v ? esc(t("verseNote")) + ' <a href="' + v.url + '" target="_blank" rel="noopener">' + esc(v.source) + " — QuranEnc.com ↗</a>" : "";
     });
     renderThemes(); renderFlyers(); renderLinks("quran"); renderLinks("media"); renderLinks("links");
   }
@@ -142,7 +163,11 @@
         fbar.appendChild(b);
       });
     }
-    items.forEach(function (it, i) {
+    // section Coran : les traductions dans la langue du visiteur passent en premier
+    var ordre = items.map(function (it, i) { return i; });
+    if (section === "quran") ordre.sort(function (a, b) { return (items[b].lang === lang) - (items[a].lang === lang) || a - b; });
+    ordre.forEach(function (i) {
+      var it = items[i];
       var f = filters[section];
       if (fbar && f !== "all" && it.lang !== f && it.lang !== "multi") return;
       var url = (it.localUrl && it.localUrl[lang]) || it.url;
@@ -150,7 +175,7 @@
       var c = el("article", { class: "card", id: id });
       c.innerHTML =
         '<div class="tags"><span class="tag kind">' + esc(t("kinds")[it.kind] || it.kind) + '</span><span class="tag">' + esc(t("langNames")[it.lang] || it.lang) + "</span></div>" +
-        "<h3>" + esc(it.name) + "</h3><p>" + esc(it.descKey ? t(it.descKey) : loc(it.desc)) + "</p>";
+        "<h3>" + esc(it.name) + "</h3><p>" + esc(it.descKey ? t(it.descKey) + (it.source ? " — " + it.source : "") : loc(it.desc)) + "</p>";
       var label = (it.kind === "radio" || it.kind === "audio" || it.kind === "tv") ? t("listen") : t("open");
       var a = el("a", { class: "btn btn-gold btn-small", href: url, target: "_blank", rel: "noopener" }, esc(label) + " ↗");
       c.appendChild(actions([a, shareButton(it.name, id, url)]));

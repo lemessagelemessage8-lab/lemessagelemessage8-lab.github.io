@@ -233,3 +233,7 @@ a { color: var(--green-2); }
 .brand span[data-i18n], .welcome h1, .hero-title { font-family: "Cormorant Garamond", Georgia, serif !important; }
 #lang-select { max-width: 9.5em; }
 .lang-pick { max-width: 640px; margin-left: auto; margin-right: auto; }
+
+/* Mention de la traduction officielle sous les versets */
+.verse-note a { color: var(--green-2); font-weight: 600; }
+.verse-note-haut { margin: -1.6rem auto 2.2rem; }
