@@ -540,6 +540,374 @@ window.PAROLES = {
      "url": "https://hadeethenc.com/hi/browse/hadith/10098"
     }
    }
+  },
+  "tr": {
+   "versets": {
+    "3:42": "Hani bir zamanlar da melekler şöyle demişlerdi: Ey Meryem! Allah seni seçip tertemiz yarattı ve seni dünya kadınlarına üstün kıldı.",
+    "3:45": "Melekler demişti ki: Meryem, Allah sana adı Mesih, Meryem oğlu, İsa dünya ve ahirette itibarlı ve öncülerden/mukarrebinden olacak kendisinden bir kelimeyi (İsa’yı) müjdeliyor.",
+    "66:12": "İffetini koruyan İmran’ın kızı Meryem'i de... Ona ruhumuzdan üflemiştik. O da Rabbinin sözlerini ve kitaplarını tasdik etmişti. O, itaatkârlardan biri idi.",
+    "39:53": "De ki: Ey kendilerine kötülük edip aşırı giden kullarım! Allah’ın rahmetinden ümidinizi kesmeyin. Çünkü Allah, bütün günahları bağışlayıcıdır. O, çok bağışlayıcıdır, çok merhametlidir."
+   },
+   "hadiths": {
+    "11179": {
+     "texte": "Ebu Musa (Allah ondan razı olsun) şöyle rivayet etmiştir: Allah'ın Resulü (Allah'ın salât ve selamı onun üzerine olsun) şöyle buyurdu: “Erkeklerden pek çoğu kemale erdi; kadınlardan ise yalnızca Firavun'un karısı Asiye ile İmran kızı Meryem kemale erdi. Aişe'nin diğer kadınlara üstünlüğü, tiridin (et suyuna doğranmış ekmek yemeği) diğer yemeklere üstünlüğü gibidir.”",
+     "source": "Sahih — Buhârî ve Müslim rivayet etmiştir",
+     "officiel": false,
+     "url": "https://hadeethenc.com/en/browse/hadith/11179"
+    },
+    "10994": {
+     "texte": "Ebu Hureyre (Allah ondan razı olsun), Allah'ın Resulü'nün (Allah'ın salât ve selamı onun üzerine olsun) şöyle buyurduğunu işittiğini rivayet etmiştir: “Doğan her çocuğa, doğduğu anda şeytan dokunur; çocuk da şeytanın bu dokunuşu yüzünden yüksek sesle ağlamaya başlar. Meryem ve oğlu bunun dışındadır.” Ebu Hureyre daha sonra Âl-i İmrân suresinin 36. ayetini (3:36) okudu.",
+     "source": "Sahih — Buhârî ve Müslim rivayet etmiştir",
+     "officiel": false,
+     "url": "https://hadeethenc.com/en/browse/hadith/10994"
+    },
+    "65016": {
+     "texte": "Hakîm b. Hizâm -radıyallahu anh-'dan rivayet edildiğine göre şöyle demiştir: Ey Allah’ın Rasûlü! Cahiliye devrinde yaptığım bazı hayır işleri vardı; sadaka vermek, köle azat etmek, sıla-i rahimde bulunmak gibi… Bunlara mukabil bana ecir verilir mi?” diye sordum. Bunun üzerine Nebi -sallallahu aleyhi ve sellem-: «Sen geçmişte yaptığın hayırlarla Müslüman oldun.» diye buyurdu.",
+     "source": "Sahih Hadis — Muttefekun aleyh",
+     "officiel": true,
+     "url": "https://hadeethenc.com/tr/browse/hadith/65016"
+    },
+    "65002": {
+     "texte": "İbn Mesûd -radıyallahu anh-'dan rivayet edildiğine göre şöyle demiştir: Adamın biri Nebi -sallallahu aleyhi ve sellem-'in yanına geldi ve \"Ey Allah'ın Rasulü! Cahiliyede yaptığım şeylerden sorumlu tutulur muyum?\" diye sorunca, Rasûlullah -sallallahu aleyhi ve sellem-: ''İyi bir Müslüman olan cahiliyede yaptığı şeylerden sorumlu tutulmaz. Kötü bir Müslüman olan hem önceki hem de sonra yaptıklarından sorumlu tutulur.'' buyurmuştur.",
+     "source": "Sahih Hadis — Muttefekun aleyh",
+     "officiel": true,
+     "url": "https://hadeethenc.com/tr/browse/hadith/65002"
+    },
+    "65006": {
+     "texte": "Enes -radıyallahu anh-'dan rivayet edildiğine göre o şöyle demiştir: Bir adam Rasûlullah -sallallahu aleyhi ve sellem-'in yanına gelip, Ya Rasûlallah! Büyük küçük ne kadar günah varsa hepsini işledim, dedi. Rasûlullah -sallallahu aleyhi ve sellem- «Allah'tan başka hak ilah olmadığına ve Muhammed'in Allah'ın Rasûlü olduğuna şahitlik ediyorsun öyle değil mi?» diye sordu ve bunu üç kez tekrarladı. Adam: Evet diye cevap verdi. Rasûlullah -sallallahu aleyhi ve sellem-: «Şüphesiz ki bu (kelime-i şehadet) diğerlerine (günahlara) karşılık gelir.» diye buyurdu.",
+     "source": "Sahih Hadis — Ebû Ya'lâ, Taberânî ve Ziyâ el-Makdisî rivayet etmiştir",
+     "officiel": true,
+     "url": "https://hadeethenc.com/tr/browse/hadith/65006"
+    },
+    "10098": {
+     "texte": "Enes b. Mâlik -radıyallahu anh-'dan rivayet edildiğine göre: Nebi -sallallahu aleyhi ve sellem-, (bir sefer esnasında) terkisine aldığı Muâz -radıyallahu anh-'a hitaben: «Ey Muâz b. Cebel!» diye üç defa seslenmiş, o da üç defa: Buyur, ey Allah’ın Rasûlü! Emrine âmâdeyim, diye cevap vermiştir. Bunun üzerine Nebi -sallallahu aleyhi ve sellem-: «Kim Allah’tan başka (hak) ilah olmadığına ve Muhammed’in, Allah’ın kulu ve rasûlü olduğuna içinden gelerek samimiyetle şehadet ederse, Allah onu Cehennem'e haram kılar.» buyurmuştur. Muâz: Bu müjdeyi Müslümanlara haber vereyim de sevinsinler mi, ey Allah’ın Rasûlü? diye izin istemiş; Peygamber -sallallahu aleyhi ve sellem- de: «O zaman onlar buna güvenirler de (hayırlı işler yapmakta) tembel davranırlar.» diye buyurmuştur. Muâz (İbn Cebel) böylesi bir bilgiyi gizleme sebebiyle günaha girmemek için onu vefatına yakın bir zamanda haber vermiştir.",
+     "source": "Sahih Hadis — Muttefekun aleyh",
+     "officiel": true,
+     "url": "https://hadeethenc.com/tr/browse/hadith/10098"
+    }
+   }
+  },
+  "id": {
+   "versets": {
+    "3:42": "Dan (ingatlah) ketika para malaikat berkata, \"Wahai Maryam! Sesungguhnya Allah telah memilihmu, menyucikanmu, dan melebihkanmu di atas segala wanita di seluruh alam (pada masa itu).",
+    "3:45": "(Ingatlah), ketika para malaikat berkata, \"Wahai Maryam! Sesungguhnya Allah menyampaikan kabar gembira kepadamu tentang suatu kalimat (firman) dari-Nya (yaitu seorang putera) namanya Al-Masih Isa putra Maryam, seorang terkemuka di dunia dan di akhirat, dan termasuk orang-orang yang didekatkan (kepada Allah),",
+    "66:12": "dan Maryam putri Imran yang memelihara kehormatannya, maka Kami tiupkan ke dalam rahimnya sebagian dari roh (ciptaan) Kami; dan dia membenarkan kalimat-kalimat Tuhannya dan kitab-kitab-Nya; dan dia termasuk orang-orang yang taat.",
+    "39:53": "Katakanlah, \"Wahai hamba-hamba-Ku yang melampaui batas terhadap diri mereka sendiri! Janganlah kamu berputus asa dari rahmat Allah. Sesungguhnya Allah mengampuni dosa-dosa semuanya. Sungguh, Dialah Yang Maha Pengampun, Maha Penyayang."
+   },
+   "hadiths": {
+    "11179": {
+     "texte": "Abu Musa -raḍiyallāhu 'anhu- berkata, Rasulullah -ṣallallāhu 'alaihi wa sallam- bersabda, \"Laki-laki yang sempurna banyak jumlahnya, namun dari kalangan wanita tidak ada yang sempurna kecuali Āsiyah istri Firaun dan Maryam binti 'Imrān. Sesungguhnya kelebihan Aisyah di atas para wanita seperti kelebihan ṡarīd (roti yang ditambahkan kuah dan daging) atas semua makanan.\"",
+     "source": "Hadis sahih — Muttafaq 'alaih",
+     "officiel": true,
+     "url": "https://hadeethenc.com/id/browse/hadith/11179"
+    },
+    "10994": {
+     "texte": "Abu Hurairah -raḍiyallāhu 'anhu- berkata, Aku mendengar Rasulullah -ṣallallāhu 'alaihi wa sallam- bersabda, \"Tidak seorang pun dari keturunan Adam yang dilahirkan kecuali dia ditusuk oleh setan saat dilahirkan, sehingga dia berteriak menangis karena tusukan setan tersebut, kecuali Maryam dan putranya.\" Kemudian Abu Hurairah -raḍiyallāhu 'anhu- membaca firman Allah Ta'ālā, \"Dan aku mohon perlindungan-Mu untuknya dan anak cucunya dari (gangguan) setan yang terkutuk.\" (QS. Āli 'Imrān: 36)",
+     "source": "Hadis sahih — Muttafaq 'alaih",
+     "officiel": true,
+     "url": "https://hadeethenc.com/id/browse/hadith/10994"
+    },
+    "65016": {
+     "texte": "Ḥakīm bin Ḥizām -raḍiyallāhu 'anhu- meriwayatkan, ia berkata, Aku berkata, \"Wahai Rasulullah, bagaimana pendapat Anda tentang amalan-amalan yang kukerjakan sebagai peribadatan di masa jahiliah berupa sedekah, memerdekakan budak, dan silaturahmi; apakah akan ada balasannya?\" Nabi ﷺ bersabda, \"Engkau masuk Islam bersama semua kebaikan yang telah lalu.\"",
+     "source": "Sahih — Muttafaq 'alaih",
+     "officiel": true,
+     "url": "https://hadeethenc.com/id/browse/hadith/65016"
+    },
+    "65002": {
+     "texte": "Ibnu Mas'ūd -raḍiyallāhu 'anhu- meriwayatkan, ia berkata, Ada seorang laki-laki berkata, \"Wahai Rasulullah, apakah kami akan dihukum terkait apa yang telah kami kerjakan di masa jahiliah?\" Beliau bersabda, \"Siapa yang berbuat kebaikan di masa Islam tidak akan dihukum terkait apa yang telah dikerjakannya di masa jahiliah. Tetapi siapa yang berbuat keburukan di masa Islam, maka ia akan dihukum dengan masa pertama dan yang terakhir.\"",
+     "source": "Sahih — Muttafaq 'alaih",
+     "officiel": true,
+     "url": "https://hadeethenc.com/id/browse/hadith/65002"
+    },
+    "65006": {
+     "texte": "Anas -raḍiyallāhu 'anhu- meriwayatkan, ia berkata, Seorang laki-laki datang menemui Nabi ﷺ seraya bertanya, \"Wahai Rasulullah, tidak ada suatu dosa kecil maupun besar kecuali saya lakukan.\" Beliau bersabda, \"Bukankah engkau telah mengucapkan 'asyhadu allā ilāha illallāh wa anna muḥammadar-rasūlullāh?\" Beliau mengulangnya sebanyak tiga kali. Dia menjawab, \"Ya.\" Beliau bersabda, \"Sesungguhnya syahadat tersebut menghapusnya.\"",
+     "source": "Sahih — HR. Abu Ya'la, Tabarani, dan Aḍ-Ḍiyā' Al-Maqdisī",
+     "officiel": true,
+     "url": "https://hadeethenc.com/id/browse/hadith/65006"
+    },
+    "10098": {
+     "texte": "Anas bin Mālik -raḍiyallāhu 'anhu- meriwayatkan, Nabi ﷺ pernah membonceng Mu'āż di atas kendaraan seraya bersabda, \"Wahai Mu'āż bin Jabal!\" Dia menjawab, \"Labbaika wa sa'daik (Aku sambut panggilanmu dengan senang hati), wahai Rasulullah!\" Hal itu berulang tiga kali. Beliau bersabda, \"Tidak seorang pun yang bersaksi lā ilāha illallāh dan muḥammad rasūlullāh dengan jujur dari hatinya kecuali Allah haramkan atasnya api neraka.\" Mu'āż berkata, \"Wahai Rasulullah, tidakkah hal ini aku kabarkan kepada orang-orang agar mereka bahagia?!\" Beliau bersabda, \"Jika demikian, mereka akan pasrah.\" Akan tetapi, Mu'āż menyampaikannya menjelang meninggal dunia karena takut dosa.",
+     "source": "Sahih — Muttafaq 'alaih",
+     "officiel": true,
+     "url": "https://hadeethenc.com/id/browse/hadith/10098"
+    }
+   }
+  },
+  "ru": {
+   "versets": {
+    "3:42": "И вот ангелы сказали: «О Марьям! Воистину, Аллах избрал тебя, очистил тебя и избрал тебя над женщинами миров.",
+    "3:45": "И вот ангелы сказали: «О Марьям! Воистину, Аллах радует тебя вестью о Слове от Него, имя ему — Мессия, ‘Иса, сын Марьям, почтенный в этом мире и в Последней жизни, и из числа приближенных.",
+    "66:12": "И [Он привёл пример] Марьям, дочь ‘Имрана, которая сохранила своё лоно, и Мы вдохнули в него от Нашего духа. Она подтвердила истинность слов своего Господа и Его Писаний и была из числа смиренных.",
+    "39:53": "Скажи [от имени Аллаха]: «О Мои рабы, которые излишествовали против самих себя! Не отчаивайтесь в милости Аллаха. Воистину, Аллах прощает все грехи. Воистину, Он — Прощающий, Милующий."
+   },
+   "hadiths": {
+    "11179": {
+     "texte": "Абу Муса, да будет доволен им Аллах, сказал: сказал Посланник Аллаха, да восхвалит его Аллах и приветствует: \"Многие из мужчин отличались совершенством, а среди женщин никто не достиг его, кроме Асийи, жены фараона, и Марьям, дочери 'Имрана. И поистине превосходств 'Айши над другими женщинами, подобно превосходству блюду \"сарид\" над прочими блюдами\".",
+     "source": "Достоверный — Согласован Аль-Бухари и Муслимом",
+     "officiel": true,
+     "url": "https://hadeethenc.com/ru/browse/hadith/11179"
+    },
+    "10994": {
+     "texte": "Абу Хурейра, да будет доволен им Аллах, передал: \"Я слышал, как Посланник Аллаха, да благословит его Аллах и приветствует, сказал: \"Нет такого новорождённого из числа потомков Адама, которого в день его рождения не касался бы шайтан, и от прикосновения шайтана ребёнок начинает кричать. Шайтан же касался каждого, кроме Марьям и её сына [‘Исы]\". Затем Абу Хурейра прочитал: \"Я прошу Тебя защитить её и потомство её от шайтана изгнанного, побиваемого\" (сура 3 \"Али ‘Имран=Семейство ‘Имрана\", аят 36).",
+     "source": "Достоверный — Согласован Аль-Бухари и Муслимом",
+     "officiel": true,
+     "url": "https://hadeethenc.com/ru/browse/hadith/10994"
+    },
+    "65016": {
+     "texte": "От Хакима ибн Хизама (да будет доволен им Аллах) сообщается, что он сказал Пророку (да благословит его Аллах и приветствует): «О Посланник Аллаха, что насчёт деяний, которые я совершал для приближения к Аллаху во времена доисламского невежества из числа милостыни, освобождения рабов, поддержания родственных связей и т.п., будет ли мне за это вознаграждение?» На это Пророк (да благословит его Аллах и приветствует) ответил: «Ты вошёл в Ислам вместе с благими делами, которые предшествовали этому».",
+     "source": "Достоверный хадис — Привели Аль-Бухари и Муслим",
+     "officiel": true,
+     "url": "https://hadeethenc.com/ru/browse/hadith/65016"
+    },
+    "65002": {
+     "texte": "От Ибн Мас'уда (да будет доволен им Аллах) передаётся, что он сказал: «Один человек спросил: “О Посланник Аллаха, взыщется ли с нас за то, что мы делали во времена невежества?” Он сказал: “С того, кто совершая благие дела, исповедовал ислам должным образом, не взыщется за то, что он делал во времена невежества, а с того, кто совершал дурные дела будучи в исламе, взыщется и за первое, и за второе”».",
+     "source": "Достоверный хадис — Привели Аль-Бухари и Муслим",
+     "officiel": true,
+     "url": "https://hadeethenc.com/ru/browse/hadith/65002"
+    },
+    "65006": {
+     "texte": "Передаётся, что Анас (да будет доволен им Аллах) сказал: некий человек пришёл к Пророку (да благословит его Аллах и приветствует) и сказал: «О Посланник Аллаха! Не оставил я ничего из малых и больших грехов, не совершив их». Пророк (да благословит его Аллах и приветствует) спросил: «А разве ты не свидетельствуешь, что нет истинного божества, достойного поклонения, кроме Аллаха и что Мухаммад — Посланник Аллаха?», — повторив свои слова трижды. Тот ответил: «Да». Тогда Посланник Аллаха (да благословит его Аллах и приветствует) сказал: «Поистине, это устраняет все то».",
+     "source": "Достоверный хадис — Передали Абу Я‘ля, ат-Табарани и ад-Дыя аль-Макдиси",
+     "officiel": true,
+     "url": "https://hadeethenc.com/ru/browse/hadith/65006"
+    },
+    "10098": {
+     "texte": "От Анаса ибн Малика (да будет доволен им Аллах) передаётся, что (однажды, когда) Пророк (да благословит его Аллах и приветствует) ехал верхом, а позади него в седле сидел Му’аз, Пророк (да благословит его Аллах и приветствует) сказал: «О Му’аз!» (Му’аз) сказал: «Я перед тобой, о Посланник Аллаха, и счастлив служить тебе!» Пророк (да благословит его Аллах и приветствует) снова сказал: «О Му’аз!», – (и Му’аз снова) сказал: «Я перед тобой, о Посланник Аллаха, и счастлив служить тебе!», – (и это повторилось) трижды. Тогда Пророк (да благословит его Аллах и приветствует) сказал: «Какой бы раб (Аллаха) ни засвидетельствовал, что нет божества достойного поклонения, кроме Аллаха, и что Мухаммад – Его раб и Его посланник, искренне (веруя в это) сердцем своим, Аллах обязательно сделает его запретным для Огня». (Му’аз) спросил: «О Посланник Аллаха, так не сообщить ли мне об этом людям, чтобы они порадовались?» Он сказал: «Тогда они (только на это) и будут надеяться (оставив деяния)», – и Му’аз сообщил (людям) об этих словах лишь незадолго до своей смерти, считая (дальнейшее молчание) греховным (сокрытием полезного знания).",
+     "source": "Достоверный хадис — Привели Аль-Бухари и Муслим",
+     "officiel": true,
+     "url": "https://hadeethenc.com/ru/browse/hadith/10098"
+    }
+   }
+  },
+  "vi": {
+   "versets": {
+    "3:42": "(Hỡi Thiên Sứ Muhammad, Ngươi hãy nhớ lại) khi các Thiên thần bảo: “Hỡi Maryam! Quả thật, Allah đã chọn ngươi, Ngài tẩy sạch ngươi và chọn ngươi vượt trội hơn thiên hạ.”",
+    "3:45": "(Hỡi Thiên Sứ Muhammad, Ngươi hãy nhớ lại) khi các Thiên Thần bảo: “Này Maryam! Quả thật, Allah báo cho ngươi tin vui về lời phán từ Ngài (rằng ngươi mang thai đứa con trai), tên của nó là Masih Ysa (Giê-su), con trai của Maryam, nó sẽ được vinh danh ở đời này lẫn Đời Sau và nó sẽ là một trong số những người ở kế cận (Allah).”",
+    "66:12": "Và (một ví dụ nữa): Maryam, con gái của ‘Imran, Nữ đã giữ sự trong trắng của mình. Vì vậy, TA (Allah) đã cho Ruh (Đại Thiên Thần Jibril) của TA thổi vào (cơ thể của) Nữ và Nữ đã tin sự Thật về Lời phán của Thượng Đế của Nữ, Nữ đã tin vào các Kinh Sách của Ngài và Nữ là một người hết lòng vâng lời (Ngài).",
+    "39:53": "Ngươi (hỡi Thiên Sứ) hãy nói: “Hỡi các bầy tôi của TA! Những ai đã làm hại bản thân mình (bởi những điều tội lỗi) thì chớ đừng tuyệt vọng nơi lòng thương xót của Allah. Chắc chắn Allah sẽ tha thứ tất cả tội lỗi (cho những ai quay về sám hối với Ngài); quả thật Ngài là Đấng Hằng Tha Thứ, Đấng Nhân Từ.”"
+   },
+   "hadiths": {
+    "11179": {
+     "texte": "Ông Abu Musa (cầu xin Allah hài lòng về ông) thuật lại: Thiên Sứ của Allah (cầu xin Allah ban phúc lành và bình an cho Người) nói: “Trong nam giới có nhiều người đạt đến sự hoàn thiện, nhưng trong nữ giới không ai đạt đến sự hoàn thiện ngoại trừ Asiyah, vợ của Pha-ra-ông, và Maryam (Maria), con gái của ‘Imran. Và sự ưu việt của ‘A’ishah so với những phụ nữ khác giống như sự ưu việt của món tharid (bánh mì với thịt) so với các món ăn khác.”",
+     "source": "Sahih (xác thực) — do Al-Bukhari và Muslim ghi lại",
+     "officiel": false,
+     "url": "https://hadeethenc.com/en/browse/hadith/11179"
+    },
+    "10994": {
+     "texte": "Ông Abu Hurayrah (cầu xin Allah hài lòng về ông) thuật lại rằng ông đã nghe Thiên Sứ của Allah (cầu xin Allah ban phúc lành và bình an cho Người) nói: “Không một đứa trẻ nào chào đời mà không bị Shaytan chạm vào lúc mới sinh, vì thế nó cất tiếng khóc lớn do cái chạm ấy của Shaytan, ngoại trừ Maryam (Maria) và con trai của bà.” Sau đó ông Abu Hurayrah đọc câu 36 của chương Ali ‘Imran (3:36).",
+     "source": "Sahih (xác thực) — do Al-Bukhari và Muslim ghi lại",
+     "officiel": false,
+     "url": "https://hadeethenc.com/en/browse/hadith/10994"
+    },
+    "65016": {
+     "texte": "Ông Hakim bin Hizam kể: Tôi hỏi: Thưa Thiên Sứ của Allah, với những điều tốt lành mà tôi đã làm trước khi vào Islam, như bố thí, phóng thích nô lệ, hàn gắn tình dòng tộc, vậy tôi có được ân phước với tất cả điều đó không? Nabi ﷺ đáp: {Anh vào Islam cùng với điều tốt đẹp đã làm trước đây.}",
+     "source": "Sahih (chính xác) — Do Al-Bukhari và Muslim ghi",
+     "officiel": true,
+     "url": "https://hadeethenc.com/vi/browse/hadith/65016"
+    },
+    "65002": {
+     "texte": "Ông Ibnu Mas’ud kể: Có một người đàn ông hỏi: Thưa Thiên Sứ của Allah, chúng tôi có bị bắt tội cho điều mình đã làm lúc chưa vào Islam không? Người đáp: {Ai làm tốt trong Islam sẽ không bị bắt tội cho điều mình đã làm lúc chưa vào Islam, và ai làm điều xấu trong Islam sẽ bị bắt tội từ đầu đến cuối.}",
+     "source": "Sahih (chính xác) — Do Al-Bukhari và Muslim ghi",
+     "officiel": true,
+     "url": "https://hadeethenc.com/vi/browse/hadith/65002"
+    },
+    "65006": {
+     "texte": "Ông Anas kể: Có một người đàn ông đến gặp Nabi ﷺ, ông nói: Thưa Thiên Sứ của Allah, không một ham muốn hay nhu cầu nào của bản thân mà tôi không thoả mãn nó, Người ﷺ hỏi: {Chẳng phải ngươi đã tuyên thệ La i la ha il lol loh, wa anh na mu ham ma đar ro su lul loh?} Người ﷺ lặp lại câu hỏi ba lần. Người đàn ông đáp: Dạ phải. Người ﷺ nói: {Quả thật, điều đó xoá sạch điều kia.}.",
+     "source": "Sahih (chính xác) — Do Abu Ya'la, Ot-Tobarani và Dhiya Muqaddasi",
+     "officiel": true,
+     "url": "https://hadeethenc.com/vi/browse/hadith/65006"
+    },
+    "10098": {
+     "texte": "Ông Anas bin Malik nói: Nabi ﷺ và Mu'azd, cùng cưỡi trên lưng con lạc đà, Thiên Sứ của Allah ﷺ gọi: {Hỡi Mu'azd bin Jabal!} Mu'azd đáp: Tôi nghe và xin vâng lời Người thưa Thiên Sứ của Allah. Thiên Sứ của Allah ﷺ gọi tiếp: {Hỡi Mu'azd!} Mu'azd đáp: Tôi nghe và xin vâng lời Người thưa Thiên Sứ của Allah. Thiên Sứ của Allah ﷺ vẫn gọi lần thứ ba, rồi Người nói: {Bất cứ ai chứng nhận rằng không có Thượng Đế đích thực nào khác ngoài Allah và rằng Muhammad là Sứ giả của Allah một cách chân thành từ trái tim mình, Allah sẽ cấm Hỏa Ngục chạm đến y.} Mu'azd nói: Thưa Thiên Sứ của Allah, có phải tôi nên nói với mọi người về điều này để vui mừng? Thiên Sứ của Allah ﷺ nói: {Nếu như vậy thì họ sẽ ỷ lại.} Rồi Mu'azd chỉ nói lại điều này trước khi ông qua đời tránh mình gánh tội (giấu che).",
+     "source": "Sahih (chính xác) — Do Al-Bukhari và Muslim ghi",
+     "officiel": true,
+     "url": "https://hadeethenc.com/vi/browse/hadith/10098"
+    }
+   }
+  },
+  "th": {
+   "versets": {
+    "3:42": "และจงรำลึกถึงขณะที่มลาอิกะฮ์ได้กล่าวว่า “โอ้ มัรยัม แท้จริงอัลลอฮ์ได้ทรงเลือกเธอและทรงทำให้เธอบริสุทธิ์ และได้ทรงเลือกเธอเหนือบรรดาสตรีทั้งปวง”",
+    "3:45": "จงรำลึกขณะที่มลาอิกะฮ์กล่าวว่า “โอ้ มัรยัม แท้จริงอัลลอฮ์ทรงแจ้งข่าวดีแก่เธอด้วยถ้อยคำหนึ่ง (จงเป็น) จากพระองค์ เขามีชื่อว่า อัลมาซีห์อีซา บุตรมัรยัม ซึ่งเป็นบุคคลที่มีเกียรติทั้งในโลกนี้และปรโลก และเป็นบุคคลหนึ่งที่อยู่ในบรรดาผู้ใกล้ชิดทั้งหลาย",
+    "66:12": "และมัรยัมบุตรีของอิมรอน ผู้ซึ่งรักษาพรหมจารีของนาง แล้วเราได้เป่าวิญญาณของเราเข้าไปในนาง และนางได้ศรัทธาต่อบัญญัติต่าง ๆ แห่งพระผู้อภิบาลของนาง และ (ได้ศรัทธาต่อ) คัมภีร์ต่างๆ ของพระองค์ และนางจึงอยู่ในหมู่ผู้นอบน้อมภักดีทั้งหลาย",
+    "39:53": "จงกล่าวเถิด (โอ้ มุฮัมหมัดว่า อัลลอฮ์ทรงตรัสว่า) \"โอ้ ปวงบ่าวของข้า! ผู้ซึ่งละเมิดต่อตนเอง พวกเจ้าอย่าได้หมดหวังต่อความเมตตาของอัลลอฮ์ แท้จริงอัลลอฮ์นั้นทรงอภัยความผิดทั้งหมด แท้จริงพระองค์นั้นเป็นผู้ทรงอภัย ผู้ทรงปราณียิ่งเสมอ"
+   },
+   "hadiths": {
+    "11179": {
+     "texte": "อบูมูซา (ขออัลลอฮ์ทรงพอพระทัยต่อท่าน) รายงานว่า ท่านศาสนทูตของอัลลอฮ์ (ขอความจำเริญและความสันติจากอัลลอฮ์จงมีแด่ท่าน) กล่าวว่า “บุรุษที่บรรลุความสมบูรณ์นั้นมีมากมาย แต่ในหมู่สตรีไม่มีผู้ใดบรรลุความสมบูรณ์ นอกจากอาซิยะฮ์ ภรรยาของฟิรเอาน์ และมัรยัม (มารีย์) บุตรีของอิมรอน และความประเสริฐของอาอิชะฮ์เหนือสตรีอื่น ๆ นั้น เปรียบเหมือนความประเสริฐของษะรีด (อาหารที่ทำจากขนมปังกับเนื้อ) เหนืออาหารอื่น ๆ”",
+     "source": "เศาะฮีห์ (ถูกต้อง) — บันทึกโดยอัลบุคอรีย์และมุสลิม",
+     "officiel": false,
+     "url": "https://hadeethenc.com/en/browse/hadith/11179"
+    },
+    "10994": {
+     "texte": "อบูฮุร็อยเราะฮ์ (ขออัลลอฮ์ทรงพอพระทัยต่อท่าน) รายงานว่าท่านได้ยินท่านศาสนทูตของอัลลอฮ์ (ขอความจำเริญและความสันติจากอัลลอฮ์จงมีแด่ท่าน) กล่าวว่า “ไม่มีทารกคนใดเกิดมา เว้นแต่ชัยฏอนจะสัมผัสเขาในขณะที่เขาเกิด แล้วเขาก็ร้องเสียงดังเพราะการสัมผัสของชัยฏอนนั้น ยกเว้นมัรยัม (มารีย์) และบุตรของนาง” จากนั้นอบูฮุร็อยเราะฮ์ได้อ่านอายะฮ์ที่ 36 ของซูเราะฮ์อาลิอิมรอน (3:36)",
+     "source": "เศาะฮีห์ (ถูกต้อง) — บันทึกโดยอัลบุคอรีย์และมุสลิม",
+     "officiel": false,
+     "url": "https://hadeethenc.com/en/browse/hadith/10994"
+    },
+    "65016": {
+     "texte": "จากฮะกีม บิน หิซาม เราะฎิยัลลอฮุอันฮุ ได้กล่าวว่า: ฉันกล่าวว่า: \"โอ้ท่านเราะซูลุลลอฮ์ ท่านเห็นอย่างไรกับสิ่งที่ฉันเคยทำไว้ในยุคก่อนอิสลาม เช่น การให้ทานหรือการปลดปล่อยทาส การรักษาสายสัมพันธ์ทางเครือญาติ ดังนั้น ในการกระทำนั้นจะมีรางวัลการตอบแทนหรือไม่? ท่านนบี ศ็อลลัลลอฮุอะลัยฮิวะสัลลัม กล่าวว่า “เจ้าเข้ารับอิสลามบนฐานแห่งการตอบรับในความดีต่างๆ ที่ผ่านไปแล้วก่อนหน้านั้น\"",
+     "source": "เศาะฮีห์ — บันทึกโดย อัล-บุคอรีย์ และมุสลิม",
+     "officiel": true,
+     "url": "https://hadeethenc.com/th/browse/hadith/65016"
+    },
+    "65002": {
+     "texte": "จากอิบนุมัสอูด เราะฎิยัลลอฮุอันฮุ ได้กล่าวว่า : มีชายคนหนึ่งถามท่านเราะซูลว่า \"โอ้ท่านเราะซูลุลลอฮ์ เราจะถูกลงโทษจากการกระทำของเราในยุคสมัยก่อนอิสลามหรือไม่?\" ท่านตอบว่า \"ผู้ใดกระทำความดีในยุคสมัยอิสลาม เขาจะไม่ถูกลงโทษสำหรับการกระทำของเขาในยุคสมัยก่อนอิสลาม หากแต่ผู้ใดกระทำความชั่วในยุคสมัยอิสลาม เขาจะถูกลงโทษทั้งการกระทำในยุคสมัยก่อนอิสลามและยุคสมัยหลังอิสลาม\"",
+     "source": "เศาะฮีห์ — บันทึกโดย อัล-บุคอรีย์ และมุสลิม",
+     "officiel": true,
+     "url": "https://hadeethenc.com/th/browse/hadith/65002"
+    },
+    "65006": {
+     "texte": "จากอนัส เราะฎิยัลลอฮุอันฮุ ได้กล่าวว่า : มีชายคนหนึ่งมาหาท่านนบี ศ็อลลัลลอฮุอะลัยฮิวะสัลลัม โดยกล่าวว่า \"โอ้ ท่านเราะซูลลุลลอฮ์ ฉันไม่ทิ้งเลย แม้จะเป็นบาปเล็กหรือบาปใหญ่ นอกจากว่า ฉันจะทำมัน ท่านกล่าวว่า \"เจ้าไม่ได้กล่าว คำปฏิญาณ \"لا إله إلا الله محمد رسول الله \" ดอกหรือ?\" ท่านถามย้ำสามครั้ง เขาตอบว่า \"ใช่ \" ท่านตอบว่า \"แท้จริงสิ่งนี้ย่อมเหนือกว่าสิ่งนั้น\"1",
+     "source": "เศาะฮีห์ — บันทึกโดย อบูยะอ์ลา อัฏฏ๊อบรอนีย์ และอัฎฎิยาอ์ อัลมักดิซีย์",
+     "officiel": true,
+     "url": "https://hadeethenc.com/th/browse/hadith/65006"
+    },
+    "10098": {
+     "texte": "จากอนัส บิน มาลิก เราะฎิยัลลอฮุอันฮุ ได้กล่าวว่า : แท้จริงท่านนบี ศ็อลลัลลอฮุอะลัยฮิวะสัลลัม เคยนั่งบนพาหนะโดยมีมุอาซนั่งท้าย ท่านกล่าวว่า \"โอ้มุอาซ เอ๋ย\" เขากล่าวว่า \" ครับท่านเราะซูลุลอัลลอฮฺ\" ท่านกล่าวอีกว่า \"โอ้มุอาซ เอ๋ย\" เขาก็ตอบว่า\"ครับท่านเราะซูลุลอัลลอฮฺ \"ท่านกล่าวอีกว่า \"โอ้มุอาซ เอ๋ย\" เขาก็ตอบว่า \"ครับท่านเราะซูลุลอัลลอฮฺ\" สามครั้ง แล้วท่านก็กล่าวว่า \"ไม่มีบ่าวคนใดที่กล่าวคำปฏิญาณตนว่า ไม่มีพระเจ้าอื่นใดนอกจากอัลลอฮฺ และมุหัมมัดเป็นศาสนทูตของอัลลอฮฺด้วยความเชื่อมั่นในใจของเขา เว้นแต่อัลลอฮฺจะทำให้เขาเป็นที่ต้องห้ามสำหรับนรก\" มุอาซถามว่า \"โอ้ ท่านเราะซูลุลอัลลอฮฺ จะไม่ให้ฉันบอกข่าวดีนี้แก่คนอื่นๆ หรือ เพื่อพวกเขาจะได้พากันดีใจ?\" ท่านก็ตอบว่า \"เช่นนั้นพวกเขาก็จะไม่ทำอะไรเลย\" และมุอาซก็ได้บอกเรื่องนี้ขณะที่เขากำลังจะสิ้นใจเพราะกลัวบาป (จากการปกปิดความรู้)",
+     "source": "เศาะฮีห์ — บันทึกโดย อัล-บุคอรีย์ และมุสลิม",
+     "officiel": true,
+     "url": "https://hadeethenc.com/th/browse/hadith/10098"
+    }
+   }
+  },
+  "tl": {
+   "versets": {
+    "3:42": "[Banggitin] noong nagsabi ang mga anghel kay Maria: “O Maria, tunay na si Allāh ay humirang sa iyo, nagdalisay sa iyo, at humirang sa iyo higit sa mga babae ng mga nilalang.",
+    "3:45": "[Banggitin] noong nagsabi ang mga anghel: “O Maria, tunay na si Allāh ay nagbabalita sa iyo ng nakagagalak hinggil sa isang salita mula sa Kanya, na ang pangalan nito ay ang Kristo Jesus na anak ni Maria, bilang pinarangalan sa Mundo at sa Kabilang-buhay at kabilang sa mga inilapit [kay Allāh].",
+    "66:12": "[Naglahad ng isang paghahalimbawa] kay Maria na anak ni `Imrān, na nangalaga sa puri niya, kaya umihip Kami doon [sa bulsa ng baro] sa pamamagitan ng Espiritu Namin [na si Anghel Gabriel]. Nagpatotoo siya sa mga salita ng Panginoon niya at mga kasulatan Nito at siya noon ay kabilang sa mga masunurin [sa Panginoon].",
+    "39:53": "Sabihin mo [O Propeta na sinabi Ko]: “O mga lingkod Ko na nagpakalabis laban sa mga sarili nila, huwag kayong masiraan ng loob sa awa ni Allāh; tunay na si Allāh ay nagpapatawad sa mga pagkakasala nang lahatan. Tunay na Siya ay ang Mapagpatawad, ang Maawain.”"
+   },
+   "hadiths": {
+    "11179": {
+     "texte": "Ayon kay Abu Musa (kalugdan nawa siya ni Allah): Sinabi ng Sugo ni Allah (ang pagpapala at kapayapaan ni Allah ay sumakanya): “Marami sa mga lalaki ang umabot sa kaganapan, ngunit sa mga babae ay walang umabot sa kaganapan maliban kay Asiyah, ang asawa ni Paraon, at kay Maryam (Maria), ang anak ni ‘Imran. At ang kahigitan ni ‘A’ishah sa ibang mga babae ay tulad ng kahigitan ng tharid (pagkaing tinapay at karne) sa ibang mga pagkain.”",
+     "source": "Tumpak (sahih) — isinalaysay nina Al-Bukhari at Muslim",
+     "officiel": false,
+     "url": "https://hadeethenc.com/en/browse/hadith/11179"
+    },
+    "10994": {
+     "texte": "Ayon kay Abu Hurayrah (kalugdan nawa siya ni Allah), narinig niya ang Sugo ni Allah (ang pagpapala at kapayapaan ni Allah ay sumakanya) na nagsasabi: “Walang batang ipinanganganak na hindi sinasaling ng demonyo sa oras ng kanyang pagsilang, kaya umiiyak siya nang malakas dahil sa saling na iyon ng demonyo, maliban kay Maryam (Maria) at sa kanyang anak.” Pagkatapos ay binigkas ni Abu Hurayrah ang talata 36 ng Surah Ali ‘Imran (3:36).",
+     "source": "Tumpak (sahih) — isinalaysay nina Al-Bukhari at Muslim",
+     "officiel": false,
+     "url": "https://hadeethenc.com/en/browse/hadith/10994"
+    },
+    "65016": {
+     "texte": "Ayon kay Ḥakīm bin Ḥizām (malugod si Allāh sa kanya) na nagsabi: {Nagsabi ako: \"O Sugo ni Allāh, nakakita ka ba ng mga bagay na ako dati ay gumagawa ng mga iyon sa Panahon ng Kamangmangan gaya ng kawanggawa o pagpapalaya ng alipin o pakikiugnay sa kaanak? Kaya sa mga ito kaya ay may pabuya?\" Kaya nagsabi ang Propeta (basbasan siya ni Allāh at pangalagaan): \"Umanib ka sa Islām kalakip ng nauna na kabutihan.\"}",
+     "source": "Tumpak — Nagkasang-ayon sa katumpakan nito",
+     "officiel": true,
+     "url": "https://hadeethenc.com/tl/browse/hadith/65016"
+    },
+    "65002": {
+     "texte": "Ayon kay Ibnu Mas`ūd (malugod si Allāh sa kanya) na nagsabi: {May nagsabing isang lalaki: \"O, Sugo ni Allāh, pananagutin ba kami sa anumang ginawa namin sa Panahon ng Kamangmangan?\" Nagsabi siya: \"Ang sinumang gumawa ng maganda sa [panahon ng] Islām ay hindi pananagutin sa anumang ginawa niya sa Panahon ng Kamangmangan. Ang sinumang gumawa ng masagwa sa [panahon ng Islām] ay pananagutin sa una at huli.\"}",
+     "source": "Tumpak — Nagkasang-ayon sa katumpakan nito",
+     "officiel": true,
+     "url": "https://hadeethenc.com/tl/browse/hadith/65002"
+    },
+    "65006": {
+     "texte": "Ayon kay Anas (malugod si Allāh sa kanya) na nagsabi: {May dumating na isang lalaki sa Propeta (basbasan siya ni Allāh at pangalagaan) saka nagsabi ito: \"O Sugo ni Allāh, hindi ako nakapag-iwan ng isang maliit na kasalanan ni isang malaking kasalanan malibang nagawa ko na.\" Nagsabi siya: \"Hindi ba sumasaksi ka na walang Diyos kundi si Allāh at na si Muḥammad ay Sugo ni Allāh?\" nang tatlong ulit. Nagsabi ito: \"Opo.\" Nagsabi siya: \"Kaya tunay na iyon ay pupuksa roon.\"}",
+     "source": "Tumpak — Nagsalaysay nito sina Imām Abū Ya`lā, Imām Aṭ-Ṭabarānīy, at Imām Aḍ-Ḍiyā' Al-Maqdisīy",
+     "officiel": true,
+     "url": "https://hadeethenc.com/tl/browse/hadith/65006"
+    },
+    "10098": {
+     "texte": "Ayon kay Anas bin Mālik (malugod si Allāh sa kanya): {Ang Propeta (basbasan siya ni Allāh at pangalagaan), habang si Mu`ādh ay angkas niya sa sasakyang hayop, ay nagsabi: \"O Mu`ādh na anak ni Jabal!\" Nagsabi ito: \"Bilang pagtugon sa iyo, O Sugo ni Allāh, at bilang pagpapaligaya sa iyo.\" Nagsabi siya: \"O Mu`ādh!\" Nagsabi ito: \"Bilang pagtugon sa iyo, O Sugo ni Allāh, at bilang pagpapaligaya sa iyo\" nang makatatlo. Nagsabi siya: \"Walang isa mang sumasaksi na walang Diyos kundi si Allāh at na si Muḥammad ay Sugo Niya nang tapat sa puso niya malibang nagbawal sa kanya si Allāh sa Impiyerno.\" Nagsabi ito: \"O Sugo ni Allāh, kaya hindi po ba ako magpapabatid hinggil dito sa mga tao para magalak sila?\" Nagsabi siya: \"Samakatuwid, sasalig sila.\" Nagpabatid hinggil dito si Mu`ādh sa sandali ng pagkamatay niya bilang pag-iwas sa kasalanan.}",
+     "source": "Tumpak — Nagkasang-ayon sa katumpakan nito",
+     "officiel": true,
+     "url": "https://hadeethenc.com/tl/browse/hadith/10098"
+    }
+   }
+  },
+  "sv": {
+   "versets": {
+    "3:42": "Och när änglarna sa: ”Maria! Gud har utvalt dig, renat dig och valt ut dig framför alla kvinnor i världen.",
+    "3:45": "Och kom ihåg när änglarna sa: ”Maria! Gud ger dig ett glädjande besked om ett ord från honom. Hans namn är Messias, Jesus – Marias son. Han ska vara högt ansedd i detta liv och i det kommande, och han ska vara bland de som står nära Gud.",
+    "66:12": "Och [Gud ger även exemplet]: Maria, ʿImrāns dotter, som helt bevarade sin kyskhet. Vi lät blåsa in i henne av vår [för människan skapade] själ. Hon trodde på sin Herres ord och skrifter, och hon var oss troget hängiven.",
+    "39:53": "Säg [att Gud klargör]: ”Mina tjänare, ni som har gjort stor orätt mot er själva, ge inte upp hoppet om Guds nåd! Gud förlåter alla synder. Han är den ständigt Förlåtande, den Barmhärtige.”"
+   },
+   "hadiths": {
+    "11179": {
+     "texte": "Abu Musa (må Allah vara nöjd med honom) berättade: Allahs sändebud (må Allahs frid och välsignelser vara över honom) sade: ”Många män har uppnått fullkomlighet, men bland kvinnorna har ingen uppnått fullkomlighet utom Asiya, Faraos hustru, och Maryam (Maria), Imrans dotter. Och Aishas företräde framför andra kvinnor är som företrädet hos tharid (en rätt av bröd och kött) framför andra maträtter.”",
+     "source": "Autentisk — återberättad av al-Bukhari och Muslim",
+     "officiel": false,
+     "url": "https://hadeethenc.com/en/browse/hadith/11179"
+    },
+    "10994": {
+     "texte": "Abu Hurayra (må Allah vara nöjd med honom) berättade att han hörde Allahs sändebud (må Allahs frid och välsignelser vara över honom) säga: ”Inget barn föds utan att djävulen rör vid det när det föds, varpå det börjar skrika högt på grund av djävulens beröring – utom Maryam (Maria) och hennes son.” Därefter läste Abu Hurayra vers 36 i suran Al ‘Imran (3:36).",
+     "source": "Autentisk — återberättad av al-Bukhari och Muslim",
+     "officiel": false,
+     "url": "https://hadeethenc.com/en/browse/hadith/10994"
+    },
+    "65016": {
+     "texte": "Hakim bin Hizam (må Allah vara nöjd med honom) sa: \"Jag sa: 'Allahs sändebud! Det fanns bra saker jag brukade göra före jag blev muslim, som att ge välgörenhet, befria människor från slaveri och bevara släktband. Kommer jag att belönas för det?' Profeten ﷺ svarade: 'Du har konverterat till islam utifrån den godhet som du har gjort.'\"",
+     "source": "Autentisk — Al-Bukhari och Muslim",
+     "officiel": true,
+     "url": "https://hadeethenc.com/sv/browse/hadith/65016"
+    },
+    "65002": {
+     "texte": "Ibn Mas'ud (må Allah vara nöjd med honom) berättade att en man sa: \"Allahs sändebud! Kommer vi att straffas för det vi gjorde i innan vi blev muslimer?\" Profeten ﷺ svarade: \"Den som gör gott som muslim kommer inte att straffas för det den gjorde innan han blev muslim, och den som gör ont som muslim kommer att straffas för sina tidigare och senare (dåliga handlingar).\"",
+     "source": "Autentisk — Al-Bukhari och Muslim",
+     "officiel": true,
+     "url": "https://hadeethenc.com/sv/browse/hadith/65002"
+    },
+    "65006": {
+     "texte": "Anas (må Allah vara nöjd med honom) sa: \"En man kom till profeten ﷺ och sa: 'Allahs sändebud! Jag har utfört alla synder - stora såväl som små.' Då sa han ﷺ: 'Vittnar du inte om att det inte finns någon sann gud utom Allah, och att Muhammed är Allahs sändebud?', vilket han upprepade tre gånger. Mannen svarade jakande. Då sa han ﷺ: 'Detta [vittnesmål] överträffar dessa [synder].'\"",
+     "source": "Autentisk — Återberättad av Abu Ya'la, at-Tabarani och ad-Diya' al-Maqdisi",
+     "officiel": true,
+     "url": "https://hadeethenc.com/sv/browse/hadith/65006"
+    },
+    "10098": {
+     "texte": "Anas bin Malik (må Allah vara nöjd med honom) sa: \"Profeten ﷺ satt på ett riddjur med Mu'adh bakom sig och sa: 'Mu'adh bin Jabal!'. Han svarade: 'Allahs sändebud! Jag står till din tjänst med glädje.' Han ﷺ sa: 'Mu'adh!' Han svarade: 'Allahs sändebud! Jag står till din tjänst med glädje.' Detta upprepades tre gånger. Sedan sa han ﷺ: 'Ingen vittnar om att det inte finns någon sann gud utom Allah, och att Muhammed är Allahs sändebud, uppriktigt från sitt hjärta förutom att Allah skonar honom från elden.' Han sa: 'Allahs sändebud! Ska jag inte dela med mig av detta till människorna så att de kan glädjas?' Han sa: 'Då kommer de att förlita sig på detta.' Mu'adh berättade detta innan han dog, i fruktan av att han skulle syndat om han hemlighöll denna kunskap.\"",
+     "source": "Autentisk — Al-Bukhari och Muslim",
+     "officiel": true,
+     "url": "https://hadeethenc.com/sv/browse/hadith/10098"
+    }
+   }
+  },
+  "ro": {
+   "versets": {
+    "3:42": "Și [spune] când Îngerii au spus: „O, Maria! Allah te-a ales și te-a făcut pură și te-a ales peste femeile lumilor!",
+    "3:45": "Și [spune] când Îngerii au spus: „O, Maria! Allah îți vestește un Cuvânt din partea Lui: numele lui va fi Mesia, Iisus, fiul Mariei, măreț în această lume precum și în lumea de Apoi și unul dintre cei mai apropiați [de Allah].",
+    "66:12": "Și [la fel și] pe Maria, fiica lui 'Imran, care a rămas curată și am suflat în ea prin Îngerul Nostru [Gavriil]. Și ea a crezut în Cuvintele Domnului ei și în Scripturile Sale și a fost ea dintre cei supuși cu statornicie.",
+    "39:53": "Spune: „O, voi, robii Mei care ați întrecut măsura în defavoarea voastră, nu deznădăjduiți în privința Îndurării lui Allah.” Allah iartă toate păcatele. Cu adevărat, El este Al-Ghafur [Iertător], Ar-Rahim [Îndurător]."
+   },
+   "hadiths": {
+    "11179": {
+     "texte": "Abu Musa (Allah să fie mulțumit de el) a relatat: Mesagerul lui Allah (pacea și binecuvântarea lui Allah fie asupra sa) a spus: „Mulți bărbați au atins desăvârșirea, însă dintre femei nu au atins desăvârșirea decât Asiya, soția lui Faraon, și Maryam (Maria), fiica lui ‘Imran. Iar întâietatea lui ‘Aișa față de celelalte femei este precum întâietatea tharidului (mâncare din pâine și carne) față de celelalte mâncăruri.”",
+     "source": "Autentic (sahih) — relatat de al-Bukhari și Muslim",
+     "officiel": false,
+     "url": "https://hadeethenc.com/en/browse/hadith/11179"
+    },
+    "10994": {
+     "texte": "Abu Hurayra (Allah să fie mulțumit de el) a relatat că l-a auzit pe Mesagerul lui Allah (pacea și binecuvântarea lui Allah fie asupra sa) spunând: „Nu se naște niciun copil fără ca diavolul să-l atingă la naștere, iar el începe să plângă tare din pricina acestei atingeri a diavolului, în afară de Maryam (Maria) și de fiul ei.” Apoi Abu Hurayra a recitat versetul 36 din sura Al ‘Imran (3:36).",
+     "source": "Autentic (sahih) — relatat de al-Bukhari și Muslim",
+     "officiel": false,
+     "url": "https://hadeethenc.com/en/browse/hadith/10994"
+    },
+    "65016": {
+     "texte": "Hakim ibn Hizam (Allah să fie mulțumit de el) a relatat: Am spus: „O Mesager al lui Allah, înainte de a accepta Islamul, obișnuiam să fac fapte bune, precum caritatea, eliberarea sclavilor și menținerea legăturilor de rudenie. Voi primi răsplată pentru acele fapte?\" Profetul (Pacea și binecuvântarea lui Allah fie asupra sa) a răspuns: „Ai acceptat Islamul împreună cu faptele tale bune anterioare.\"",
+     "source": "Sahih (hadis autentic) — Narat de Bukhari și Muslim",
+     "officiel": true,
+     "url": "https://hadeethenc.com/ro/browse/hadith/65016"
+    },
+    "65002": {
+     "texte": "Ibn Mas‘ud (Allah să fie mulțumit de el) a relatat: Un bărbat a întrebat: „O, Mesager al lui Allah, oare vom fi pedepsiți pentru ceea ce am făcut în timpul de Jahiliya (în perioada preislamică a ignoranței)?” El a răspuns: „Cel care face bine în Islam nu va fi pedepsit pentru ceea ce a făcut în timpul Jahiliyei, iar cel care comite răul în Islam va fi pedepsit pentru faptele anterioare, cât și pentru cele ulterioare.\"",
+     "source": "Sahih (hadis autentic) — Narat de Bukhari și Muslim",
+     "officiel": true,
+     "url": "https://hadeethenc.com/ro/browse/hadith/65002"
+    },
+    "65006": {
+     "texte": "Anas (Allah să fie mulţumit de el) a spus: Un om a venit la Profet (Pacea și binecuvântarea lui Allah fie asupra sa) și a spus: „O, Mesager al lui Allah, nu am lăsat niciun păcat, nici mai mare, și nici mai mic, pe care să nu-l fi săvârșit.\" Profetul a întrebat: „Oare nu mărturisești tu că nu există alt dumnezeu demn de a fi adorat în afară de Allah și că Mohammed este Mesagerul lui Allah?\" și a repetat întrebarea de trei ori. Bărbatul a răspuns: „Da.” Atunci, Profetul a spus: „Aceasta predomină asupra celorlalte.”",
+     "source": "Sahih (hadis autentic) — Narat de Abu Ya'la, At-Tabarany și Ad-Diyaa Al-Maqdisy",
+     "officiel": true,
+     "url": "https://hadeethenc.com/ro/browse/hadith/65006"
+    },
+    "10098": {
+     "texte": "Anas ibn Malik (Allah să fie mulțumit de el) a relatat că: În vreme ce Profetul (Pacea și binecuvântarea lui Allah fie asupra sa) călătorea, și în urma sa se afla Mu‘adh, a spus: „O, Mu‘adh ibn Jabal!” Mu‘adh a răspuns: „Sunt aici sub porunca ta, o, Mesager al lui Allah!” Apoi a spus iar: „O, Mu‘adh!” și Mu‘adh a răspuns: „Sunt aici sub porunca ta, o, Mesager al lui Allah!” și a repetat aceasta și a treia oară. Apoi, Profetul a spus: „Nu este nimeni care să mărturisească sincer, din inima sa, că nu există altă divinitate demnă de a fi adorată în afară de Allah și că Mohammed este mesagerul lui Allah, fără ca Allah să nu îl fi interzis Focului.” Mu‘adh a spus: „O, Mesager al lui Allah, oare nu ar trebui să le vestesc oamenilor aceasta pentru a se bucura?” A răspuns: „Atunci ei s-ar baza (numai) pe aceasta.” Mu‘adh a relatat acest hadis înaintea morții sale de teama de a nu fi comis un păcat (prin tăinuirea și ascunderea unei informații folositoare).",
+     "source": "Sahih (hadis autentic) — Narat de Bukhari și Muslim",
+     "officiel": true,
+     "url": "https://hadeethenc.com/ro/browse/hadith/10098"
+    }
+   }
   }
  }
 };

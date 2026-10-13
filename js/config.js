@@ -1,6 +1,6 @@
 // ====== RÉGLAGES DU SITE — à modifier ======
 window.SITE_CONFIG = {
-  // Langue par défaut si le navigateur du visiteur n'est pas en en/fr/es/de
+  // Langue par défaut si le navigateur du visiteur n'est dans aucune langue du site
   defaultLang: "fr",
 
   // Formulaire de suggestions :
@@ -29,6 +29,9 @@ window.SITE_CONFIG = {
     de: "Mohammed Der Gesandte Gottes 1976 ganzer Film deutsch",
     it: "Il Messaggio 1976 film completo italiano",
     pt: "A Mensagem 1976 filme completo dublado",
-    hi: "The Message 1976 Hindi dubbed full movie"
+    hi: "The Message 1976 Hindi dubbed full movie",
+    tr: "Çağrı 1976 filmi Türkçe dublaj tek parça",
+    id: "The Message 1976 film lengkap subtitle Indonesia",
+    ru: "Послание 1976 фильм полностью на русском"
   }
 };

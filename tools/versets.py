@@ -20,9 +20,19 @@ SOURCES = {
     "ja": ("japanese_saeedsato", "サイード佐藤 (Saeed Sato)", "ja"),
     "ko": ("korean_hamid", "최영길 (Hamid Choi)", "ko"),
     "hi": ("hindi_omari", "अज़ीज़ुल हक़ अल-उमरी (Azizul Haq Al-Omari)", "hi"),
+    # ajoutées le 13/10/2026 (demande d'Ahmed : mêmes langues que Mosquées et Points d'eau, sans l'arabe ni l'ourdou)
+    "tr": ("turkish_shaban", "Şaban Britch", "tr"),
+    "id": ("indonesian_affairs", "Kementerian Agama Republik Indonesia", "id"),
+    "ru": ("russian_rwwad", "Rowwad Translation Center", "ru"),
+    "vi": ("vietnamese_rwwad", "Rowwad Translation Center", "vi"),
+    "th": ("thai_rwwad", "Rowwad Translation Center", "th"),
+    "tl": ("tagalog_rwwad", "Rowwad Translation Center", "tl"),
+    "sv": ("swedish_rwwad", "Rowwad Translation Center", "sv"),
+    "ro": ("romanian_project", "Islam4ro.com", "ro"),
 }
 VERSETS = [(1, 1), (21, 107), (51, 56), (112, 1), (112, 2), (112, 3), (112, 4), (2, 2), (68, 4), (7, 156), (49, 13), (16, 97), (17, 23), (2, 256), (16, 125)]
-GUILLEMETS = {"en": "“”", "fr": ("« ", " »"), "es": "«»", "de": "„“", "it": "«»", "pt": "«»", "nl": "‘’", "zh": "“”", "ja": "「」", "ko": "“”", "hi": "“”"}
+GUILLEMETS = {"en": "“”", "fr": ("« ", " »"), "es": "«»", "de": "„“", "it": "«»", "pt": "«»", "nl": "‘’", "zh": "“”", "ja": "「」", "ko": "“”", "hi": "“”",
+              "tr": "“”", "id": "“”", "ru": "«»", "vi": "“”", "th": "“”", "tl": "“”", "sv": "””", "ro": "„”"}
 
 # Passage retenu quand le verset est long : (début, fin) recopiés du texte officiel. None = verset entier.
 EXTRAITS = {
@@ -50,6 +60,24 @@ EXTRAITS = {
            "17:23": (None, "효도하라 하셨으니"), "2:256": (None, "강요가 없나니"), "16:125": (None, "인도하되")},
     "hi": {"7:156": ("मेरी दया", "घेरे हुए है"), "49:13": ("हमने तुम्हें जातियों", "तक़्वा वाला है"), "16:97": (None, "व्यतीत कराएँगे"),
            "17:23": (None, "अच्छा व्यवहार करो"), "2:256": (None, "ज़ोर-ज़बरदस्ती नहीं"), "16:125": (None, "के साथ बुलाएँ")},
+    "tr": {"7:156": ("Rahmetim ise her şeyi kuşatmıştır", "Rahmetim ise her şeyi kuşatmıştır"), "49:13": ("Sizi tanışasınız diye", "takvalı olanınızdır"),
+           "16:97": (None, "güzel bir hayat yaşatırız"), "17:23": (None, "emretmiştir"), "2:256": (None, "Dinde zorlama yoktur"), "16:125": (None, "güzel öğütle çağır")},
+    "id": {"7:156": ("rahmat-Ku meliputi segala sesuatu", "rahmat-Ku meliputi segala sesuatu"), "49:13": ("Kami jadikan kamu berbangsa-bangsa", "orang yang paling bertakwa"),
+           "16:97": (None, "kehidupan yang baik"), "17:23": (None, "berbuat baik kepada ibu bapak"), "2:256": (None, "agama (Islam)"), "16:125": (None, "pengajaran yang baik")},
+    "ru": {"7:156": ("Моя милость объемлет всё сущее", "Моя милость объемлет всё сущее"), "49:13": ("сделали вас народами", "наиболее богобоязненный"),
+           "16:97": (None, "благую жизнь"), "17:23": (None, "добродетельное отношение"), "2:256": (None, "Нет принуждения в религии"), "16:125": (None, "добрым увещеванием")},
+    "vi": {"7:156": ("lòng thương xót của TA bao trùm tất cả mọi thứ", "lòng thương xót của TA bao trùm tất cả mọi thứ"),
+           "49:13": ("làm cho các ngươi thành các quốc gia", "nhất trong các ngươi"), "16:97": (None, "một cuộc sống tốt đẹp"),
+           "17:23": (None, "đối xử tử tế với cha mẹ"), "2:256": (None, "trong tôn giáo"), "16:125": (None, "lời khuyên tốt đẹp")},
+    "th": {"7:156": ("ความเมตตาของข้านั้นครอบคลุมทุกสิ่ง", "ความเมตตาของข้านั้นครอบคลุมทุกสิ่ง"), "49:13": ("เราได้ให้พวกเจ้าแยกเป็นเผ่า", "ผู้ที่มีความยำเกรงยิ่งในหมู่พวกเจ้า"),
+           "16:97": (None, "เป็นชีวิตที่ดี"), "17:23": (None, "จงทำดีต่อบิดามารดา"), "2:256": (None, "ในศาสนาอิสลาม"), "16:125": (None, "การตักเตือนที่ดี")},
+    "tl": {"7:156": ("Ang awa Ko ay sumakop sa bawat bagay", "Ang awa Ko ay sumakop sa bawat bagay"), "49:13": ("gumawa sa inyo na mga bansa", "pinakamapangilag magkasala sa inyo"),
+           "16:97": (None, "buhay na kaaya-aya"), "17:23": (None, "paggawa ng maganda"), "2:256": (None, "Walang pamimilit sa relihiyon"), "16:125": (None, "pangaral na maganda")},
+    "sv": {"2:2": (None, "de gudfruktiga"), "7:156": ("min barmhärtighet omfattar allt", "min barmhärtighet omfattar allt"), "49:13": ("gjort er till folkslag", "störst gudsfruktan"),
+           "16:97": (None, "ett gott liv"), "17:23": (None, "goda mot era föräldrar"), "2:256": (None, "[att acceptera] tron"), "16:125": (None, "goda förmaningar")},
+    "ro": {"2:2": (None, "Călăuză pentru cei pioși"), "7:156": ("Îndurarea Mea cuprinde toate lucrurile", "Îndurarea Mea cuprinde toate lucrurile"),
+           "49:13": ("v-am făcut pe voi popoare", "cel mai evlavios dintre voi"), "16:97": (None, "o viață bună"), "17:23": (None, "cu părinții voștri"),
+           "2:256": (None, "Nu există silire la credinţă"), "16:125": (None, "bună îndemnare")},
 }
 BORDS = "\"“”«»„‘’「」『』  "
 
@@ -104,7 +132,7 @@ def main():
         v["112:1-4"] = re.sub(r"\s+", " ", " ".join(parts) if l not in ("zh", "ja") else "".join(parts))
         sortie[l] = {
             "source": nom, "url": f"https://quranenc.com/{page}/browse/{cle}",
-            "basmala": propre(R[l]["1:1"]).rstrip(".。।। "),
+            "basmala": propre(R[l]["1:1"]).rstrip(".。।।, "),
             "versets": {ref: entre(x) for ref, x in v.items()},
         }
     js = ("// FICHIER FABRIQUÉ par tools/versets.py — ne pas modifier à la main.\n"

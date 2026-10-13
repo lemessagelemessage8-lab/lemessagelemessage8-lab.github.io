@@ -59,6 +59,23 @@ Ajouter une langue : un bloc de textes, une colonne dans `js/data-plus.js`, puis
 dans `index.html`, une ligne dans `sitemap.xml` et le code dans `LANGUES` de `tools/test_site.mjs`.
 Les traductions ont été écrites par Claude : à faire relire par une personne dont c'est la langue.
 
+## 19 langues (13/10/2026, demande d'Ahmed)
+Ajout de 8 langues : turc, indonésien, russe, vietnamien, thaï, filipino, suédois, roumain — les mêmes que nos sites Mosquées et
+Points d'eau, **sans l'arabe ni l'ourdou** (choix d'Ahmed : le site s'adresse d'abord aux non-musulmans).
+- Textes : `js/i18n-monde-1.js` (tr, id), `-2.js` (ru, vi), `-3.js` (th, tl), `-4.js` (sv, ro). Chaque langue a UN bloc avec tout :
+  textes du site, film, page « Paroles du Prophète », puis `cartes` (descriptions des cartes), `titres` (flyers) et `coran`.
+  `js/data-monde.js` pose ces textes sur les cartes de `js/data.js` (à charger après `js/data-plus.js`).
+- Versets : traduction officielle QuranEnc de chaque langue (`tools/versets.py` : turkish_shaban, indonesian_affairs, russian_rwwad,
+  vietnamese_rwwad, thai_rwwad, tagalog_rwwad, swedish_rwwad, romanian_project). Dans les blocs de textes, les versets sont les
+  textes exacts de `js/versets.js` (le test le vérifie) : ne jamais les réécrire à la main.
+- Hadiths : officiels HadeethEnc pour les 8 langues, sauf les deux hadiths sur Marie (11179, 10994) qui n'existent pas encore en
+  tr, vi, th, tl, sv, ro : traduction non officielle signalée sur la page (`MAISON` dans `tools/paroles.py`) ; relancer
+  `python tools/paroles.py --telecharger` de temps en temps pour prendre la version officielle quand elle paraît.
+- Ajouter une langue maintenant : un bloc dans un fichier `js/i18n-monde-*.js` (et son code dans la liste à la fin de `-4.js` et dans
+  `L` de `js/data-monde.js`), les noms de langue (`PLUS` de `-1.js` + `langNames` de chaque bloc), `SOURCES`/`EXTRAITS`/`GUILLEMETS`
+  de `tools/versets.py`, puis bouton, option et `hreflang` dans les deux pages, `sitemap.xml`, `LANGUES` de `tools/test_site.mjs`,
+  et `python tools/version.py <version>`.
+
 ## Versets : traductions officielles (12/10/2026, demande d'Ahmed)
 Les versets ne sont JAMAIS traduits par nous. Ils sont copiés mot pour mot d'une traduction officielle du Coran pour chaque
 langue (Encyclopédie du Noble Coran, QuranEnc.com) : `tools/versets.py` (liste des traductions, passages retenus) fabrique

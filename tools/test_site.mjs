@@ -16,7 +16,7 @@ const ADRESSE = "https://message.clicvia.com/";
 // --- visibilité (règle commune § 8) ---
 ok(/<header class="topbar">[\s\S]*id="share-head"[\s\S]*<\/header>/.test(html), "bouton « Partager » absent de l'en-tête");
 ok(html.includes(`<link rel="canonical" href="${ADRESSE}">`), "adresse canonique absente");
-const LANGUES = ["en", "fr", "es", "de", "it", "pt", "nl", "zh", "ja", "ko", "hi"];
+const LANGUES = ["en", "fr", "es", "de", "it", "pt", "nl", "zh", "ja", "ko", "hi", "tr", "id", "ru", "vi", "th", "tl", "sv", "ro"];     // ni arabe ni ourdou : choix d'Ahmed (13/10/2026)
 for (const l of LANGUES) ok(html.includes(`href="${ADRESSE}?lang=${l}"`) && html.includes(`data-setlang="${l}"`) && html.includes(`<option value="${l}"`), "langue " + l + " absente de l'en-tête ou des boutons");
 ok(html.includes('hreflang="x-default"'), "hreflang x-default absent");
 ok(html.includes("goatcounter.com/count"), "compteur de visites GoatCounter absent");
@@ -37,7 +37,7 @@ for (const l of LANGUES) ok(plan.includes(`<loc>${ADRESSE}?lang=${l}</loc>`), "s
 // --- textes : chaque langue a toutes les clés ---
 globalThis.window = {};
 require(path.join(racine, "js/config.js"));
-for (const f of ["i18n", "i18n-plus", "i18n-asie", "i18n-paroles", "i18n-film", "versets", "paroles", "data", "data-plus"]) require(path.join(racine, "js/" + f + ".js"));
+for (const f of ["i18n", "i18n-plus", "i18n-asie", "i18n-paroles", "i18n-film", "i18n-monde-1", "i18n-monde-2", "i18n-monde-3", "i18n-monde-4", "versets", "paroles", "data", "data-plus", "data-monde"]) require(path.join(racine, "js/" + f + ".js"));
 const T = window.I18N, D = window.SITE_DATA;
 const cles = Object.keys(T.fr);
 ok(LANGUES.every(l => T[l]) && Object.keys(T).length === LANGUES.length, "les langues du site ne sont pas celles attendues : " + Object.keys(T));
@@ -61,6 +61,12 @@ for (const l of LANGUES) {
   ok(D.quran.some(i => i.officiel && i.lang === l && i.url === V[l].url), "Coran officiel absent de la section Coran en " + l);
 }
 ok(html.includes("js/versets.js") && html.includes("data-verse-note"), "versets officiels non branchés dans index.html");
+// les 8 langues du 13/10/2026 : leurs versets sont ceux de la traduction officielle (jamais une traduction maison), dans les textes aussi
+for (const l of ["tr", "id", "ru", "vi", "th", "tl", "sv", "ro"]) {
+  ok(T[l].msgVerse === V[l].versets["21:107"] && T[l].basmala === V[l].basmala && T[l].footerVerse.startsWith(V[l].versets["16:125"]), "verset non officiel dans les textes en " + l);
+  for (const th of T[l].themes) ok(Object.values(V[l].versets).includes(th.quote), `thème ${th.id} : verset non officiel en ${l}`);
+  ok(["js/i18n-monde-1.js", "js/i18n-monde-4.js", "js/data-monde.js"].every(f => html.includes(f)) && lire("paroles-du-prophete/index.html").includes("js/i18n-monde-4.js"), "fichiers des 8 langues non branchés dans les pages");
+}
 ok(/V\[l\]|window\.VERSETS/.test(lire("js/app.js")), "app.js n'applique pas les versets officiels");
 
 // --- page « Paroles du Prophète » : sources officielles, traductions maison clairement signalées ---
