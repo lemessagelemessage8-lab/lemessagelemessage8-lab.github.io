@@ -100,3 +100,9 @@ recherche YouTube par langue en complément. Si YouTube retire une vidéo, chang
 ## Numéro de version des fichiers
 Avant chaque publication qui change `css/` ou `js/` : `python tools/version.py AAAAMMJJx` (ex. `20261012c`). Le test vérifie
 que toutes les pages utilisent la même version ; sans cela, un visiteur peut garder d'anciens fichiers après une mise à jour.
+
+### Flyers ajoutés le 13/10/2026
+Deux flyers en anglais de l'Islamic Information Center (Dubaï), envoyés par l'ami d'Ahmed en images scannées (`archive/WhatsApp Image…`) :
+« The Qur'an: the final revelation to mankind » (`quran-en`) et « Jesus, a prophet of God » (`jesus-en`). Ce ne sont pas nos flyers :
+la source est citée dans la description, et le flyer est laissé tel quel (logos et contacts de l'éditeur). PDF fabriqué à partir des scans.
+Titre et description écrits dans les 19 langues directement dans `js/data.js`.
