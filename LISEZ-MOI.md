@@ -106,3 +106,8 @@ Deux flyers en anglais de l'Islamic Information Center (Dubaï), envoyés par l'
 « The Qur'an: the final revelation to mankind » (`quran-en`) et « Jesus, a prophet of God » (`jesus-en`). Ce ne sont pas nos flyers :
 la source est citée dans la description, et le flyer est laissé tel quel (logos et contacts de l'éditeur). PDF fabriqué à partir des scans.
 Titre et description écrits dans les 19 langues directement dans `js/data.js`.
+
+### Flyers ajoutés le 14/10/2026
+Deux autres flyers anglais de la même série (Islamic Information Center, Dubaï), scans `archive/WhatsApp Image 2026-10-14…` :
+« The Concept of God in Islam » (`concept-god-en`) et « Misconceptions about Islam » (`misconceptions-en`). Même méthode :
+recto = côté couverture, verso = intérieur, PDF A4 paysage de 2 pages, titres et descriptions dans les 19 langues dans `js/data.js`.
