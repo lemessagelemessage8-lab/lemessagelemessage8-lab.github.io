@@ -115,5 +115,12 @@ for (const s of ["flyers", "quran", "media", "links"]) for (const i of D[s]) {
 ok(D.links.some(i => i.url === "https://mosquees.clicvia.com/"), "lien vers le site Mosquées absent des liens utiles");
 ok(/^[^@\s]+@[^@\s]+\.[a-z]+$/.test(window.SITE_CONFIG.contactEmail) && !/exemple/.test(window.SITE_CONFIG.contactEmail), "adresse de contact non réglée");
 
+// --- formulaire de contact : e-mail obligatoire et confirmation claire dans la carte (demande d'Ahmed, 15/10/2026) ---
+ok(/<input name="email" type="email" autocomplete="email" required>/.test(html), "contact : l'e-mail doit être obligatoire (required)");
+const appJs = lire("js/app.js");
+ok(/t\("fEmailErr"\)/.test(appJs) && /function merci\(/.test(appJs) && /form\.hidden = true/.test(appJs), "contact : contrôle de l'e-mail et confirmation dans la carte absents de js/app.js");
+const i18nTout = fs.readdirSync(path.join(racine, "js")).filter(n => /^i18n.*\.js$/.test(n)).map(n => lire("js/" + n)).join("\n");
+for (const k of ["fEmailErr", "fReply", "fAnother"]) ok((i18nTout.match(new RegExp(k + ': "', "g")) || []).length === LANGUES.length, `contact : texte ${k} absent d'une des ${LANGUES.length} langues`);
+ok(!/fEmail: "[^"]*(optional|facultati|opcional|isteğe|opsional|необязательно|không bắt buộc|ไม่บังคับ|opsyonal|frivilligt|opțional|optioneel|任意|选填|선택|वैकल्पिक)/.test(i18nTout), "contact : un libellé dit encore « e-mail facultatif »");
 console.log(echecs ? `\n${echecs} échec(s)` : "Tous les tests passent.");
 process.exit(echecs ? 1 : 0);

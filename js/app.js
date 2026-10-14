@@ -294,11 +294,30 @@
   document.querySelectorAll("[data-setlang]").forEach(function (b) { b.onclick = function () { setLang(b.dataset.setlang); }; });
 
   // ───────── Formulaire ─────────
+  // Après l'envoi : le formulaire est remplacé DANS la carte par une confirmation bien visible (demande d'Ahmed, 15/10/2026)
+  function merci(form, status, mail) {
+    var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]; }); };
+    var boite = document.getElementById("contact-merci");
+    if (!boite) {
+      boite = document.createElement("div"); boite.id = "contact-merci"; boite.className = "avis-merci"; boite.tabIndex = -1;
+      boite.setAttribute("role", "status"); boite.setAttribute("aria-live", "polite");
+      form.parentNode.insertBefore(boite, form.nextSibling);
+    }
+    form.reset(); status.textContent = "";
+    boite.innerHTML = '<p class="avis-merci-titre">✅ ' + esc(t("fOk")) + "</p><p>" + esc(t("fReply")) + ' <b dir="ltr">' + esc(mail) + '</b></p><button type="button" class="btn-avis-autre">' + esc(t("fAnother")) + "</button>";
+    boite.querySelector("button").onclick = function () { boite.hidden = true; form.hidden = false; form.elements.message.focus(); };
+    form.hidden = true; boite.hidden = false;
+    try { boite.focus({ preventScroll: true }); boite.scrollIntoView({ behavior: "smooth", block: "center" }); } catch (x) { /* ancien navigateur */ }
+  }
   document.getElementById("contact-form").addEventListener("submit", function (e) {
     e.preventDefault();
     var form = e.target, status = document.getElementById("form-status");
     var data = new FormData(form);
     if (data.get("_gotcha")) return;
+    // 15/10/2026 (demande d'Ahmed) : e-mail obligatoire pour pouvoir répondre
+    var mail = String(data.get("email") || "").trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)) { status.className = "form-status err"; status.textContent = t("fEmailErr"); form.elements.email.focus(); return; }
+    status.className = "form-status";
     data.append("lang", lang);
     if (!CFG.formEndpoint) {
       var body = "Type: " + data.get("type") + "\nLangue: " + lang + "\nNom: " + (data.get("name") || "") + "\nEmail: " + (data.get("email") || "") + "\n\n" + data.get("message");
@@ -308,7 +327,7 @@
     }
     status.textContent = t("fSending");
     fetch(CFG.formEndpoint, { method: "POST", body: data, headers: { Accept: "application/json" } })
-      .then(function (r) { if (!r.ok) throw 0; status.textContent = t("fOk"); form.reset(); })
+      .then(function (r) { if (!r.ok) throw 0; merci(form, status, mail); })
       .catch(function () { status.textContent = t("fErr"); });
   });
 
