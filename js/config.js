@@ -7,7 +7,7 @@ window.SITE_CONFIG = {
   // 1) Créez un compte gratuit sur https://formspree.io, créez un formulaire,
   //    et collez ici son adresse (ex. "https://formspree.io/f/abcdwxyz").
   // 2) Si vide, le formulaire ouvre la messagerie du visiteur vers contactEmail.
-  formEndpoint: "",
+  formEndpoint: "https://formspree.io/f/mwlpakqj",   // 15/10/2026 (Ahmed) : le même formulaire que tous ses sites (champ caché « site »)
   contactEmail: "lemessagelemessage8@gmail.com",
 
   // Musique d'accueil : vidéo YouTube officielle « The Message » (Maurice Jarre),
