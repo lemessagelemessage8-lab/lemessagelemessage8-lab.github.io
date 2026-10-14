@@ -17,8 +17,13 @@ const ADRESSE = "https://message.clicvia.com/";
 ok(/<header class="topbar">[\s\S]*id="share-head"[\s\S]*<\/header>/.test(html), "bouton « Partager » absent de l'en-tête");
 ok(html.includes(`<link rel="canonical" href="${ADRESSE}">`), "adresse canonique absente");
 const LANGUES = ["en", "fr", "es", "de", "it", "pt", "nl", "zh", "ja", "ko", "hi", "tr", "id", "ru", "vi", "th", "tl", "sv", "ro"];     // ni arabe ni ourdou : choix d'Ahmed (13/10/2026)
-for (const l of LANGUES) ok(html.includes(`href="${ADRESSE}?lang=${l}"`) && html.includes(`data-setlang="${l}"`) && html.includes(`<option value="${l}"`), "langue " + l + " absente de l'en-tête ou des boutons");
-ok(html.includes('hreflang="x-default"'), "hreflang x-default absent");
+for (const l of LANGUES) ok(html.includes(`data-setlang="${l}"`) && html.includes(`<option value="${l}"`), "langue " + l + " absente des boutons");
+// 14/10/2026 (contrôle de visibilité, règle commune § 8) : pas de hreflang vers « ?lang= » (le serveur renvoie la même page :
+// doublons pour Google) ; un seul titre h1 ; lien vers le portail clicvia.com ; clé IndexNow
+for (const f of ["index.html", "paroles-du-prophete/index.html"]) ok(!/hreflang="[a-z-]+" href="[^"]*[?]lang=/.test(lire(f)), f + " : hreflang vers « ?lang= »");
+ok((html.match(/<h1[\s>]/g) || []).length === 1, "il faut un seul titre h1 sur l'accueil");
+ok(html.includes('href="https://clicvia.com/"'), "lien vers le portail clicvia.com absent");
+ok(fs.existsSync(path.join(racine, "377f054ba9c5ed40d6796adc8d87d1e8.txt")), "clé IndexNow absente");
 ok(html.includes("goatcounter.com/count"), "compteur de visites GoatCounter absent");
 ok(html.includes(`og:image" content="${ADRESSE}assets/og-image-v2.jpg"`), "image d'aperçu de partage absente");
 ok(fs.existsSync(path.join(racine, "assets/og-image-v2.jpg")), "fichier assets/og-image-v2.jpg absent");
@@ -75,7 +80,7 @@ ok(/<header class="topbar">[\s\S]*id="share-head"[\s\S]*<\/header>/.test(page), 
 ok(page.includes(`<link rel="canonical" href="${ADRESSE}paroles-du-prophete/">`) && page.includes("goatcounter.com/count"), "page Paroles : adresse canonique ou compteur absent");
 ok(html.includes('href="paroles-du-prophete/"') && plan.includes(`<loc>${ADRESSE}paroles-du-prophete/</loc>`), "page Paroles absente du menu de l'accueil ou du plan du site");
 for (const l of LANGUES) {
-  ok(page.includes(`paroles-du-prophete/?lang=${l}"`) && page.includes(`<option value="${l}"`), "page Paroles : langue " + l + " absente");
+  ok(page.includes(`<option value="${l}"`), "page Paroles : langue " + l + " absente");
   ok(plan.includes(`<loc>${ADRESSE}paroles-du-prophete/?lang=${l}</loc>`), "sitemap.xml : page Paroles absente en " + l);
   for (const r of [...P.plan.versets.marie, ...P.plan.versets.islam]) ok(P.langues[l].versets[r] && P.langues[l].versets[r].length > 20, `page Paroles : verset ${r} absent en ${l}`);
   for (const id of [...P.plan.hadiths.marie, ...P.plan.hadiths.islam]) {
