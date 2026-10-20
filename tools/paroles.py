@@ -91,7 +91,7 @@ def telecharger():
         for l in LANGUES_HADITHS:
             d = lire(f"https://hadeethenc.com/api/v1/hadeeths/one/?language={l}&id={i}")
             R["hadiths"][str(i)][l] = {k: d.get(k) for k in ("hadeeth", "attribution", "grade")} if d and d.get("hadeeth") else None
-    (ICI / "paroles.json").write_text(json.dumps(R, ensure_ascii=False, indent=1), encoding="utf-8")
+    (ICI / "paroles.json").write_text(json.dumps(R, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     return R
 
 

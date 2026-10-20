@@ -96,7 +96,7 @@ def telecharger():
                     time.sleep(2)
             else:
                 raise SystemExit(f"verset introuvable : {l} {s}:{a}")
-    (ICI / "versets.json").write_text(json.dumps(R, ensure_ascii=False, indent=1), encoding="utf-8")
+    (ICI / "versets.json").write_text(json.dumps(R, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     return R
 
 
