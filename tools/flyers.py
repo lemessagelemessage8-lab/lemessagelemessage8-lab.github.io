@@ -6,6 +6,8 @@ et fabrique dans flyers/ :
     flyer-<id>.pdf                       PDF : chaque page + une bande sous la page (rien du flyer n'est caché)
     flyer-<id>-recto.jpg / -verso.jpg    pages 1 et 2 (+ « -mini » pour les vignettes)
     flyer-<id>-p3.jpg … -pN.jpg          pages suivantes (flyers de plus de 2 pages)
+    flyer-<id>-a4.pdf                    dépliant de 6 panneaux : 2 feuilles A4 paysage, 3 panneaux par face, prêt à
+                                         imprimer en recto-verso puis plier en trois (c'est le PDF proposé sur le site)
     tampons.json                         liste des fichiers tamponnés (taille), vérifiée par tools/test_site.mjs
 
 La bande est AJOUTÉE sous chaque page (le flyer d'un autre éditeur reste entier, logos et contacts compris).
@@ -99,6 +101,46 @@ def tamponner_pdf(src, dst):
     o.save(dst, garbage=3, deflate=True)
 
 
+A4_L, A4_H = 842, 595                 # feuille A4 en paysage (points PDF)
+# Dépliant de 6 panneaux (couverture + pages 1 à 5) : ordre de l'éditeur pour un pli roulé en trois, comme sur ses dépliants
+# imprimés (scans anglais du 13-14/10/2026) : face extérieure « 4 | 5 | couverture », face intérieure « 1 | 2 | 3 ».
+# Numéros des pages de original.pdf (1 = couverture, 2 = page « 1 », … 6 = page « 5 »).
+IMPOSITION_6 = [(5, 6, 1), (2, 3, 4)]
+
+
+def bande_feuille(largeur, haut, largeur_panneau):
+    """Bande verte de toute la largeur des 3 panneaux ; QR code et adresse dans le panneau du milieu (dos du dépliant
+    sur la face extérieure), pour ne pas être coupés par les plis."""
+    b = Image.new("RGB", (largeur, haut), VERT)
+    ImageDraw.Draw(b).rectangle([0, 0, largeur, max(2, haut // 22)], fill=OR)
+    b.paste(bande(largeur_panneau, haut), (round((largeur - largeur_panneau) / 2), 0))
+    return b
+
+
+def imprimer_a4(fid, dst):
+    """PDF à imprimer : 2 feuilles A4 paysage, 3 panneaux par face, à imprimer en recto-verso « retourner sur le bord court »
+    puis à plier en trois. Les panneaux A3 de l'éditeur sont réduits à l'échelle (rien n'est coupé ni déformé)."""
+    s = pymupdf.open(os.path.join(ORIGINAUX, fid, "original.pdf"))
+    assert len(s) == 6, f"{fid} : {len(s)} pages (6 attendues pour un dépliant)"
+    pw, ph = s[0].rect.width, s[0].rect.height
+    hb, marge = 34, 8                                          # bande en bas, petite marge en haut
+    k = (A4_H - hb - marge) / ph                               # même échelle pour les 3 panneaux
+    lp, hp = pw * k, ph * k
+    x0 = (A4_L - 3 * lp) / 2
+    o = pymupdf.open()
+    for face in IMPOSITION_6:
+        page = o.new_page(width=A4_L, height=A4_H)
+        for j, n in enumerate(face):
+            page.show_pdf_page(pymupdf.Rect(x0 + j * lp, marge, x0 + (j + 1) * lp, marge + hp), s, n - 1)
+        img = bande_feuille(round(3 * lp * 4), round(hb * 4), round(lp * 4))
+        tampon = io.BytesIO()
+        img.save(tampon, "PNG")
+        r = pymupdf.Rect(x0, A4_H - hb, x0 + 3 * lp, A4_H)
+        page.insert_image(r, stream=tampon.getvalue())
+        page.insert_link({"kind": pymupdf.LINK_URI, "from": r, "uri": URL})
+    o.save(dst, garbage=3, deflate=True)
+
+
 def nom_page(fid, n):
     return f"flyer-{fid}-" + ({1: "recto", 2: "verso"}.get(n) or f"p{n}") + ".jpg"
 
@@ -120,6 +162,10 @@ def fabriquer(fid):
     pdf = os.path.join(SORTIE, f"flyer-{fid}.pdf")
     tamponner_pdf(os.path.join(dossier, "original.pdf"), pdf)
     faits.append(os.path.basename(pdf))
+    if len(pages) == 6:                                        # dépliant : version prête à imprimer sur A4 (demande d'Ahmed, 25/10/2026)
+        a4 = os.path.join(SORTIE, f"flyer-{fid}-a4.pdf")
+        imprimer_a4(fid, a4)
+        faits.append(os.path.basename(a4))
     return len(pages), faits
 
 

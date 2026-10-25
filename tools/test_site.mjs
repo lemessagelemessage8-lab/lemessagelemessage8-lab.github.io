@@ -122,6 +122,12 @@ ok(/function carteFlyer\(/.test(lire("js/app.js")) && /flyer-langue/.test(lire("
    "flyers : rangement par langue (un titre par langue) absent");
 for (const l of Object.keys(T)) ok((String(T[l].prevPage || T.en.prevPage).match(/1/g) || []).length === 1 && (String(T[l].nextPage || T.en.nextPage).match(/2/g) || []).length === 1, "prevPage/nextPage (" + l + ") : un seul chiffre, remplacé par la page voisine");
 for (const l of Object.keys(T)) ok((String(T[l].pageOf || T.en.pageOf).match(/2/g) || []).length === 1, "pageOf (" + l + ") : un seul « 2 » (le total, remplacé par le nombre de pages)");
+// dépliants de 6 panneaux : le PDF proposé est la version A4 prête à imprimer (2 feuilles, 3 panneaux par face), demande d'Ahmed 25/10/2026
+for (const f of D.flyers) if ((f.pages || []).length === 6) {
+  ok(/-a4\.pdf$/.test(f.pdf), "flyer " + f.id + " : 6 panneaux mais le PDF proposé n'est pas la version A4 à imprimer");
+  const pdf = fs.readFileSync(path.join(racine, f.pdf), "latin1");
+  ok((pdf.match(/\/Type\s*\/Page[^s]/g) || []).length === 2 && /MediaBox\s*\[\s*0 0 842 595/.test(pdf), "flyer " + f.id + " : le PDF A4 doit avoir 2 feuilles A4 paysage");
+}
 ok(/function pagesDe\(/.test(lire("js/app.js")) && /showPage\(vPage \+ 1\)/.test(lire("js/app.js")), "lecteur de flyer : toutes les pages (pas seulement recto/verso)");
 for (const s of ["flyers", "quran", "media", "links"]) for (const i of D[s]) {
   for (const l of Object.keys(T)) ok(i.descKey ? T[l][i.descKey] : (i.desc && i.desc[l]), `description absente en ${l} : ${i.name || i.id}`);
