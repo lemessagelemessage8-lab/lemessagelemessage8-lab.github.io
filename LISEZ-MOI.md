@@ -122,10 +122,11 @@ Deux autres flyers anglais de la même série (Islamic Information Center, Duba�
 « The Concept of God in Islam » (`concept-god-en`) et « Misconceptions about Islam » (`misconceptions-en`). Même méthode :
 recto = côté couverture, verso = intérieur, PDF A4 paysage de 2 pages, titres et descriptions dans les 19 langues dans `js/data.js`.
 
-## Dépliants de 6 panneaux : PDF prêt à imprimer sur A4 (25/10/2026, demande d'Ahmed)
-Les 10 flyers espagnols de l'Islamic Information Center ont 6 panneaux (couverture + pages 1 à 5), au format A3 de l'éditeur.
-`tools/flyers.py` fabrique pour chacun `flyers/flyer-<id>-a4.pdf` : 2 feuilles A4 paysage, 3 panneaux par face, réduits à
-l'échelle, dans l'ordre de l'éditeur pour un pli roulé en trois (extérieur « 4 | 5 | couverture », intérieur « 1 | 2 | 3 »), tampon
-message.clicvia.com + QR code en bas de chaque feuille. C'est ce PDF que donnent le bouton « PDF » et le lecteur. Impression :
-recto-verso « retourner sur le bord court », puis plier en trois. Le test vérifie 2 feuilles A4 paysage pour chaque dépliant.
-
+## RÈGLE : tout flyer téléchargeable est imprimable sur A4 recto-verso (règle d'Ahmed, 25/10/2026)
+Le PDF proposé par le bouton « PDF » et par le lecteur est TOUJOURS `flyers/flyer-<id>-a4.pdf`, fabriqué par `tools/flyers.py` :
+exactement 2 feuilles A4 paysage (842 × 595 pt), à imprimer en recto-verso « retourner sur le bord court » puis plier en trois,
+tampon message.clicvia.com + QR code en bas de chaque feuille (dans la feuille). Pages de l'éditeur réduites à l'échelle, jamais
+coupées. Flyer de 2 pages (Letter ou A4) : une page par feuille. Dépliant de 6 panneaux (les 10 espagnols de l'Islamic Information
+Center, format A3) : 3 panneaux par face dans l'ordre de l'éditeur, extérieur « 4 | 5 | couverture », intérieur « 1 | 2 | 3 ».
+Un flyer d'un autre nombre de pages arrête l'outil : demander à Ahmed comment l'imprimer avant de le publier.
+Le test refuse un flyer dont le PDF proposé n'a pas exactement 2 feuilles A4 paysage. Nouveau flyer : `python tools/flyers.py <id>`.
