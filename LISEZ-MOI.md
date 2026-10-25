@@ -30,10 +30,20 @@ Sans réglage, il ouvre la messagerie du visiteur vers `contactEmail`.
 Pour recevoir les messages directement : créez un formulaire gratuit sur https://formspree.io
 et collez son adresse dans `formEndpoint`.
 
-### Ajouter un flyer
-1. Exportez le fichier Excel en PDF (Fichier › Exporter › PDF, « Ajuster la feuille sur une page »).
-2. Mettez le PDF et deux images (recto, verso) dans `flyers/`.
-3. Ajoutez une entrée dans `flyers:` de `js/data.js`.
+### Ajouter un flyer (25/10/2026 : tampon « message.clicvia.com » + QR code obligatoire)
+1. Rangez l'ORIGINAL hors du site, dans le dépôt privé projets-ahmed : `Le message/flyers originaux/<id>/original.pdf`
+   + une image par page `page-1.jpg`, `page-2.jpg`… (pour un Excel : Fichier › Exporter › PDF, « Ajuster la feuille sur une page »).
+2. Sur le PC, dans `site/` : `python tools/flyers.py <id>` → fabrique dans `flyers/` les pages et le PDF TAMPONNÉS (une bande verte
+   avec le QR code et l'adresse du site est ajoutée SOUS chaque page : rien du flyer n'est caché) et met à jour `flyers/tampons.json`.
+3. Ajoutez une entrée dans `flyers:` de `js/data.js` (`lang` = langue du flyer ; `pages` = liste des images si plus de 2 pages ;
+   `source` si ce n'est pas notre flyer ; titre et description dans les 19 langues).
+4. `node tools/test_site.mjs` : refuse un flyer sans tampon (taille différente de tampons.json) ou une page manquante.
+Le site range les flyers PAR LANGUE (un titre par langue, la langue du visiteur d'abord) ; le lecteur fait défiler toutes les pages.
+
+### Flyers espagnols ajoutés le 25/10/2026
+10 dépliants de 6 pages de l'Islamic Information Center (Dubaï), série « L.25 SPANISH » (janvier 2026, « FREE COPY ») :
+https://iicelibrary.com/wp-content/uploads/L25_SPANISH_AboutIslamFlyers-Web.pdf — chaque page du PDF montre à gauche une colonne
+« CONTENTS » (vignettes des autres flyers) : elle est coupée (x ≥ 202 pt) ; les 10 flyers sont dans `flyers originaux/<id>-es/`.
 
 ### Ajouter une langue (arabe, italien, turc…)
 Copiez un bloc de `js/i18n.js` (ex. `fr`), changez la clé, traduisez, et ajoutez l'option

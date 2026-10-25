@@ -102,10 +102,27 @@ ok(/^[\w-]{11}$/.test(C.filmTrailerId) && C.filmFull && /^[\w-]{11}$/.test(C.fil
 ok(!/justwatch|amazon\.|apple\.com/.test(html + lire("js/config.js")), "lien payant pour le film : Ahmed veut un lien gratuit");
 
 // --- données : fichiers des flyers présents, descriptions dans les 4 langues, liens en https ---
+// 25/10/2026 (Ahmed) : chaque page de chaque flyer porte le tampon « message.clicvia.com » + QR code (tools/flyers.py,
+// à partir des originaux du dépôt privé) ; tampons.json = fichiers tamponnés et leur taille : un fichier remplacé sans
+// tampon (taille différente) ou un flyer ajouté sans passer par l'outil est refusé
+const tampons = JSON.parse(lire("flyers/tampons.json"));
 for (const f of D.flyers) {
   for (const k of ["pdf", "front", "back"]) ok(fs.existsSync(path.join(racine, f[k])), "fichier absent : " + f[k]);
   ok(fs.existsSync(path.join(racine, f.front.replace(/\.jpg$/, "-mini.jpg"))), "vignette absente : " + f.front);
+  const pages = f.pages || [f.front, f.back];
+  ok(pages[0] === f.front && pages[1] === f.back, "flyer " + f.id + " : pages[0]/pages[1] doivent être le recto et le verso");
+  for (const fic of [f.pdf, ...pages, f.front.replace(/\.jpg$/, "-mini.jpg"), f.back.replace(/\.jpg$/, "-mini.jpg")]) {
+    ok(fs.existsSync(path.join(racine, fic)), "page de flyer absente : " + fic);
+    const nom = path.basename(fic);
+    ok(tampons[nom] && fs.existsSync(path.join(racine, fic)) && fs.statSync(path.join(racine, fic)).size === tampons[nom],
+       "flyer sans tampon message.clicvia.com (lancer python tools/flyers.py " + f.id + ") : " + nom);
+  }
 }
+ok(/function carteFlyer\(/.test(lire("js/app.js")) && /flyer-langue/.test(lire("js/app.js")) && /\.flyer-langue/.test(lire("css/style.css")),
+   "flyers : rangement par langue (un titre par langue) absent");
+for (const l of Object.keys(T)) ok((String(T[l].prevPage || T.en.prevPage).match(/1/g) || []).length === 1 && (String(T[l].nextPage || T.en.nextPage).match(/2/g) || []).length === 1, "prevPage/nextPage (" + l + ") : un seul chiffre, remplacé par la page voisine");
+for (const l of Object.keys(T)) ok((String(T[l].pageOf || T.en.pageOf).match(/2/g) || []).length === 1, "pageOf (" + l + ") : un seul « 2 » (le total, remplacé par le nombre de pages)");
+ok(/function pagesDe\(/.test(lire("js/app.js")) && /showPage\(vPage \+ 1\)/.test(lire("js/app.js")), "lecteur de flyer : toutes les pages (pas seulement recto/verso)");
 for (const s of ["flyers", "quran", "media", "links"]) for (const i of D[s]) {
   for (const l of Object.keys(T)) ok(i.descKey ? T[l][i.descKey] : (i.desc && i.desc[l]), `description absente en ${l} : ${i.name || i.id}`);
   if (i.title) for (const l of Object.keys(T)) ok(i.title[l], `titre absent en ${l} : ${i.id}`);

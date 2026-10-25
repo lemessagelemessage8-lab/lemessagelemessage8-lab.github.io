@@ -93,14 +93,28 @@
   function renderFlyers() {
     var g = document.getElementById("flyers-grid"); g.innerHTML = "";
     var fbar = document.getElementById("flyers-filter"); fbar.innerHTML = "";
-    ["all"].concat(unique(D.flyers.map(function (f) { return f.lang; }))).forEach(function (l) {
-      var b = el("button", { type: "button" }, esc(l === "all" ? t("all") : (t("langNames")[l] || l)));
+    // 25/10/2026 (Ahmed) : flyers rangés PAR LANGUE — la langue du visiteur d'abord, puis la langue qui a le plus de flyers
+    var nb = {}; D.flyers.forEach(function (f) { nb[f.lang] = (nb[f.lang] || 0) + 1; });
+    var langues = unique(D.flyers.map(function (f) { return f.lang; })).sort(function (a, b) {
+      return (b === lang) - (a === lang) || nb[b] - nb[a] || (t("langNames")[a] || a).localeCompare(t("langNames")[b] || b);
+    });
+    ["all"].concat(langues).forEach(function (l) {
+      var b = el("button", { type: "button" }, esc(l === "all" ? t("all") + " (" + D.flyers.length + ")" : (t("langNames")[l] || l) + " (" + nb[l] + ")"));
       b.classList.toggle("active", filters.flyers === l);
       b.onclick = function () { filters.flyers = l; renderFlyers(); };
       fbar.appendChild(b);
     });
-    D.flyers.forEach(function (f) {
-      if (filters.flyers !== "all" && f.lang !== filters.flyers) return;
+    langues.forEach(function (l) {
+      if (filters.flyers !== "all" && l !== filters.flyers) return;
+      var titre = el("h3", { class: "flyer-langue", id: "flyers-" + l }, esc(t("langNames")[l] || l) + ' <span>(' + nb[l] + ")</span>");
+      g.appendChild(titre);
+      D.flyers.filter(function (f) { return f.lang === l; }).forEach(function (f) { g.appendChild(carteFlyer(f)); });
+    });
+  }
+
+  function pagesDe(f) { return f.pages && f.pages.length ? f.pages : [f.front, f.back]; }
+
+  function carteFlyer(f) {
       var c = el("article", { class: "card flyer-card", id: "flyer-" + f.id });
       c.innerHTML =
         '<div class="flyer-thumbs">' +
@@ -114,8 +128,7 @@
       read.onclick = function () { openViewer(f, 0); };
       var dl = el("a", { class: "share-btn", href: f.pdf, target: "_blank", download: "" }, "⬇ PDF");
       c.appendChild(actions([read, dl, shareButton(loc(f.title), "flyer-" + f.id)]));
-      g.appendChild(c);
-    });
+      return c;
   }
 
   function mini(src) { return src.replace(/\.jpg$/, "-mini.jpg"); }
@@ -133,24 +146,31 @@
     document.getElementById("viewer-close").focus();
   }
   function showPage(n) {
+    var P = pagesDe(vFlyer);
+    n = Math.max(0, Math.min(P.length - 1, n));
     vPage = n;
     vStage.classList.remove("zoomed");
-    vImg.src = n === 0 ? vFlyer.front : vFlyer.back;
-    vImg.alt = loc(vFlyer.title) + " — " + t("pageOf").replace("{n}", n + 1);
-    document.getElementById("viewer-page").textContent = t("pageOf").replace("{n}", n + 1) + " · " + (n === 0 ? t("front") : t("back"));
+    vImg.src = P[n];
+    // « Page {n} sur 2 » : le seul « 2 » du texte traduit est le total -> remplacé par le vrai nombre de pages (avant {n})
+    var libelle = t("pageOf").replace("2", P.length).replace("{n}", n + 1);
+    vImg.alt = loc(vFlyer.title) + " — " + libelle;
+    document.getElementById("viewer-page").textContent = libelle + (P.length > 2 ? "" : " · " + (n === 0 ? t("front") : t("back")));
     document.getElementById("viewer-prev").disabled = n === 0;
-    document.getElementById("viewer-next").disabled = n === 1;
+    document.getElementById("viewer-next").disabled = n === P.length - 1;
+    // boutons « ‹ Page 1 » / « Page 2 › » : le chiffre suit la page en cours (flyers de plus de 2 pages, 25/10/2026)
+    document.querySelector("#viewer-prev span").textContent = t("prevPage").replace("1", Math.max(1, n));
+    document.querySelector("#viewer-next span").textContent = t("nextPage").replace("2", Math.min(P.length, n + 2));
   }
   function closeViewer() { viewer.hidden = true; document.body.style.overflow = ""; vImg.removeAttribute("src"); }
-  document.getElementById("viewer-prev").onclick = function () { showPage(0); };
-  document.getElementById("viewer-next").onclick = function () { showPage(1); };
+  document.getElementById("viewer-prev").onclick = function () { showPage(vPage - 1); };
+  document.getElementById("viewer-next").onclick = function () { showPage(vPage + 1); };
   document.getElementById("viewer-close").onclick = closeViewer;
   vImg.onclick = function () { vStage.classList.toggle("zoomed"); };
   document.addEventListener("keydown", function (e) {
     if (viewer.hidden) return;
     if (e.key === "Escape") closeViewer();
-    if (e.key === "ArrowRight") showPage(1);
-    if (e.key === "ArrowLeft") showPage(0);
+    if (e.key === "ArrowRight") showPage(vPage + 1);
+    if (e.key === "ArrowLeft") showPage(vPage - 1);
   });
   // Glisser le doigt à gauche/droite sur téléphone pour changer de page
   var touchX = null;
@@ -158,7 +178,7 @@
   vStage.addEventListener("touchend", function (e) {
     if (touchX === null || vStage.classList.contains("zoomed")) return;
     var dx = e.changedTouches[0].clientX - touchX; touchX = null;
-    if (dx < -50) showPage(1); else if (dx > 50) showPage(0);
+    if (dx < -50) showPage(vPage + 1); else if (dx > 50) showPage(vPage - 1);
   });
 
   // ───────── Corans / médias / liens ─────────
