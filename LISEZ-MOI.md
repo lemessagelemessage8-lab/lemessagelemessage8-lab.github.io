@@ -138,3 +138,16 @@ Coran ni des hadiths en catalan : le catalan affiche les textes officiels EN CAS
 hadiths), avec une phrase en catalan qui le dit ; nous ne traduisons jamais les versets (`tools/versets.py` et `tools/paroles.py` :
 « ca » = copie du castillan, vérifié par le test). Textes de l'interface écrits par Claude : à faire relire par un natif.
 
+## Flyers en catalan (26/10/2026)
+Les 10 dépliants espagnols de l'Islamic Information Center sont traduits en catalan (`<id>-ca`, langue « ca ») :
+1. `python tools/flyers_texte.py <id>-es` : texte espagnol de chaque panneau (dépôt privé, `flyers originaux/<id>-es/`) ;
+2. traduction en `flyers originaux/<id>-es/texte-ca.json` (blocs : titre, sous_titre, para, puce, citation, bulle ; `sacre` = verset ou
+   parole du Prophète) ;
+3. `python tools/flyers_ca.py <id>-es` : mise en page HTML de 6 panneaux au format des originaux (taille du texte ajustée seule),
+   imprimée par Chrome dans `flyers originaux/<id>-ca/` (original.pdf + page-N.jpg) ;
+4. `python tools/flyers.py <id>-ca` : tampon, vignettes, PDF A4 recto-verso ; fiches dans `js/data.js` (titres et descriptions en 20 langues).
+Versets et paroles du Prophète : astérisque + note « traducció no oficial » (aucune traduction officielle en catalan) + lien vers la
+traduction officielle castillane ; éditeur d'origine cité sur la couverture et sur le dernier panneau. Traduction faite par Claude :
+à faire relire par un natif. Points relevés à la traduction : quelques références de l'original douteuses (ex. Coran 2:185 pour un
+verset qui est 39:1, « Corán 20–21 » corrigé en 51:20-21), coquilles de l'espagnol corrigées dans le sens.
+
