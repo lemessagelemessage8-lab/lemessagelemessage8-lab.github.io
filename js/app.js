@@ -346,8 +346,15 @@
       return;
     }
     status.textContent = t("fSending");
-    fetch(CFG.formEndpoint, { method: "POST", body: data, headers: { Accept: "application/json" } })
-      .then(function (r) { if (!r.ok) throw 0; merci(form, status, mail); })
+    // FormSubmit répond 200 même quand il refuse (formulaire pas encore activé) : on lit « success » ; en cas de refus, secours
+    function envoyer(url) {
+      return fetch(url, { method: "POST", body: data, headers: { Accept: "application/json" } }).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || j.success === false || j.success === "false") throw 0; });
+      });
+    }
+    envoyer(CFG.formEndpoint)
+      .catch(function () { if (CFG.formBackup) return envoyer(CFG.formBackup); throw 0; })
+      .then(function () { merci(form, status, mail); })
       .catch(function () { status.textContent = t("fErr"); });
   });
 

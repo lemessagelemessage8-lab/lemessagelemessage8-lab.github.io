@@ -7,7 +7,10 @@ window.SITE_CONFIG = {
   // 1) Créez un compte gratuit sur https://formspree.io, créez un formulaire,
   //    et collez ici son adresse (ex. "https://formspree.io/f/abcdwxyz").
   // 2) Si vide, le formulaire ouvre la messagerie du visiteur vers contactEmail.
-  formEndpoint: "https://formspree.io/f/mwlpakqj",   // 15/10/2026 (Ahmed) : le même formulaire que tous ses sites (champ caché « site »)
+  // 26/10/2026 (Ahmed) : les messages vont à la boîte du site, par FormSubmit (gratuit, sans compte : un lien d'activation est
+  // envoyé une seule fois à cette adresse). Secours si FormSubmit refuse (pas encore activé, panne) : le Formspree commun d'Ahmed.
+  formEndpoint: "https://formsubmit.co/ajax/lemessagelemessage8@gmail.com",
+  formBackup: "https://formspree.io/f/mwlpakqj",
   contactEmail: "lemessagelemessage8@gmail.com",
 
   // Musique d'accueil : vidéo YouTube officielle « The Message » (Maurice Jarre),

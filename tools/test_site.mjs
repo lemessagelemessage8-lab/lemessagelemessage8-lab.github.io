@@ -142,7 +142,10 @@ ok(/^[^@\s]+@[^@\s]+\.[a-z]+$/.test(window.SITE_CONFIG.contactEmail) && !/exempl
 // --- formulaire de contact : e-mail obligatoire et confirmation claire dans la carte (demande d'Ahmed, 15/10/2026) ---
 ok(/<input name="email" type="email" autocomplete="email" required>/.test(html), "contact : l'e-mail doit être obligatoire (required)");
 const appJs = lire("js/app.js");
-ok(/formEndpoint: "https:\/\/formspree\.io\/f\/mwlpakqj"/.test(lire("js/config.js")) && /name="site" value="The Message"/.test(html), "contact : envoi par le formulaire commun Formspree (mwlpakqj) avec le champ « site »");
+// 26/10/2026 (Ahmed) : les messages vont à la boîte du site (FormSubmit) ; secours Formspree commun si FormSubmit refuse
+ok(/formEndpoint: "https:\/\/formsubmit\.co\/ajax\/lemessagelemessage8@gmail\.com"/.test(lire("js/config.js")) && /formBackup: "https:\/\/formspree\.io\/f\/mwlpakqj"/.test(lire("js/config.js")) && /name="site" value="The Message"/.test(html), "contact : envoi vers lemessagelemessage8@gmail.com (FormSubmit) avec secours Formspree");
+ok(/CFG\.formBackup/.test(lire("js/app.js")) && /j\.success === "false"/.test(lire("js/app.js")), "contact : le secours doit prendre le relais quand FormSubmit refuse");
+for (const f of ["index.html", "paroles-du-prophete/index.html"]) ok(/connect-src[^;]*https:\/\/formsubmit\.co/.test(lire(f)), f + " : formsubmit.co absent de la politique de sécurité");
 ok(/t\("fEmailErr"\)/.test(appJs) && /function merci\(/.test(appJs) && /form\.hidden = true/.test(appJs), "contact : contrôle de l'e-mail et confirmation dans la carte absents de js/app.js");
 const i18nTout = fs.readdirSync(path.join(racine, "js")).filter(n => /^i18n.*\.js$/.test(n)).map(n => lire("js/" + n)).join("\n");
 for (const k of ["fEmailErr", "fReply", "fAnother"]) ok((i18nTout.match(new RegExp(k + ': "', "g")) || []).length === LANGUES.length, `contact : texte ${k} absent d'une des ${LANGUES.length} langues`);
