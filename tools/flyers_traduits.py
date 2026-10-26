@@ -49,7 +49,8 @@ LANGUES = {
 # None = citation libre (paraphrase), pas un verset : garde notre traduction avec l'astérisque.
 CORRECTIONS = {
     ("coran-es", "2:185", 0): "39:1",          # « La revelación del Libro procede de Dios… » = 39:1 (le 2e 2:185 est juste)
-    ("proposito-vida-es", "19:36", 0): None,   # paraphrase, pas le texte de 19:36
+    # proposito-vida « 19:36 » : l'original paraphrase ; on met le VRAI verset officiel (Ahmed, 26/10/2026 : ne traduire un verset
+    # que s'il n'existe pas dans la langue)
 }
 
 CSS = open(os.path.join(ICI, "flyers_traduits.css"), encoding="utf-8").read() if os.path.exists(os.path.join(ICI, "flyers_traduits.css")) else ""
@@ -103,6 +104,12 @@ def verset_officiel(cle, ref, memo):
     return " ".join(morceaux)
 
 
+def entre(texte, g0, g1):
+    """Met le verset entre guillemets, sauf s'il en contient déjà (« (’Isa sagte:) „Und gewiß…“ ») : jamais de guillemets doublés."""
+    texte = texte.strip()
+    return texte if g0 in texte else g0 + texte.strip(" „“\"«»") + g1
+
+
 def officialiser(fid, d, conf, memo):
     """Remplace les versets référencés par la traduction officielle ; retourne le nombre de versets remplacés."""
     if not conf["officiel"]:
@@ -113,12 +120,19 @@ def officialiser(fid, d, conf, memo):
     c = d["couverture"]                                         # verset en sous-titre de couverture : « „…“ (Koran 41:53) »
     m = re.search(r"\(" + mot + r" (\d+:\d+(?:-\d+)?)\)\s*$", c.get("sous_titre", ""))
     if m:
-        c["sous_titre"] = g0 + verset_officiel(cle, m.group(1), memo).strip(" „“\"«»") + g1 + f" ({mot} {m.group(1)})"
+        c["sous_titre"] = entre(verset_officiel(cle, m.group(1), memo), g0, g1) + f" ({mot} {m.group(1)})"
         n += 1
     for p in d["panneaux"]:
         for b in p:
             r = re.fullmatch(mot + r" (\d+:\d+(?:-\d+)?)", (b.get("ref") or "").replace("–", "-"))
             if not r:
+                # verset CITÉ dans un paragraphe : « „…“ (Koran 16:15) » -> texte officiel (Ahmed, 26/10/2026)
+                motif = re.escape(g0) + r"[^" + re.escape(g1) + r"]+" + re.escape(g1) + r"(\s*\(" + mot + r" (\d+:\d+(?:-\d+)?)\))"
+                t, k = re.subn(motif, lambda m: entre(verset_officiel(cle, m.group(2), memo), g0, g1) + m.group(1), b["texte"])
+                if k:
+                    b["texte"] = t; n += k
+                    if not re.search(r"Prophet|Hadith", t):
+                        b["officiel"] = True; b.pop("sacre", None)
                 continue
             ref = r.group(1)
             rang = vus.get(ref, 0); vus[ref] = rang + 1
@@ -134,7 +148,7 @@ def officialiser(fid, d, conf, memo):
             t = b["texte"]
             i = t.find(g0)
             intro = t[:i] if i > 0 else ""                       # « Allah, der Erhabene, sagte: » gardé
-            b["texte"] = intro + g0 + texte.strip(" „“\"«»") + g1
+            b["texte"] = intro + entre(texte, g0, g1)
             b["officiel"] = True
             b.pop("sacre", None)
             n += 1
