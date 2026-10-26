@@ -178,6 +178,17 @@ def fabriquer(fid):
     a4 = os.path.join(SORTIE, f"flyer-{fid}-a4.pdf")           # version à imprimer, A4 recto-verso : POUR TOUS (règle d'Ahmed, 25/10/2026)
     imprimer_a4(fid, a4)
     faits.append(os.path.basename(a4))
+    if len(pages) == 6:
+        # dépliant : images des 2 FEUILLES A4 (vignettes et lecteur du site), pour que le visiteur voie ce qu'il imprime
+        # (Ahmed, 26/10/2026 : les 6 panneaux en hauteur faisaient croire que le PDF n'était pas en A4 recto-verso)
+        for k, p in enumerate(pymupdf.open(a4), 1):
+            dst = os.path.join(SORTIE, f"flyer-{fid}-a4-{k}.jpg")
+            pix = p.get_pixmap(dpi=150)
+            im = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
+            im.save(dst, "JPEG", quality=85, optimize=True)
+            mini = im.resize((MINI_LARGEUR * 2, round(im.height * MINI_LARGEUR * 2 / im.width)), Image.LANCZOS)
+            mini.save(dst.replace(".jpg", "-mini.jpg"), "JPEG", quality=80, optimize=True)
+            faits += [os.path.basename(dst), os.path.basename(dst.replace(".jpg", "-mini.jpg"))]
     return len(pages), faits
 
 

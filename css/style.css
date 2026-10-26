@@ -138,6 +138,7 @@ a { color: var(--green-2); }
 .flyer-thumbs a { display: block; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
 .flyer-thumbs img { width: 100%; display: block; aspect-ratio: 11 / 8.5; object-fit: cover; object-position: top; }
 .flyer-thumbs span { display: block; text-align: center; font-size: .78rem; color: var(--muted); padding: 2px; }
+.flyer-thumbs.a4 img { aspect-ratio: 297 / 210; object-fit: contain; background: #fff; }
 
 /* Formulaire */
 .form { display: grid; gap: 16px; }

@@ -117,7 +117,7 @@
   function carteFlyer(f) {
       var c = el("article", { class: "card flyer-card", id: "flyer-" + f.id });
       c.innerHTML =
-        '<div class="flyer-thumbs">' +
+        '<div class="flyer-thumbs' + (/-a4-1\.jpg$/.test(f.front) ? " a4" : "") + '">' +   // dépliant : vignettes = les 2 feuilles A4 à imprimer
           '<button type="button" data-page="0"><img src="' + mini(f.front) + '" alt="' + esc(t("front")) + '" loading="lazy"><span>' + esc(t("prevPage")) + " — " + esc(t("front")) + "</span></button>" +
           '<button type="button" data-page="1"><img src="' + mini(f.back) + '" alt="' + esc(t("back")) + '" loading="lazy"><span>' + esc(t("nextPage")) + " — " + esc(t("back")) + "</span></button>" +
         "</div>" +

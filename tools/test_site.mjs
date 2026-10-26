@@ -128,7 +128,14 @@ for (const f of D.flyers) {
   ok(/-a4\.pdf$/.test(f.pdf), "flyer " + f.id + " : le PDF proposé n'est pas la version A4 à imprimer (tools/flyers.py)");
   const pdf = fs.readFileSync(path.join(racine, f.pdf), "latin1");
   ok((pdf.match(/\/Type\s*\/Page[^s]/g) || []).length === 2 && (pdf.match(/MediaBox\s*\[\s*0 0 842 595\s*\]/g) || []).length === 2, "flyer " + f.id + " : le PDF A4 doit avoir 2 feuilles A4 paysage");
+  // dépliant (26/10/2026) : vignettes et début du lecteur = les 2 feuilles A4 (sinon les 6 panneaux en hauteur font croire à un autre format)
+  if ((f.pages || []).some(p => /-p6\.jpg$/.test(p))) {
+    ok(/-a4-1\.jpg$/.test(f.front) && /-a4-2\.jpg$/.test(f.back) && f.pages[0] === f.front && f.pages[1] === f.back, "flyer " + f.id + " : les vignettes doivent montrer les 2 feuilles A4");
+    for (const p of f.pages.concat([f.front.replace(".jpg", "-mini.jpg"), f.back.replace(".jpg", "-mini.jpg")])) ok(fs.existsSync(path.join(racine, p)), "image absente : " + p);
+  }
 }
+// allemand (26/10/2026) : versets du Coran dans la traduction OFFICIELLE de Bubenheim (tools/flyers_traduits.py)
+ok(D.flyers.filter(f => f.lang === "de").length >= 10 && D.flyers.filter(f => f.lang === "de").every(f => /Bubenheim/.test(f.desc.de)), "flyers allemands : 10, versets officiels (Bubenheim)");
 ok(/function pagesDe\(/.test(lire("js/app.js")) && /showPage\(vPage \+ 1\)/.test(lire("js/app.js")), "lecteur de flyer : toutes les pages (pas seulement recto/verso)");
 for (const s of ["flyers", "quran", "media", "links"]) for (const i of D[s]) {
   for (const l of Object.keys(T)) ok(i.descKey ? T[l][i.descKey] : (i.desc && i.desc[l]), `description absente en ${l} : ${i.name || i.id}`);

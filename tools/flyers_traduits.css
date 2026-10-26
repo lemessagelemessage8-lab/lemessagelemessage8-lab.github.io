@@ -1,0 +1,37 @@
+@page { size: 393pt 842pt; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: 'Source Sans 3', 'Segoe UI', Arial, sans-serif; color: #1f2a24; }
+.p { width: 393pt; height: 842pt; overflow: hidden; position: relative; page-break-after: always; background: #fff; }
+.p:last-child { page-break-after: auto; }
+.contenu { position: absolute; left: 20pt; right: 20pt; top: 22pt; bottom: 20pt; display: flex; flex-direction: column; }
+.texte { flex: 1; overflow: hidden; font-size: var(--t, 13pt); line-height: 1.34; }
+.num { position: absolute; top: 8pt; right: 12pt; background: #c9a54c; color: #0f3b2e; font: 700 9pt 'Source Sans 3', sans-serif; padding: 1pt 5pt; border-radius: 2pt; }
+h2 { font-family: 'Cormorant Garamond', Georgia, serif; color: #0f6b4c; text-align: center; font-size: 1.9em; line-height: 1.02;
+     margin: .35em 0 .3em; text-transform: uppercase; font-weight: 700; }
+h3 { color: #a6242a; font-style: italic; font-size: 1.12em; margin: .65em 0 .2em; text-transform: uppercase; font-weight: 700; }
+p { margin: 0 0 .45em; text-align: justify; hyphens: auto; }
+.puce { padding-left: 1.1em; position: relative; }
+.puce::before { content: "•"; position: absolute; left: .2em; color: #0f6b4c; font-weight: 700; }
+.cit { text-align: center; font-style: italic; font-weight: 600; color: #0f6b4c; margin: .35em .4em .55em; }
+.bulle { font-style: italic; font-weight: 600; text-align: center; margin: .5em .6em .6em; padding: .55em .8em;
+         border: 1.5pt solid #c9a54c; border-radius: 14pt; background: #fbf6e8; color: #0f3b2e; }
+.ref { display: block; margin: .25em auto 0; width: max-content; max-width: 100%; font: 700 .72em 'Source Sans 3', sans-serif;
+       font-style: normal; color: #fff; background: #c9a54c; border-radius: 3pt; padding: .05em .45em; }
+.etoile { color: #a6242a; font-style: normal; font-weight: 700; }
+.note { font-size: 7.4pt; line-height: 1.25; color: #5b6b62; border-top: .6pt solid #c9a54c; padding-top: 3pt; margin-top: 4pt; }
+.credit { font-size: 7.6pt; line-height: 1.3; color: #0f3b2e; background: #f7f1e3; border: .6pt solid #c9a54c; border-radius: 4pt;
+          padding: 4pt 6pt; margin-top: 4pt; text-align: center; }
+.couv { background: #0f3b2e; color: #f7f1e3; }
+.couv .contenu { top: 0; bottom: 0; left: 0; right: 0; }
+.bandeau { display: flex; justify-content: space-between; align-items: center; margin-top: 230pt; background: #c9a54c; color: #0f3b2e;
+           font: 700 10pt 'Source Sans 3', sans-serif; padding: 5pt 14pt; letter-spacing: .04em; }
+.titre-couv { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; color: #fff; text-align: center; font-size: 40pt;
+              line-height: 1; margin: 0; padding: 0 18pt; position: absolute; top: 40pt; left: 0; right: 0; height: 180pt;
+              display: flex; align-items: center; justify-content: center; text-transform: uppercase; }
+.sous-couv { text-align: center; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 600; font-size: 19pt;
+             line-height: 1.2; color: #e3c77d; padding: 0 26pt; margin-top: 38pt; }
+.ornement { text-align: center; color: #c9a54c; font-size: 40pt; margin-top: 30pt; }
+.arabe { text-align: center; font-family: 'Amiri', serif; color: #c9a54c; font-size: 46pt; margin-top: 4pt; }
+.pied-couv { position: absolute; bottom: 18pt; left: 18pt; right: 18pt; text-align: center; font-size: 8.6pt; line-height: 1.35; color: #f7f1e3; }
+.pied-couv b { color: #e3c77d; }
