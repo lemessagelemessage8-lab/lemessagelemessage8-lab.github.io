@@ -55,6 +55,24 @@ window.VERSETS = {
    "112:1-4": "«Di: Él es Al-lah, Uno. Al-lah es el Absoluto. No engendró ni fue engendrado. Y no hay nada ni nadie que sea semejante a Él.»"
   }
  },
+ "ca": {
+  "source": "Muhammad Isa García — traducció oficial en castellà (no n'hi ha cap en català)",
+  "url": "https://quranenc.com/es/browse/spanish_garcia",
+  "basmala": "En el nombre de Dios, el Compasivo con toda la creación, el Misericordioso con los creyentes",
+  "versets": {
+   "21:107": "«No te he enviado [¡Oh, Mujámmad!] sino como misericordia para todos los seres.»",
+   "51:56": "«No he creado a los yinn y a los seres humanos sino para que Me adoren.»",
+   "2:2": "«Este es el Libro del cual no hay duda, es guía para los que son conscientes de Dios y Le temen devocionalmente»",
+   "68:4": "«Eres de una naturaleza y moral grandiosas.»",
+   "7:156": "«… Mi misericordia lo abarca todo…»",
+   "49:13": "«… los congregué en pueblos y tribus para que se reconozcan los unos a los otros. El mejor de ustedes ante Dios es el de más piedad…»",
+   "16:97": "«Al creyente que obre rectamente, sea varón o mujer, le concederé una vida buena…»",
+   "17:23": "«Tu Señor ha ordenado que no adoren sino a Él y que honren a sus padres…»",
+   "2:256": "«No se puede forzar a nadie a creer en la religión…»",
+   "16:125": "«Convoca al sendero de tu Señor con sabiduría y bellas palabras…»",
+   "112:1-4": "«Di: Él es Al-lah, Uno. Al-lah es el Absoluto. No engendró ni fue engendrado. Y no hay nada ni nadie que sea semejante a Él.»"
+  }
+ },
  "de": {
   "source": "Frank Bubenheim & Dr. Nadeem Elyas",
   "url": "https://quranenc.com/de/browse/german_bubenheim",

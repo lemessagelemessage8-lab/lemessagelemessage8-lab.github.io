@@ -16,7 +16,7 @@ const ADRESSE = "https://message.clicvia.com/";
 // --- visibilité (règle commune § 8) ---
 ok(/<header class="topbar">[\s\S]*id="share-head"[\s\S]*<\/header>/.test(html), "bouton « Partager » absent de l'en-tête");
 ok(html.includes(`<link rel="canonical" href="${ADRESSE}">`), "adresse canonique absente");
-const LANGUES = ["en", "fr", "es", "de", "it", "pt", "nl", "zh", "ja", "ko", "hi", "tr", "id", "ru", "vi", "th", "tl", "sv", "ro"];     // ni arabe ni ourdou : choix d'Ahmed (13/10/2026)
+const LANGUES = ["en", "fr", "es", "de", "it", "pt", "nl", "zh", "ja", "ko", "hi", "tr", "id", "ru", "vi", "th", "tl", "sv", "ro", "ca"];     // ni arabe ni ourdou : choix d'Ahmed (13/10/2026)
 for (const l of LANGUES) ok(html.includes(`data-setlang="${l}"`) && html.includes(`<option value="${l}"`), "langue " + l + " absente des boutons");
 // 14/10/2026 (contrôle de visibilité, règle commune § 8) : pas de hreflang vers « ?lang= » (le serveur renvoie la même page :
 // doublons pour Google) ; un seul titre h1 ; lien vers le portail clicvia.com ; clé IndexNow
@@ -42,7 +42,7 @@ for (const l of LANGUES) ok(plan.includes(`<loc>${ADRESSE}?lang=${l}</loc>`), "s
 // --- textes : chaque langue a toutes les clés ---
 globalThis.window = {};
 require(path.join(racine, "js/config.js"));
-for (const f of ["i18n", "i18n-plus", "i18n-asie", "i18n-paroles", "i18n-film", "i18n-monde-1", "i18n-monde-2", "i18n-monde-3", "i18n-monde-4", "versets", "paroles", "data", "data-plus", "data-monde"]) require(path.join(racine, "js/" + f + ".js"));
+for (const f of ["i18n", "i18n-plus", "i18n-asie", "i18n-paroles", "i18n-film", "i18n-monde-1", "i18n-monde-2", "i18n-monde-3", "i18n-monde-4", "i18n-ca", "versets", "paroles", "data", "data-plus", "data-monde"]) require(path.join(racine, "js/" + f + ".js"));
 const T = window.I18N, D = window.SITE_DATA;
 const cles = Object.keys(T.fr);
 ok(LANGUES.every(l => T[l]) && Object.keys(T).length === LANGUES.length, "les langues du site ne sont pas celles attendues : " + Object.keys(T));
@@ -86,7 +86,7 @@ for (const l of LANGUES) {
   for (const id of [...P.plan.hadiths.marie, ...P.plan.hadiths.islam]) {
     const h = P.langues[l].hadiths[id];
     ok(h && h.texte && h.source && /^https:\/\/hadeethenc\.com\//.test(h.url) && typeof h.officiel === "boolean", `page Paroles : hadith ${id} incomplet en ${l}`);
-    if (h && h.officiel) ok(h.url.includes("/" + l + "/"), `hadith ${id} : lien officiel dans une autre langue en ${l}`);
+    if (h && h.officiel) ok(h.url.includes("/" + (l === "ca" ? "es" : l) + "/"), `hadith ${id} : lien officiel dans une autre langue en ${l}`);   // catalan : officiel castillan
   }
 }
 ok(lire("js/page-paroles.js").includes("pUnofficial"), "page Paroles : la mention « traduction non officielle » n'est plus affichée");
@@ -147,5 +147,9 @@ ok(/t\("fEmailErr"\)/.test(appJs) && /function merci\(/.test(appJs) && /form\.hi
 const i18nTout = fs.readdirSync(path.join(racine, "js")).filter(n => /^i18n.*\.js$/.test(n)).map(n => lire("js/" + n)).join("\n");
 for (const k of ["fEmailErr", "fReply", "fAnother"]) ok((i18nTout.match(new RegExp(k + ': "', "g")) || []).length === LANGUES.length, `contact : texte ${k} absent d'une des ${LANGUES.length} langues`);
 ok(!/fEmail: "[^"]*(optional|facultati|opcional|isteğe|opsional|необязательно|không bắt buộc|ไม่บังคับ|opsyonal|frivilligt|opțional|optioneel|任意|选填|선택|वैकल्पिक)/.test(i18nTout), "contact : un libellé dit encore « e-mail facultatif »");
+// catalan (26/10/2026) : aucune traduction officielle en catalan -> versets de la traduction officielle castillane, jamais traduits par nous
+ok(window.VERSETS.ca && window.VERSETS.ca.url === window.VERSETS.es.url && JSON.stringify(window.VERSETS.ca.versets) === JSON.stringify(window.VERSETS.es.versets), "catalan : les versets doivent être ceux de la traduction officielle castillane");
+ok(T.ca.themes.every((th, i) => th.quote === T.es.themes[i].quote) && /castell/.test(T.ca.verseNote), "catalan : citations des thèmes = versets officiels castillans, et la note doit le dire");
+
 console.log(echecs ? `\n${echecs} échec(s)` : "Tous les tests passent.");
 process.exit(echecs ? 1 : 0);

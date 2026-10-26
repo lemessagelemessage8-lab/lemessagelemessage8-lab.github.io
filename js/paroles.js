@@ -908,6 +908,52 @@ window.PAROLES = {
      "url": "https://hadeethenc.com/ro/browse/hadith/10098"
     }
    }
+  },
+  "ca": {
+   "versets": {
+    "3:42": "Y [recuerda] cuando los ángeles dijeron: “¡María! Dios te ha elegido por tus virtudes y te ha purificado. Te ha elegido entre todas las mujeres del mundo.",
+    "3:45": "Entonces los ángeles dijeron: “¡María! Dios te albricia con Su Palabra [¡Sea!], será conocido como el Mesías Jesús, hijo de María. Será noble en esta vida y en la otra, y se contará entre los próximos a Dios.",
+    "66:12": "Y también el ejemplo de María, hija de ‘Imrán, quien preservó su castidad; infundí en ella un espíritu Mío. Ella creyó en la veracidad de las Palabras de su Señor y en Sus Libros, y fue realmente una mujer devota.",
+    "39:53": "Di: “¡Oh, siervos míos que están sumidos en el pecado [perjudicándose a sí mismos]! No desesperen de la misericordia de Dios. Dios tiene poder para perdonar todos los pecados. Él es el Perdonador, el Misericordioso”."
+   },
+   "hadiths": {
+    "11179": {
+     "texte": "Narró Abu Musa, Al-lah este complacido con él, que el Mensajero de Al-lah, la paz y las bendiciones de Al-lah sean con él, dijo: Muchos hombres han sido perfectos (en cuanto a devoción y modales), y entre las mujeres solo cuatro lo han alcanzado: Asia, la esposa del Faraón, María hija de 'Imar. La virtud de Aisha sobre el resto de mujeres es como la virtud de Tharid (es una preparación culinaria en forma de sopa que posee miga de pan acompañada de diversos y variados ingredientes) sobre el resto de comidas.",
+     "source": "Hadiz auténtico (sahih) — Registrado por Al-Bujari y Muslim",
+     "officiel": true,
+     "url": "https://hadeethenc.com/es/browse/hadith/11179"
+    },
+    "10994": {
+     "texte": "Abu Hurairah (que Al-lah esté complacido con él) relató que oyó al Mensajero de Al-lah (que la paz y las bendiciones de Al-lah sean con él) decir: «No nace ningún niño sin que el demonio lo toque al nacer, y por eso rompe a llorar con fuerza, a causa de ese toque del demonio; excepto Maryam (María) y su hijo.» Luego Abu Hurairah recitó la aleya 36 de la sura Al ‘Imran (3:36).",
+     "source": "Auténtico — transmitido por Al-Bujari y Muslim",
+     "officiel": false,
+     "url": "https://hadeethenc.com/en/browse/hadith/10994"
+    },
+    "65016": {
+     "texte": "De Hakim Ibn Hizam –que Al-láh esté complacido con él– que dijo: Dije: \"Oh Mensajero de Al-láh, antes de abrazar el Islam, solía hacer buenas obras, como dar en caridad, manumitir esclavos y fortalecer los lazos de parentesco. ¿Seré recompensado por esas obras?\" El Profeta –que la paz y las bendiciones de Al-láh sean con él– respondió: \"Has abrazado el Islam junto con tus buenas obras pasadas\".",
+     "source": "Verídico (sahih) — Registrado por Al-Bujari y Muslim",
+     "officiel": true,
+     "url": "https://hadeethenc.com/es/browse/hadith/65016"
+    },
+    "65002": {
+     "texte": "De Ibn Mas'ud, que Al-láh esté complacido con él, quien dijo: Un hombre dijo: \"Oh mensajero de Al-láh, ¿Acaso seremos castigados por lo que hicimos en el período pre-islámico? Dijo: \" Quien obra bien en Islam no será castigado por lo que hizo en el período pre-islámico, pero quien obra mal en Islam será castigado por lo anterior y lo posterior\".",
+     "source": "Verídico (sahih) — Registrado por Al-Bujari y Muslim",
+     "officiel": true,
+     "url": "https://hadeethenc.com/es/browse/hadith/65002"
+    },
+    "65006": {
+     "texte": "Se reportó que Anas –que Al-láh esté complacido con él– dijo: Un hombre vino al profeta -que la paz y las bendiciones de Al-láh sean con él- y le dijo: Oh mensajero de Al-láh, no he dejado ningún pecado mayor ni menor sin cometer, dijo el profeta: \"¿Acaso atestiguas que no hay divinidad digna de ser adorada fuera de Al-láh y que Muhámmad es mensajero de Al-láh? tres veces. Entonces el hombre le dijo: Sí. Dijo: \"Entonces esto expía aquello\".",
+     "source": "Verídico (sahih) — Registrado por Abu Ya'la, At-Tabarani y Ad-Diya' Al-Maqdisi",
+     "officiel": true,
+     "url": "https://hadeethenc.com/es/browse/hadith/65006"
+    },
+    "10098": {
+     "texte": "Anas Ibn Malik —que Al-lah esté complacido de él— narró: «El Profeta —la paz y las bendiciones de Al-lah sean con él— compartía montura con Mu‘adh cuando le dijo: \"¡Mu‘adh ibn Yabal!\". Dijo: \"Aquí estoy, a tu servicio y para complacerte ¡oh Mensajero de Al-lah!\". Dijo: \"¡Mu‘adh!\". Respondió: \"Aquí estoy, a tu servicio y para complacerte ¡oh Mensajero de Al-lah!\". Esto pasó tres veces. Entonces dijo: \"Al-lah le prohíbe el castigo del fuego a todo aquel que atestigüe, con veracidad desde su corazón, que no hay más divinidad que Al-lah y que Muhammad es el mensajero de Al-lah\". Dijo: \"¡Oh Mensajero de Al-lah!, ¿informo a los demás y les doy la buena nueva?\". Dijo: \"No, porque se confiarán\". De modo que Mu‘adh solo informó de ello antes de su muerte, para evitar pecar (por ocultar el conocimiento)».",
+     "source": "Verídico (sahih) — Registrado por Al-Bujari y Muslim",
+     "officiel": true,
+     "url": "https://hadeethenc.com/es/browse/hadith/10098"
+    }
+   }
   }
  }
 };

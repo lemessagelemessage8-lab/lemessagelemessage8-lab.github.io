@@ -26,6 +26,7 @@ window.SITE_CONFIG = {
     en: "The Message 1976 full movie Anthony Quinn English",
     fr: "Le Message 1976 film complet version française",
     es: "El Mensaje 1976 película completa español",
+    ca: "El Mensaje 1976 película completa español",   // pas de version catalane connue : la version castillane
     de: "Mohammed Der Gesandte Gottes 1976 ganzer Film deutsch",
     it: "Il Messaggio 1976 film completo italiano",
     pt: "A Mensagem 1976 filme completo dublado",

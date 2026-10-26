@@ -130,3 +130,11 @@ coupées. Flyer de 2 pages (Letter ou A4) : une page par feuille. Dépliant de 6
 Center, format A3) : 3 panneaux par face dans l'ordre de l'éditeur, extérieur « 4 | 5 | couverture », intérieur « 1 | 2 | 3 ».
 Un flyer d'un autre nombre de pages arrête l'outil : demander à Ahmed comment l'imprimer avant de le publier.
 Le test refuse un flyer dont le PDF proposé n'a pas exactement 2 feuilles A4 paysage. Nouveau flyer : `python tools/flyers.py <id>`.
+
+## Catalan, 20e langue (26/10/2026, demande d'Ahmed après la demande d'un visiteur)
+Bloc unique `js/i18n-ca.js` (textes du site, film, page « Paroles du Prophète », cartes, titres des flyers), branché comme les langues
+du 13/10 (`js/data-monde.js`, boutons et options des deux pages, `sitemap.xml`, test). Il n'existe AUCUNE traduction officielle du
+Coran ni des hadiths en catalan : le catalan affiche les textes officiels EN CASTILLAN (García pour le Coran, HadeethEnc pour les
+hadiths), avec une phrase en catalan qui le dit ; nous ne traduisons jamais les versets (`tools/versets.py` et `tools/paroles.py` :
+« ca » = copie du castillan, vérifié par le test). Textes de l'interface écrits par Claude : à faire relire par un natif.
+

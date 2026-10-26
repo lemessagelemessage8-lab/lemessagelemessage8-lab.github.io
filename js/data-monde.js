@@ -3,7 +3,7 @@
 // (« cartes », « titres », « coran » de chaque langue). À charger APRÈS js/data-plus.js.
 (function () {
   var D = window.SITE_DATA, T = window.I18N, M = window.MONDE || {}, V = window.VERSETS || {};
-  var L = ["tr", "id", "ru", "vi", "th", "tl", "sv", "ro"];
+  var L = ["tr", "id", "ru", "vi", "th", "tl", "sv", "ro", "ca"];     // ca : 26/10/2026
 
   // carte (nom ou identifiant) → [texte, titre de flyer] : même table que js/data-plus.js
   var CARTES = {
@@ -32,6 +32,16 @@
         if (c.desc && !c.desc[l]) c.desc[l] = M[l].cartes[k[0]];
         if (k[1] && c.title && !c.title[l]) c.title[l] = M[l].titres[k[1]] + " (" + T[l].langNames[c.lang] + ")";
       });
+    });
+  });
+
+  // flyers dont le titre et la description sont écrits directement dans js/data.js : « flyers » du bloc de la langue
+  D.flyers.forEach(function (c) {
+    L.forEach(function (l) {
+      var f = M[l] && M[l].flyers && M[l].flyers[c.id];
+      if (!f) return;
+      if (!c.title[l]) c.title[l] = f[0] + " (" + T[l].langNames[c.lang] + ")";
+      if (!c.desc[l]) c.desc[l] = f[1];
     });
   });
 

@@ -13,7 +13,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from versets import SOURCES, propre
 
 ICI = pathlib.Path(__file__).resolve().parent
-LANGUES = list(SOURCES)
+LANGUES = [l for l in SOURCES if l != "ca"]        # catalan : copie du castillan (voir main)
 VERSETS = {"marie": [(3, 42), (3, 45), (66, 12)], "islam": [(39, 53)]}
 HADITHS = {"marie": [11179, 10994], "islam": [65016, 65002, 65006, 10098]}
 LANGUES_HADITHS = ["en", "fr", "es", "de", "it", "pt", "nl", "zh", "ja", "hi", "tr", "id", "ru", "vi", "th", "tl", "sv", "ro"]      # langues proposées par HadeethEnc (pas de coréen)
@@ -115,6 +115,7 @@ def main():
                 else:
                     S[l]["hadiths"][str(i)] = {"texte": MAISON[i][l], "source": SOURCE_MAISON[i][l], "officiel": False,
                                                "url": f"https://hadeethenc.com/en/browse/hadith/{i}"}
+    S["ca"] = json.loads(json.dumps(S["es"]))       # catalan (26/10/2026) : textes officiels castillans, aucune traduction officielle en catalan
     plan = {"versets": {k: [f"{s}:{a}" for s, a in v] for k, v in VERSETS.items()}, "hadiths": {k: [str(i) for i in v] for k, v in HADITHS.items()}}
     arabe = {str(i): re.sub(r"\s+", " ", R["hadiths"][str(i)]["ar"]["hadeeth"]).strip() for i in sum(HADITHS.values(), []) if R["hadiths"][str(i)].get("ar")}
     js = ("// FICHIER FABRIQUÉ par tools/paroles.py — ne pas modifier à la main.\n"

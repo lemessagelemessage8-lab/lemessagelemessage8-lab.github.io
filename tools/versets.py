@@ -12,6 +12,7 @@ SOURCES = {
     "en": ("english_saheeh", "Saheeh International (Noor International Center)", "en"),
     "fr": ("french_montada", "Noor International Center (Dr Nabil Ridwan)", "fr"),
     "es": ("spanish_garcia", "Muhammad Isa García", "es"),
+    "ca": ("spanish_garcia", "Muhammad Isa García — traducció oficial en castellà (no n'hi ha cap en català)", "es"),   # 26/10/2026 : aucune traduction officielle en catalan
     "de": ("german_bubenheim", "Frank Bubenheim & Dr. Nadeem Elyas", "de"),
     "it": ("italian_rwwad", "Rowwad Translation Center", "it"),
     "pt": ("portuguese_nasr", "Dr. Helmi Nasr", "pt"),
@@ -32,7 +33,7 @@ SOURCES = {
 }
 VERSETS = [(1, 1), (21, 107), (51, 56), (112, 1), (112, 2), (112, 3), (112, 4), (2, 2), (68, 4), (7, 156), (49, 13), (16, 97), (17, 23), (2, 256), (16, 125)]
 GUILLEMETS = {"en": "“”", "fr": ("« ", " »"), "es": "«»", "de": "„“", "it": "«»", "pt": "«»", "nl": "‘’", "zh": "“”", "ja": "「」", "ko": "“”", "hi": "“”",
-              "tr": "“”", "id": "“”", "ru": "«»", "vi": "“”", "th": "“”", "tl": "“”", "sv": "””", "ro": "„”"}
+              "tr": "“”", "id": "“”", "ru": "«»", "vi": "“”", "th": "“”", "tl": "“”", "sv": "””", "ro": "„”", "ca": "«»"}
 
 # Passage retenu quand le verset est long : (début, fin) recopiés du texte officiel. None = verset entier.
 EXTRAITS = {
@@ -82,6 +83,9 @@ EXTRAITS = {
 BORDS = "\"“”«»„‘’「」『』  "
 
 
+EXTRAITS["ca"] = EXTRAITS["es"]          # catalan = traduction officielle castillane
+
+
 def telecharger():
     R = {}
     for l, (cle, _, _) in SOURCES.items():
@@ -122,6 +126,7 @@ def extrait(l, ref, brut, colle=False):
 
 def main():
     R = telecharger() if "--telecharger" in sys.argv else json.loads((ICI / "versets.json").read_text(encoding="utf-8"))
+    R.setdefault("ca", R["es"])                 # catalan : même traduction officielle que le castillan
     sortie = {}
     for l, (cle, nom, page) in SOURCES.items():
         g = GUILLEMETS[l]
