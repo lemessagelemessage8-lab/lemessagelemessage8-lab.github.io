@@ -151,3 +151,18 @@ traduction officielle castillane ; éditeur d'origine cité sur la couverture et
 à faire relire par un natif. Points relevés à la traduction : quelques références de l'original douteuses (ex. Coran 2:185 pour un
 verset qui est 39:1, « Corán 20–21 » corrigé en 51:20-21), coquilles de l'espagnol corrigées dans le sens.
 
+## Flyers traduits : outil commun (allemand, 26/10/2026 — demande d'un visiteur germanophone)
+`python tools/flyers_traduits.py <langue> <id-es> […]` remplace `flyers_ca.py` pour TOUTES les langues (réglages dans `LANGUES` :
+bandeau de couverture, note, crédit ; mise en page commune `tools/flyers_traduits.css`). Traduction dans
+`flyers originaux/<id>-es/texte-<langue>.json`, résultat dans `flyers originaux/<id>-<langue>/`, puis `python tools/flyers.py <id>-<langue>`.
+- **Langue avec un Coran officiel (allemand : Bubenheim & Elyas, QuranEnc)** : chaque verset référencé (« Koran 2:163 ») et le verset
+  de couverture sont REMPLACÉS par le texte officiel (gardé dans `tools/flyers_versets.json`), note « offizielle Übersetzung » ; seules
+  les paroles du Prophète et les citations libres gardent l'astérisque « inoffizielle Übersetzung ».
+- Références fausses de l'original corrigées dans `CORRECTIONS` (coran : 1re « 2:185 » = 39:1 ; proposito-vida « 19:36 » = paraphrase).
+- Un texte trop long pour un panneau (police < 8,5 pt) arrête l'outil : raccourcir la traduction.
+
+## Dépliants : les vignettes montrent les feuilles A4 (26/10/2026)
+Pour un dépliant de 6 panneaux, `tools/flyers.py` fabrique aussi `flyer-<id>-a4-1.jpg` / `-a4-2.jpg` (+ `-mini`) : les 2 feuilles A4
+recto-verso telles qu'imprimées. Dans `js/data.js`, `front`/`back` = ces 2 feuilles et `pages` = [feuille 1, feuille 2, puis les 6
+panneaux]. Raison : les 6 panneaux en hauteur faisaient croire que le PDF n'était pas en A4 (Ahmed). Vérifié par `tools/test_site.mjs`.
+
