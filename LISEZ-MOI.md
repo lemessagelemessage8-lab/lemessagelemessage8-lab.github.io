@@ -166,3 +166,10 @@ Pour un dépliant de 6 panneaux, `tools/flyers.py` fabrique aussi `flyer-<id>-a4
 recto-verso telles qu'imprimées. Dans `js/data.js`, `front`/`back` = ces 2 feuilles et `pages` = [feuille 1, feuille 2, puis les 6
 panneaux]. Raison : les 6 panneaux en hauteur faisaient croire que le PDF n'était pas en A4 (Ahmed). Vérifié par `tools/test_site.mjs`.
 
+## Flyers pliables en trois (27/10/2026, Ahmed : « on ne peut pas plier en trois »)
+Avant : les 3 volets étaient réduits ensemble et centrés -> grandes marges vides à gauche et à droite, les plis ne tombaient pas
+entre les volets. Maintenant (`tools/flyers.py`, `imprimer_a4`) : chaque VOLET occupe exactement son tiers de la feuille A4
+(plis à 1/3 et 2/3), agrandi au maximum sans être coupé ni déformé ; les flyers de 2 pages paysage (Letter ou A4) sont coupés en
+3 volets égaux. Tampon message.clicvia.com + QR : seulement sous le volet du milieu de la face extérieure (dos du dépliant plié).
+Imprimer en recto-verso « retourner sur le bord court », taille réelle (100 %).
+

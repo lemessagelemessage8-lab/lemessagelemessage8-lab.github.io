@@ -109,48 +109,47 @@ A4_L, A4_H = 842, 595                 # feuille A4 en paysage (points PDF)
 IMPOSITION_6 = [(5, 6, 1), (2, 3, 4)]
 
 
-def bande_feuille(largeur, haut, largeur_panneau):
-    """Bande verte de toute la largeur des 3 panneaux ; QR code et adresse dans le panneau du milieu (dos du dépliant
-    sur la face extérieure), pour ne pas être coupés par les plis."""
-    b = Image.new("RGB", (largeur, haut), VERT)
-    ImageDraw.Draw(b).rectangle([0, 0, largeur, max(2, haut // 22)], fill=OR)
-    b.paste(bande(largeur_panneau, haut), (round((largeur - largeur_panneau) / 2), 0))
-    return b
-
-
 def imprimer_a4(fid, dst):
-    """RÈGLE D'AHMED (25/10/2026) : tout flyer proposé au téléchargement est IMPRIMABLE sur A4 recto-verso.
-    PDF de 2 feuilles A4 paysage exactes (842 × 595 pt), à imprimer en recto-verso « retourner sur le bord court » puis plier
-    en trois ; tampon message.clicvia.com + QR code en bas de chaque feuille, DANS la feuille. Les pages de l'éditeur sont
-    réduites à l'échelle, jamais coupées ni déformées.
-    - flyer de 2 pages (recto + verso, format Letter ou A4) : une page par feuille ;
-    - dépliant de 6 panneaux (couverture + pages 1 à 5) : 3 panneaux par face, dans l'ordre IMPOSITION_6.
-    Tout autre nombre de pages : erreur (le flyer n'est pas publié tant qu'on ne sait pas l'imprimer)."""
+    """RÈGLE D'AHMED (25/10/2026) : tout flyer proposé au téléchargement est IMPRIMABLE sur A4 recto-verso, ET PLIABLE EN TROIS
+    (27/10/2026 : avec de grandes marges à gauche et à droite, les plis ne tombaient pas entre les volets).
+    PDF de 2 feuilles A4 paysage exactes (842 × 595 pt), à imprimer en recto-verso « retourner sur le bord court ». Chaque VOLET
+    occupe exactement son tiers de feuille (plis à 1/3 et 2/3 de la largeur), agrandi au maximum sans être coupé ni déformé :
+      - dépliant de 6 panneaux (couverture + pages 1 à 5) : un panneau par tiers, dans l'ordre IMPOSITION_6 ;
+      - flyer de 2 pages paysage (déjà en 3 volets, Letter ou A4) : chaque page est coupée en 3 volets égaux.
+    Tampon message.clicvia.com + QR code : sous le volet du MILIEU de la face extérieure (le dos du dépliant plié), volet réduit
+    juste assez pour lui laisser la place. Tout autre nombre de pages : erreur (pas publié tant qu'on ne sait pas l'imprimer)."""
     s = pymupdf.open(os.path.join(ORIGINAUX, fid, "original.pdf"))
     if len(s) == 6:
-        faces = [list(f) for f in IMPOSITION_6]
+        faces = [[(num - 1, s[num - 1].rect) for num in face] for face in IMPOSITION_6]
     elif len(s) == 2:
-        faces = [[1], [2]]
+        faces = []
+        for k in range(2):
+            r = s[k].rect
+            if r.width < r.height:
+                raise SystemExit(f"{fid} : page en hauteur — pas un dépliant en 3 volets : dire à Ahmed comment l'imprimer")
+            t = r.width / 3
+            faces.append([(k, pymupdf.Rect(r.x0 + j * t, r.y0, r.x0 + (j + 1) * t, r.y1)) for j in range(3)])
     else:
         raise SystemExit(f"{fid} : {len(s)} pages — ni recto/verso (2) ni dépliant (6) : dire à Ahmed comment l'imprimer")
-    pw, ph = s[0].rect.width, s[0].rect.height
-    hb, marge = 34, 8                                          # bande en bas, petite marge en haut
-    n = len(faces[0])                                          # panneaux par face (1 ou 3)
-    k = min((A4_H - hb - marge) / ph, (A4_L - 2 * marge) / (n * pw))   # même échelle pour toutes les pages
-    lp, hp = pw * k, ph * k
-    x0 = (A4_L - n * lp) / 2
+    tiers, hb = A4_L / 3, 34                                    # largeur d'un volet ; hauteur de la bande du tampon
     o = pymupdf.open()
-    for face in faces:
+    for f, face in enumerate(faces):
         page = o.new_page(width=A4_L, height=A4_H)
-        for j, num in enumerate(face):
-            page.show_pdf_page(pymupdf.Rect(x0 + j * lp, marge, x0 + (j + 1) * lp, marge + hp), s, num - 1)
-        largeur = n * lp
-        img = bande_feuille(round(largeur * 4), round(hb * 4), round(largeur / 3 * 4))   # QR dans le tiers du milieu (dos plié)
-        tampon = io.BytesIO()
-        img.save(tampon, "PNG")
-        r = pymupdf.Rect(x0, A4_H - hb, x0 + largeur, A4_H)
-        page.insert_image(r, stream=tampon.getvalue())
-        page.insert_link({"kind": pymupdf.LINK_URI, "from": r, "uri": URL})
+        for j, (num, clip) in enumerate(face):
+            dos = f == 0 and j == 1                             # dos du dépliant plié : place pour le tampon
+            haut = A4_H - (hb if dos else 0)
+            k = min(tiers / clip.width, haut / clip.height)
+            lp, hp = clip.width * k, clip.height * k
+            x = j * tiers + (tiers - lp) / 2                    # centré DANS son tiers : les plis restent aux tiers exacts
+            y = (haut - hp) / 2
+            page.show_pdf_page(pymupdf.Rect(x, y, x + lp, y + hp), s, num, clip=clip)
+            if dos:
+                img = bande(round(tiers * 4), round(hb * 4))
+                tampon = io.BytesIO()
+                img.save(tampon, "PNG")
+                r = pymupdf.Rect(j * tiers, A4_H - hb, (j + 1) * tiers, A4_H)
+                page.insert_image(r, stream=tampon.getvalue())
+                page.insert_link({"kind": pymupdf.LINK_URI, "from": r, "uri": URL})
     o.save(dst, garbage=3, deflate=True)
 
 
