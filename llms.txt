@@ -3,7 +3,7 @@
 > Découvrir l'Islam simplement : qui est Dieu, le Coran, le Prophète Muhammad ; flyers gratuits à imprimer, Coran traduit et radios, en français, anglais, espagnol et allemand. رسالة الإسلام والقرآن.
 
 Site gratuit et indépendant, publié par Clicvia (https://clicvia.com/), le portail de services pratiques pour la Tunisie. Adresse : https://message.clicvia.com/
-Langues : 20 langues, dont le catalan (adresse : /?lang=en, /?lang=fr, /?lang=ca…).
+Langues : 20 langues, chacune à sa propre adresse : / (français), /en/, /es/, /ca/, /de/… Une page par thème (ex. https://message.clicvia.com/en/who-is-god-allah/) et une page par flyer avec son texte (ex. https://message.clicvia.com/es/flyer/jesus-es/).
 
 ## Pages principales
 

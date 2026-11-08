@@ -17,7 +17,7 @@ const ADRESSE = "https://message.clicvia.com/";
 ok(/<header class="topbar">[\s\S]*id="share-head"[\s\S]*<\/header>/.test(html), "bouton « Partager » absent de l'en-tête");
 ok(html.includes(`<link rel="canonical" href="${ADRESSE}">`), "adresse canonique absente");
 const LANGUES = ["en", "fr", "es", "de", "it", "pt", "nl", "zh", "ja", "ko", "hi", "tr", "id", "ru", "vi", "th", "tl", "sv", "ro", "ca"];     // ni arabe ni ourdou : choix d'Ahmed (13/10/2026)
-for (const l of LANGUES) ok(html.includes(`data-setlang="${l}"`) && html.includes(`<option value="${l}"`), "langue " + l + " absente des boutons");
+for (const l of LANGUES) ok(html.includes(`<option value="${l}"`), "langue " + l + " absente du choix de langue");   // 08/11/2026 : boutons de l'écran d'entrée supprimés
 // 14/10/2026 (contrôle de visibilité, règle commune § 8) : pas de hreflang vers « ?lang= » (le serveur renvoie la même page :
 // doublons pour Google) ; un seul titre h1 ; lien vers le portail clicvia.com ; clé IndexNow
 for (const f of ["index.html", "paroles-du-prophete/index.html"]) ok(!/hreflang="[a-z-]+" href="[^"]*[?]lang=/.test(lire(f)), f + " : hreflang vers « ?lang= »");
@@ -37,7 +37,9 @@ for (const r of ["GPTBot", "ClaudeBot", "CCBot", "Bytespider"]) ok(robots.includ
 ok(!/User-agent: Googlebot[\s\S]{0,200}?Disallow: \/\s/.test(robots.split("# Robots d'IA")[0]), "robots.txt interdit Googlebot");
 const plan = lire("sitemap.xml");
 ok(plan.includes(`<loc>${ADRESSE}</loc>`), "sitemap.xml : accueil absent");
-for (const l of LANGUES) ok(plan.includes(`<loc>${ADRESSE}?lang=${l}</loc>`), "sitemap.xml : langue " + l + " absente");
+// 08/11/2026 : une adresse par langue (/en/, /es/… ; français à la racine) : plus aucune adresse « ?lang= » dans le plan du site
+for (const l of LANGUES) if (l !== "fr") ok(plan.includes(`<loc>${ADRESSE}${l}/</loc>`), "sitemap.xml : page de la langue " + l + " absente");
+ok(!plan.includes("?lang="), "sitemap.xml : adresse « ?lang= » (doublon pour Google)");
 
 // --- textes : chaque langue a toutes les clés ---
 globalThis.window = {};
@@ -81,7 +83,7 @@ ok(page.includes(`<link rel="canonical" href="${ADRESSE}paroles-du-prophete/">`)
 ok(html.includes('href="paroles-du-prophete/"') && plan.includes(`<loc>${ADRESSE}paroles-du-prophete/</loc>`), "page Paroles absente du menu de l'accueil ou du plan du site");
 for (const l of LANGUES) {
   ok(page.includes(`<option value="${l}"`), "page Paroles : langue " + l + " absente");
-  ok(plan.includes(`<loc>${ADRESSE}paroles-du-prophete/?lang=${l}</loc>`), "sitemap.xml : page Paroles absente en " + l);
+  ok(plan.includes(`<loc>${ADRESSE}${l === "fr" ? "" : l + "/"}paroles-du-prophete/</loc>`), "sitemap.xml : page Paroles absente en " + l);
   for (const r of [...P.plan.versets.marie, ...P.plan.versets.islam]) ok(P.langues[l].versets[r] && P.langues[l].versets[r].length > 20, `page Paroles : verset ${r} absent en ${l}`);
   for (const id of [...P.plan.hadiths.marie, ...P.plan.hadiths.islam]) {
     const h = P.langues[l].hadiths[id];
@@ -160,6 +162,42 @@ ok(!/fEmail: "[^"]*(optional|facultati|opcional|isteğe|opsional|необяза�
 // catalan (26/10/2026) : aucune traduction officielle en catalan -> versets de la traduction officielle castillane, jamais traduits par nous
 ok(window.VERSETS.ca && window.VERSETS.ca.url === window.VERSETS.es.url && JSON.stringify(window.VERSETS.ca.versets) === JSON.stringify(window.VERSETS.es.versets), "catalan : les versets doivent être ceux de la traduction officielle castillane");
 ok(T.ca.themes.every((th, i) => th.quote === T.es.themes[i].quote) && /castell/.test(T.ca.verseNote), "catalan : citations des thèmes = versets officiels castillans, et la note doit le dire");
+
+// --- 08/11/2026 : pages lisibles par Google (tools/pages_seo.mjs) ---
+import { execFileSync } from "node:child_process";
+try { execFileSync(process.execPath, [path.join(racine, "tools/pages_seo.mjs"), "--verifier"], { stdio: "pipe" }); }
+catch (e) { ok(false, "pages fabriquées pas à jour : lancer « node tools/pages_seo.mjs » puis renvoyer\n" + String(e.stderr || "").slice(0, 600)); }
+ok(!html.includes('id="welcome"') && !appJs.includes("enter-music"), "l'écran d'entrée « avec musique » doit rester supprimé (contenu visible tout de suite)");
+ok(!/^\s*tag\.src = "https:\/\/www\.youtube\.com\/iframe_api";\s*$/m.test(appJs.split("function playMusic")[0]), "le lecteur YouTube ne doit se charger qu'au clic sur ♪");
+require(path.join(racine, "js/pages.js"));
+const SLUGS = window.SITE_PAGES.themes;
+const dossierL = l => (l === "fr" ? "" : l + "/");
+const sansScriptEnLigne = h => ![...h.matchAll(/<script(?![^>]*\bsrc=)([^>]*)>/g)].some(m => !/application\/ld\+json/.test(m[1]));
+for (const l of LANGUES) {
+  for (const [f, canon] of [[dossierL(l) + "index.html", dossierL(l)], [dossierL(l) + "paroles-du-prophete/index.html", dossierL(l) + "paroles-du-prophete/"]]) {
+    const h = lire(f);
+    ok(new RegExp(`<html lang="${l === "zh" ? "zh-Hans" : l}" data-lang="${l}"`).test(h), f + " : langue de la page");
+    ok(h.includes(`<link rel="canonical" href="${ADRESSE}${canon}">`), f + " : adresse canonique");
+    ok((h.match(/<link rel="alternate" hreflang=/g) || []).length === LANGUES.length + 1, f + " : liens hreflang (20 langues + x-default)");
+    ok(!/data-i18n="(?!filmSearchLocal|filmFullLocal)\w+"[^>]*><\//.test(h), f + " : texte vide (pas écrit dans le HTML)");
+    ok(sansScriptEnLigne(h), f + " : script en ligne (bloqué par la politique de sécurité)");
+    ok(h.includes('class="langues-pied"') && h.includes("goatcounter.com/count"), f + " : liens vers les autres langues ou compteur absents");
+  }
+  ok((lire(dossierL(l) + "index.html").match(/class="card theme-card"/g) || []).length === T[l].themes.length, l + " : thèmes absents du HTML de l'accueil");
+  if (SLUGS) for (const th of T[l].themes) {
+    const u = dossierL(l) + SLUGS[l][th.id] + "/";
+    ok(fs.existsSync(path.join(racine, u, "index.html")) && plan.includes(`<loc>${ADRESSE}${u}</loc>`), "page du thème absente : " + u);
+  }
+}
+for (const f of D.flyers) {
+  const u = dossierL(f.lang) + "flyer/" + f.id + "/", h = fs.existsSync(path.join(racine, u, "index.html")) ? lire(u + "index.html") : "";
+  ok(h && plan.includes(`<loc>${ADRESSE}${u}</loc>`), "page du flyer absente : " + u);
+  ok(h.includes(`href="${"../".repeat(u.split("/").filter(Boolean).length)}${f.pdf}"`), u + " : bouton PDF");
+  ok(sansScriptEnLigne(h), u + " : script en ligne");
+}
+const textes = JSON.parse(lire("tools/flyers_textes.json"));
+for (const id of Object.keys(textes)) { const f = D.flyers.find(x => x.id === id); ok(f && lire(dossierL(f.lang) + "flyer/" + id + "/index.html").includes('class="texte-flyer"'), "texte du flyer absent de sa page : " + id); }
+ok(Object.keys(textes).length >= 30, "textes des dépliants (tools/flyers_textes.json) incomplets");
 
 console.log(echecs ? `\n${echecs} échec(s)` : "Tous les tests passent.");
 process.exit(echecs ? 1 : 0);

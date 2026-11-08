@@ -21,10 +21,25 @@
     });
   });
 
+  // 08/11/2026 : chaque langue a sa propre adresse (/en/, /es/… ; le français à la racine), fabriquée par tools/pages_seo.mjs
+  var PG = window.SITE_PAGES || { principale: "fr", themes: {}, flyers: {} };
+  var RACINE = document.documentElement.getAttribute("data-racine") || "";
+  var LANG_PAGE = document.documentElement.getAttribute("data-lang");
+  function dossier(l) { return l === PG.principale ? "" : l + "/"; }
+  function adresse(chemin) { return new URL(RACINE + chemin, location.href).href; }
+  (function anciennesAdresses() {
+    // anciens liens partagés « ?lang=es » et langue choisie avant : on va à la page de la langue
+    var q = new URLSearchParams(location.search).get("lang"), choix = null;
+    try { choix = localStorage.getItem("lang"); } catch (e) {}
+    var cible = (q && T[q]) ? q : (!q && RACINE === "" && LANG_PAGE === PG.principale && choix && T[choix] ? choix : null);
+    if (LANG_PAGE && cible && cible !== LANG_PAGE) location.replace(adresse(dossier(cible)) + location.hash);
+    else if (q) history.replaceState(null, "", location.pathname + location.hash);
+  })();
   var lang = pickLang();
   var filters = { quran: "all", media: "all", flyers: "all" };
 
   function pickLang() {
+    if (LANG_PAGE && T[LANG_PAGE]) return LANG_PAGE;
     var q = new URLSearchParams(location.search).get("lang");
     if (q && T[q]) return q;
     try { var s = localStorage.getItem("lang"); if (s && T[s]) return s; } catch (e) {}
@@ -43,6 +58,11 @@
 
   // ───────── Langue ─────────
   function setLang(l) {
+    if (LANG_PAGE && l !== LANG_PAGE) {          // autre langue = autre adresse
+      try { localStorage.setItem("lang", l); } catch (e) {}
+      location.href = adresse(dossier(l)) + location.hash;
+      return;
+    }
     lang = l;
     try { localStorage.setItem("lang", l); } catch (e) {}
     document.documentElement.lang = l === "zh" ? "zh-Hans" : l;
@@ -59,7 +79,7 @@
       var v = V[lang];
       n.innerHTML = v ? esc(t("verseNote")) + ' <a href="' + v.url + '" target="_blank" rel="noopener">' + esc(v.source) + " — QuranEnc.com ↗</a>" : "";
     });
-    document.querySelectorAll("[data-page-paroles]").forEach(function (a) { a.href = "paroles-du-prophete/?lang=" + lang; });
+    document.querySelectorAll("[data-page-paroles]").forEach(function (a) { a.href = adresse(dossier(lang) + "paroles-du-prophete/"); });
     // le film : liens de recherche dans la langue du visiteur quand un doublage existe
     var q = function (x) { return "https://www.youtube.com/results?search_query=" + encodeURIComponent(x); };
     var yt = function (id) { return "https://www.youtube.com/" + "watch?v=" + id; };
@@ -84,7 +104,11 @@
         '<div class="icon" aria-hidden="true">' + th.icon + "</div>" +
         "<h3>" + esc(th.title) + "</h3><p>" + esc(th.text) + "</p>" +
         '<p class="quote">' + esc(th.quote) + "<cite>" + esc(th.ref) + "</cite></p>";
-      c.appendChild(actions([shareButton(th.title, "theme-" + th.id)]));
+      var page = PG.themes[lang] && PG.themes[lang][th.id] ? adresse(dossier(lang) + PG.themes[lang][th.id] + "/") : null;
+      if (page) {
+        c.querySelector("h3").innerHTML = '<a href="' + page + '">' + esc(th.title) + "</a>";
+        c.appendChild(actions([el("a", { class: "share-btn", href: page }, esc(t("read")) + " →"), shareButton(th.title, null, null, page)]));
+      } else c.appendChild(actions([shareButton(th.title, "theme-" + th.id)]));
       g.appendChild(c);
     });
   }
@@ -127,7 +151,9 @@
       var read = el("button", { type: "button", class: "btn btn-gold btn-small" }, "📖 " + esc(t("readFlyer")));
       read.onclick = function () { openViewer(f, 0); };
       var dl = el("a", { class: "share-btn", href: f.pdf, target: "_blank", download: "" }, "⬇ PDF");
-      c.appendChild(actions([read, dl, shareButton(loc(f.title), "flyer-" + f.id)]));
+      var page = PG.flyers[f.id] ? adresse(PG.flyers[f.id]) : null;
+      if (page) c.querySelector("h3").innerHTML = '<a href="' + page + '">' + esc(loc(f.title)) + "</a>";
+      c.appendChild(actions([read, dl, shareButton(loc(f.title), "flyer-" + f.id, null, page)]));
       return c;
   }
 
@@ -220,12 +246,11 @@
 
   // ───────── Partage ─────────
   function pageUrl(anchor) {
-    var base = location.href.split("#")[0].split("?")[0];
-    return base + "?lang=" + lang + (anchor ? "#" + anchor : "");
+    return adresse(dossier(lang)) + (anchor ? "#" + anchor : "");
   }
-  function shareButton(title, anchor, externalUrl) {
+  function shareButton(title, anchor, externalUrl, url) {
     var b = el("button", { type: "button", class: "share-btn" }, "↗ " + esc(t("share")));
-    b.onclick = function () { share(title, pageUrl(anchor), externalUrl); };
+    b.onclick = function () { share(title, url || pageUrl(anchor), externalUrl); };
     return b;
   }
   function share(title, url, externalUrl) {
@@ -273,10 +298,15 @@
       }
     });
   };
-  var tag = document.createElement("script");
-  tag.src = "https://www.youtube.com/iframe_api";
-  document.head.appendChild(tag);
+  // 08/11/2026 : plus d'écran d'entrée « avec musique » ; le lecteur YouTube n'est chargé qu'au 1er clic sur ♪ (page plus légère)
+  var ytCharge = false;
   function playMusic() {
+    if (!ytCharge) {
+      ytCharge = true;
+      var tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(tag);
+    }
     playerBox.hidden = false;
     wantPlay = true;
     if (ytReady) yt.playVideo();
@@ -301,16 +331,15 @@
     try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "film/complet", title: "Film complet", event: true }); } catch (e) {}
   };
 
-  // ───────── Accueil ─────────
-  var welcome = document.getElementById("welcome");
-  function enter(withMusic) {
-    if (withMusic) playMusic();
-    welcome.classList.add("hide");
-    setTimeout(function () { welcome.style.display = "none"; }, 650);
-    if (location.hash) { var target = document.querySelector(location.hash); if (target) target.scrollIntoView(); }
-  }
-  document.getElementById("enter-music").onclick = function () { enter(true); };
-  document.getElementById("enter-silent").onclick = function () { enter(false); };
+  // ───────── Langue du téléphone différente de la page : petit bandeau qui propose la bonne page (jamais imposé) ─────────
+  (function bandeauLangue() {
+    var nav = (navigator.language || "").slice(0, 2), choix = null;
+    try { choix = localStorage.getItem("lang"); } catch (e) {}
+    if (!LANG_PAGE || choix || !T[nav] || nav === LANG_PAGE) return;
+    var a = el("a", { class: "bandeau-langue", href: adresse(dossier(nav)), lang: nav === "zh" ? "zh-Hans" : nav }, "🌐 " + esc(T[nav].langNames[nav] || nav) + " →");
+    var main = document.querySelector("main");
+    if (main) main.insertBefore(a, main.firstChild);
+  })();
   document.querySelectorAll("[data-setlang]").forEach(function (b) { b.onclick = function () { setLang(b.dataset.setlang); }; });
 
   // ───────── Formulaire ─────────

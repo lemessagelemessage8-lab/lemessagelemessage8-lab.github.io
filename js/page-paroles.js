@@ -5,7 +5,19 @@
   window.goatcounter = window.goatcounter || {};
   window.goatcounter.path = function (p) { return "/le-message" + p; };
 
+  // 08/11/2026 : une adresse par langue (/en/paroles-du-prophete/…), fabriquée par tools/pages_seo.mjs
+  var PG = window.SITE_PAGES || { principale: "fr" };
+  var RACINE = document.documentElement.getAttribute("data-racine") || "../";
+  var LANG_PAGE = document.documentElement.getAttribute("data-lang");
+  function dossier(l) { return l === PG.principale ? "" : l + "/"; }
+  function adresse(chemin) { return new URL(RACINE + chemin, location.href).href; }
+  (function anciennesAdresses() {
+    var q = new URLSearchParams(location.search).get("lang");
+    if (LANG_PAGE && q && T[q] && q !== LANG_PAGE) location.replace(adresse(dossier(q) + "paroles-du-prophete/") + location.hash);
+    else if (q) history.replaceState(null, "", location.pathname + location.hash);
+  })();
   function pickLang() {
+    if (LANG_PAGE && T[LANG_PAGE]) return LANG_PAGE;
     var q = new URLSearchParams(location.search).get("lang");
     if (q && T[q]) return q;
     try { var s = localStorage.getItem("lang"); if (s && T[s]) return s; } catch (e) {}
@@ -37,6 +49,11 @@
   }
 
   function setLang(l) {
+    if (LANG_PAGE && l !== LANG_PAGE) {
+      try { localStorage.setItem("lang", l); } catch (e) {}
+      location.href = adresse(dossier(l) + "paroles-du-prophete/") + location.hash;
+      return;
+    }
     lang = l;
     try { localStorage.setItem("lang", l); } catch (e) {}
     document.documentElement.lang = l === "zh" ? "zh-Hans" : l;
@@ -52,14 +69,14 @@
       var v = V[lang];
       n.innerHTML = v ? esc(t("verseNote")) + ' <a href="' + v.url + '" target="_blank" rel="noopener">' + esc(v.source) + " — QuranEnc.com ↗</a>" : "";
     });
-    ["lien-accueil", "retour-accueil", "pied-accueil"].forEach(function (id) { document.getElementById(id).href = "../?lang=" + l; });
-    document.getElementById("lien-question").href = "../?lang=" + l + "#contact";
+    ["lien-accueil", "retour-accueil", "pied-accueil"].forEach(function (id) { document.getElementById(id).href = adresse(dossier(l)); });
+    document.getElementById("lien-question").href = adresse(dossier(l)) + "#contact";
     var sh = document.getElementById("share-head"); sh.title = t("share"); sh.setAttribute("aria-label", t("share"));
   }
 
   // ───────── Partage (même fonctionnement que l'accueil) ─────────
   function share() {
-    var url = location.href.split("#")[0].split("?")[0] + "?lang=" + lang, title = t("pTitle");
+    var url = adresse(dossier(lang) + "paroles-du-prophete/"), title = t("pTitle");
     var text = t("shareText") + " " + title;
     try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "partage/le-message/paroles-du-prophete", title: "Partage", event: true }); } catch (e) {}
     if (navigator.share) { navigator.share({ title: t("siteName") + " — " + title, text: text, url: url }).catch(function () {}); return; }

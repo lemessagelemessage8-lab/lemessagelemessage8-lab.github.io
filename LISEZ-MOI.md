@@ -173,3 +173,21 @@ entre les volets. Maintenant (`tools/flyers.py`, `imprimer_a4`) : chaque VOLET o
 3 volets égaux. Tampon message.clicvia.com + QR : seulement sous le volet du milieu de la face extérieure (dos du dépliant plié).
 Imprimer en recto-verso « retourner sur le bord court », taille réelle (100 %).
 
+
+## Pages lisibles par Google (08/11/2026)
+Diagnostic : 2 vraies pages seulement, textes écrits par JavaScript, langues sans adresse (`?lang=`), flyers en images, écran
+d'entrée « avec musique ». Corrigé :
+- **`node tools/pages_seo.mjs`** fabrique, à partir des textes de `js/*.js` (rien n'est traduit par l'outil) : l'accueil et « Paroles
+  du Prophète » dans chaque langue (`/en/`, `/es/`… ; le français reste à la racine), **une page par thème et par langue**
+  (`/qui-est-dieu-allah/`, `/en/who-is-god-allah/`…, 180 pages), **une page par flyer** dans sa langue (`/flyer/femme-fr/`,
+  `/es/flyer/jesus-es/`…, 42 pages : titre, résumé, TEXTE complet des 30 dépliants IIC — `tools/flyers_textes.json`, copié des
+  `texte*.json` du dépôt privé, versets officiels compris —, pages en images, bouton PDF), `sitemap.xml` (262 adresses, avec
+  hreflang) et `js/pages.js`. Tout le texte est dans le HTML ; app.js le réécrit ensuite (mêmes boutons qu'avant).
+- **À relancer après toute modification** de `index.html`, `paroles-du-prophete/index.html` ou `js/*.js` (après `python tools/version.py …`) ;
+  le test refuse des pages pas à jour. Ne jamais modifier à la main les dossiers fabriqués (`en/`, `es/`…, `flyer/`, pages de thèmes).
+- Anciens liens `?lang=es` : renvoyés vers `/es/` ; choisir une langue = aller à son adresse. Visiteur dont le téléphone est dans une
+  autre langue : petit bandeau « 🌐 English → » (jamais de redirection imposée).
+- **Écran d'entrée « avec musique » supprimé** : le contenu s'affiche tout de suite ; la musique reste sur le bouton ♪ (lecteur
+  YouTube chargé seulement au 1er clic).
+- Reste à faire : QR codes des flyers vers la page de chaque flyer avec `?utm_source=flyer&utm_campaign=<id>` (demande de refaire
+  les 42 PDF avec `tools/flyers.py`) ; relecture des traductions d'interface par des natifs.
