@@ -51,6 +51,8 @@ for (const l of Object.keys(V)) {
   }
 }
 const t = (l, k) => (T[l] && T[l][k] != null ? T[l][k] : T.en[k]);
+// Google coupe au-delà de ~70 caractères (titre) et ~160 (description) : TOUTE page fabriquée ici passe par court() (16/11/2026)
+const court = (s, n) => (s.length <= n ? s : s.slice(0, n - 1).replace(/[\s,;:—-]+\S*$/, "") + "…");
 const loc = (l, o) => (o ? o[l] || o.en || o[Object.keys(o)[0]] : "");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const nomLangue = l => T[l].langNames[l] || l;
@@ -103,8 +105,8 @@ function tete({ l, titre, desc, url, alt, r, type = "article", image = "assets/o
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${esc(titre)}</title>
-  <meta name="description" content="${esc(desc)}">
+  <title>${esc(court(titre, 70))}</title>
+  <meta name="description" content="${esc(court(desc, 160))}">
   <meta name="robots" content="noai, noimageai">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   ${CSP}
@@ -112,7 +114,7 @@ function tete({ l, titre, desc, url, alt, r, type = "article", image = "assets/o
   <link rel="canonical" href="${ADRESSE}${url}">
 ${alt}
   <meta property="og:title" content="${esc(titre)}">
-  <meta property="og:description" content="${esc(desc)}">
+  <meta property="og:description" content="${esc(court(desc, 160))}">
   <meta property="og:type" content="${type}">
   <meta property="og:url" content="${ADRESSE}${url}">
   <meta property="og:site_name" content="The Message — الرسالة">
@@ -195,8 +197,8 @@ function accueil(l) {
   let h = lire("index.html");
   h = h.replace(/^<html[^>]*>/m, `<html lang="${HL(l)}" data-lang="${l}" data-racine="${r}">`);
   h = h.replace(/<title>[^<]*<\/title>/, `<title>${esc(t(l, "pageTitle"))}</title>`);
-  h = h.replace(/(<meta name="description" content=")[^"]*/, "$1" + esc(t(l, "metaDesc")));
-  h = h.replace(/(<meta property="og:description" content=")[^"]*/, "$1" + esc(t(l, "metaDesc")));
+  h = h.replace(/(<meta name="description" content=")[^"]*/, "$1" + esc(court(t(l, "metaDesc"), 160)));
+  h = h.replace(/(<meta property="og:description" content=")[^"]*/, "$1" + esc(court(t(l, "metaDesc"), 160)));
   h = h.replace(/(<link rel="canonical" href=")[^"]*/, "$1" + ADRESSE + urlAccueil(l));
   h = h.replace(/(<meta property="og:url" content=")[^"]*/, "$1" + ADRESSE + urlAccueil(l));
   h = h.replace(/\n  <link rel="alternate" hreflang[^\n]*/g, "");
@@ -218,9 +220,9 @@ function paroles(l) {
   let h = lire("paroles-du-prophete/index.html");
   h = h.replace(/^<html[^>]*>/m, `<html lang="${HL(l)}" data-lang="${l}" data-racine="${r}">`);
   if (l !== PRINCIPALE) {
-    h = h.replace(/<title>[^<]*<\/title>/, `<title>${esc(t(l, "pTitle") + " — " + t(l, "siteName"))}</title>`);
-    h = h.replace(/(<meta name="description" content=")[^"]*/, "$1" + esc(t(l, "pLead")));
-    h = h.replace(/(<meta property="og:description" content=")[^"]*/, "$1" + esc(t(l, "pLead")));
+    h = h.replace(/<title>[^<]*<\/title>/, `<title>${esc([t(l, "pTitle") + " — " + t(l, "siteName"), t(l, "pTitle")].find(x => x.length <= 70) || court(t(l, "pTitle"), 70))}</title>`);
+    h = h.replace(/(<meta name="description" content=")[^"]*/, "$1" + esc(court(t(l, "pLead"), 160)));
+    h = h.replace(/(<meta property="og:description" content=")[^"]*/, "$1" + esc(court(t(l, "pLead"), 160)));
     h = h.replace(/(<meta property="og:title" content=")[^"]*/, "$1" + esc(t(l, "pTitle")));
     h = h.replace(/((?:href|src)=")\.\.\/((?:css|js|assets)\/)/g, "$1../../$2");
   }
@@ -322,7 +324,7 @@ for (const f of D.flyers) {
   const autres = flyersDe(l).filter(g => g.id !== f.id).map(g => carteFlyerLien(l, g, r)).join("\n");
   const x = TEXTES[f.id];
   const altLangues = Object.keys(urls).length > 1 ? alternates(urls) : "";
-  ecrire(url + "index.html", tete({ l, titre: titre + " — " + t(l, "flyersTitle") + " | The Message", desc, url, alt: altLangues, r, image: f.front }) + "\n" + entete(l, r) + `
+  ecrire(url + "index.html", tete({ l, titre: [titre + " — " + t(l, "flyersTitle") + " | The Message", titre + " | The Message", titre].find(x => x.length <= 70) || titre, desc, url, alt: altLangues, r, image: f.front }) + "\n" + entete(l, r) + `
   <main>
     <section class="hero hero-page">
       <div class="hero-inner">

@@ -199,5 +199,18 @@ const textes = JSON.parse(lire("tools/flyers_textes.json"));
 for (const id of Object.keys(textes)) { const f = D.flyers.find(x => x.id === id); ok(f && lire(dossierL(f.lang) + "flyer/" + id + "/index.html").includes('class="texte-flyer"'), "texte du flyer absent de sa page : " + id); }
 ok(Object.keys(textes).length >= 30, "textes des dépliants (tools/flyers_textes.json) incomplets");
 
+// Titres et descriptions de TOUTES les pages du plan du site : longueurs que Google affiche (contrôle SEO commun ; 15 défauts
+// trouvés le 16/11/2026 : descriptions d'accueil de 174 à 209 caractères, titres de flyers de 72 à 80) — pages_seo.mjs : court()
+const deco = s => s.replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+for (const [, u] of plan.matchAll(/<loc>https:\/\/message\.clicvia\.com\/([^<]*)<\/loc>/g)) {
+  const f = (u.endsWith("/") || !u ? u : u + "/") + "index.html";
+  if (!fs.existsSync(path.join(racine, f))) continue;
+  const h = lire(f);
+  const titre = deco((h.match(/<title>([^<]*)<\/title>/) || [, ""])[1]);
+  const desc = deco((h.match(/<meta name="description" content="([^"]*)"/) || [, ""])[1]);
+  ok(titre.length > 0 && titre.length <= 70, `/${u} : titre de ${titre.length} caractères (70 au plus)`);
+  ok(desc.length > 0 && desc.length <= 160, `/${u} : description de ${desc.length} caractères (160 au plus)`);
+}
+
 console.log(echecs ? `\n${echecs} échec(s)` : "Tous les tests passent.");
 process.exit(echecs ? 1 : 0);
