@@ -132,11 +132,19 @@ function entete(l, r) {
     <nav class="nav nav-page"><a href="${r}${urlAccueil(l)}">← ${esc(t(l, "pBack"))}</a></nav>
   </header>`;
 }
+// Liens « Confidentialité » et « Conditions d'utilisation » (pages communes de clicvia.com, 17/11/2026, règle commune § 58) :
+// ces pages existent en fr, ar et en ; le site n'a pas ces textes dans ses autres langues : libellé et page en anglais.
+function liensLegaux(l) {
+  const fr = l === "fr";
+  return `<p class="small liens-legaux"><a href="https://clicvia.com/${fr ? "" : "en/"}confidentialite/" rel="noopener">${fr ? "Confidentialité" : "Privacy"}</a> · ` +
+    `<a href="https://clicvia.com/${fr ? "" : "en/"}conditions/" rel="noopener">${fr ? "Conditions d’utilisation" : "Terms of use"}</a></p>`;
+}
 function pied(l, r, urls) {
   return `  <footer class="footer">
     <p>${esc(t(l, "footerVerse"))}</p>
     <p class="small">${esc(t(l, "footerNote"))}</p>
     ${navLangues(urls, l, r)}
+    ${liensLegaux(l)}
     <p class="small"><a href="${r}${urlAccueil(l)}">The Message</a> · <a href="${r}${urlParoles(l)}">${esc(t(l, "pTitle"))}</a> · <a href="https://clicvia.com/">clicvia.com</a></p>
   </footer>
   <script src="${r}js/stats.js?v=${VERSION}"></script>
@@ -213,6 +221,7 @@ function accueil(l) {
   h = h.replace(/(<div id="flyers-grid" class="grid grid-flyers">)[\s\S]*?(<\/div>\n\s*<p class="note")/, `$1\n${grilleFlyers(l, r)}\n        $2`);
   for (const s of ["quran", "media", "links"]) h = h.replace(new RegExp(`(<div id="${s}-grid" class="grid grid-links">)[\\s\\S]*?(</div>\\n\\s*</div>\\n\\s*</section>)`), `$1\n${grilleLiens(l, s)}\n        $2`);
   h = h.replace(/<nav class="langues-pied"[\s\S]*?<\/nav>/, navLangues(URLS_ACCUEIL, l, r));
+  h = h.replace(/<p class="small liens-legaux">[\s\S]*?<\/p>/, liensLegaux(l));
   return h;
 }
 function paroles(l) {
@@ -246,6 +255,7 @@ function paroles(l) {
   for (const id of ["lien-accueil", "retour-accueil", "pied-accueil"]) h = h.replace(new RegExp(`href="[^"]*"( (?:class="[^"]*" )?id="${id}")`), `href="${r}${urlAccueil(l)}"$1`);
   h = h.replace(/href="[^"]*"( id="lien-question")/, `href="${r}${urlAccueil(l)}#contact"$1`);
   h = h.replace(/<nav class="langues-pied"[\s\S]*?<\/nav>/, navLangues(URLS_PAROLES, l, r));
+  h = h.replace(/<p class="small liens-legaux">[\s\S]*?<\/p>/, liensLegaux(l));
   return h;
 }
 for (const l of LANGUES) {

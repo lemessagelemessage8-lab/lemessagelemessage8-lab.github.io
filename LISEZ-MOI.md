@@ -191,3 +191,11 @@ d'entrée « avec musique ». Corrigé :
   YouTube chargé seulement au 1er clic).
 - Reste à faire : QR codes des flyers vers la page de chaque flyer avec `?utm_source=flyer&utm_campaign=<id>` (demande de refaire
   les 42 PDF avec `tools/flyers.py`) ; relecture des traductions d'interface par des natifs.
+
+## Page 404, Confidentialité / Conditions, vignettes allégées (17/11/2026, règle commune § 58)
+- `404.html` + `404.js` à la racine = page 404 COMMUNE (`outils communs/page-404/installer.py` du dépôt projets-ahmed) : ne pas les modifier ici, réinstaller.
+- Pied de CHAQUE page : liens vers les pages communes de clicvia.com (`liensLegaux()` de `tools/pages_seo.mjs` ; modèle FR dans `index.html` et
+  `paroles-du-prophete/index.html`). Ces pages n'existent qu'en fr, ar, en : page française -> /confidentialite/, /conditions/ ; toutes les autres
+  langues -> /en/… avec « Privacy » / « Terms of use » (le site n'a pas ces textes dans ses autres langues). Test qui bloque dans `tools/test_site.mjs`.
+- Vignettes `flyers/*-mini.jpg` : 360 px de large au plus, 80 Ko au plus (`vignette()` de `tools/flyers.py`) ; 94 vignettes recompressées
+  (14,7 -> 3,9 Mo), tailles mises à jour dans `tampons.json` ; le test refuse une vignette de plus de 90 Ko.

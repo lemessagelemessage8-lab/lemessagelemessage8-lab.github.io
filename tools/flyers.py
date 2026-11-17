@@ -31,7 +31,20 @@ SORTIE = os.path.join(SITE, "flyers")
 ADRESSE = "message.clicvia.com"
 URL = "https://message.clicvia.com/"
 VERT, OR, BLANC = (15, 59, 46), (201, 165, 76), (255, 255, 255)
-MINI_LARGEUR = 495
+# Vignettes (-mini.jpg) : affichées sur environ 170 px de large (2 par carte) -> 360 px au plus (2 fois), 80 Ko au plus
+# (17/11/2026 : 94 vignettes de 100 à 225 Ko ralentissaient l'accueil sur téléphone)
+MINI_MAX, MINI_KO = 360, 80
+
+
+def vignette(im, dm):
+    """Enregistre la vignette de im dans dm : 360 px de large au plus, JPEG progressif de 80 Ko au plus (qualité 82 à 60)."""
+    if im.width > MINI_MAX:
+        im = im.resize((MINI_MAX, round(im.height * MINI_MAX / im.width)), Image.LANCZOS)
+    im = im.convert("RGB")
+    for q in (82, 78, 74, 70, 65, 60):
+        im.save(dm, "JPEG", quality=q, optimize=True, progressive=True)
+        if os.path.getsize(dm) <= MINI_KO * 1024:
+            break
 LARGEUR_PANNEAU = 900
 POLICES = [r"C:\Windows\Fonts\segoeuib.ttf", r"C:\Windows\Fonts\arialbd.ttf",
            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"]
@@ -167,9 +180,8 @@ def fabriquer(fid):
         im = tamponner_image(os.path.join(dossier, f), dst)
         faits.append(os.path.basename(dst))
         if k <= 2:
-            mini = im.resize((MINI_LARGEUR, round(im.height * MINI_LARGEUR / im.width)), Image.LANCZOS)
             dm = dst.replace(".jpg", "-mini.jpg")
-            mini.save(dm, "JPEG", quality=80, optimize=True)
+            vignette(im, dm)
             faits.append(os.path.basename(dm))
     pdf = os.path.join(SORTIE, f"flyer-{fid}.pdf")
     tamponner_pdf(os.path.join(dossier, "original.pdf"), pdf)
@@ -185,8 +197,7 @@ def fabriquer(fid):
             pix = p.get_pixmap(dpi=150)
             im = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
             im.save(dst, "JPEG", quality=85, optimize=True)
-            mini = im.resize((MINI_LARGEUR * 2, round(im.height * MINI_LARGEUR * 2 / im.width)), Image.LANCZOS)
-            mini.save(dst.replace(".jpg", "-mini.jpg"), "JPEG", quality=80, optimize=True)
+            vignette(im, dst.replace(".jpg", "-mini.jpg"))
             faits += [os.path.basename(dst), os.path.basename(dst.replace(".jpg", "-mini.jpg"))]
     return len(pages), faits
 

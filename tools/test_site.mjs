@@ -212,5 +212,24 @@ for (const [, u] of plan.matchAll(/<loc>https:\/\/message\.clicvia\.com\/([^<]*)
   ok(desc.length > 0 && desc.length <= 160, `/${u} : description de ${desc.length} caractères (160 au plus)`);
 }
 
+// --- Page 404 du site + liens Confidentialité / Conditions d'utilisation en bas de CHAQUE page (17/11/2026, règle commune § 58 ; § 55 : test qui bloque) ---
+// pages communes de clicvia.com en fr, ar et en : la page française pointe vers /confidentialite/ et /conditions/, toutes les autres langues vers /en/…
+ok(fs.existsSync(path.join(racine, "404.html")) && fs.existsSync(path.join(racine, "404.js")) && /src="\/404\.js"/.test(lire("404.html")) && /Recherche de la page/.test(lire("404.js")),
+  "page 404 du site absente (python \"outils communs/page-404/installer.py\" . \"The Message\" \"#0f3b2e\", dépôt projets-ahmed)");
+{
+  const pages = [];
+  const parcourir = d => { for (const n of fs.readdirSync(path.join(racine, d))) { const r = d ? d + "/" + n : n;
+    if (["node_modules", "tools", ".git", ".github"].includes(n)) continue;
+    if (fs.statSync(path.join(racine, r)).isDirectory()) parcourir(r); else if (n === "index.html") pages.push(r); } };
+  parcourir("");
+  const sans = pages.filter(p => { const h = lire(p), pied = (h.match(/<footer[\s\S]*?<\/footer>/) || [""])[0];
+    const l = (h.match(/<html[^>]*data-lang="([a-z]+)"/) || h.match(/<html[^>]*lang="([a-z]+)/) || [, "fr"])[1];
+    const pre = l === "fr" ? "" : "en/";
+    return !pied.includes(`href="https://clicvia.com/${pre}confidentialite/"`) || !pied.includes(`href="https://clicvia.com/${pre}conditions/"`); });
+  ok(pages.length > 200 && !sans.length, `pied de page sans les liens Confidentialité + Conditions d'utilisation (${sans.length} page(s) sur ${pages.length}) : ${sans.slice(0, 5).join(", ")} — relancer node tools/pages_seo.mjs`);
+  const vignettes = fs.readdirSync(path.join(racine, "flyers")).filter(n => n.endsWith("-mini.jpg") && fs.statSync(path.join(racine, "flyers", n)).size > 90 * 1024);
+  ok(!vignettes.length, `vignettes de flyers trop lourdes (plus de 90 Ko, tools/flyers.py les fait en 80 Ko) : ${vignettes.slice(0, 5).join(", ")}`);
+}
+
 console.log(echecs ? `\n${echecs} échec(s)` : "Tous les tests passent.");
 process.exit(echecs ? 1 : 0);
